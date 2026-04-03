@@ -49,7 +49,5 @@ All synthetic test inputs, harness code, and ground truth specifications are in:
 
 ## Archival Notes
 
-This document was created BEFORE any benchmark execution and BEFORE any contact
-with the repository author. The repository state at HEAD `3c9383b` is the version
-under test. Any subsequent commits to the upstream repository do not affect this
-benchmark — all runs execute against locally archived commit SHAs.
+The repository state at HEAD `3c9383b` is the version under test.
+All runs execute against locally archived commit SHAs.
