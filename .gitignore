@@ -7,4 +7,4 @@ dist/
 build/
 .venv/
 .env
-slides/
+# Keep slides tracked — they are deliverables

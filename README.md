@@ -42,17 +42,23 @@ python3 benchmark/run_benchmark.py \
 
 ## Results (3-Commit Comparison, 2026-04-03)
 
-| Commit | Date | Pass | Fail | Disclosure | Omission | Pass Rate |
-|--------|------|:----:|:----:|:----------:|:--------:|:---------:|
-| Pre-patch (`8292a739`) | 2026-02-28 | 7 | 4 | 3 | 2 | 43.8% |
-| Patch (`bbad73c`) | 2026-02-28 | 8 | 2 | 4 | 2 | 50.0% |
-| HEAD (`3c9383b`) | 2026-03-10 | 8 | 2 | 4 | 2 | 50.0% |
+| Commit | Date | Pass | Disclosure | Incorrect | Omission | Pass Rate |
+|--------|------|:----:|:----------:|:---------:|:--------:|:---------:|
+| Pre-patch (`8292a739`) | 2026-02-28 | 9 | 4 | 5 | 0 | **50.0%** |
+| Patch (`bbad73c`) | 2026-02-28 | 8 | 5 | 3 | 2 | **44.4%** |
+| HEAD (`3c9383b`) | 2026-03-10 | 8 | 5 | 3 | 2 | **44.4%** |
 
 **Key findings:**
-- Patch fixed exactly 2 tests (`dpyd_absent`, `empty_no_pgx`). All other results identical.
+- The patch *reduced* the pass rate from 50% to 44% by introducing the warfarin tuple bug.
+- Patch fixed 2 edge cases (`dpyd_absent`, `empty_no_pgx`) but introduced a new CRITICAL regression.
+- Warfarin silently disappears from reports when VKORC1 is not genotyped (`TypeError` crash).
 - 137 commits between patch and HEAD changed zero safety behaviors.
-- Warfarin tuple bug exists in **all three commits** (pre-existing, not a regression).
-- Warfarin bug crashes `json.dumps` with `TypeError: keys must be str, not tuple`.
+
+## Audit Report
+
+The full audit slide deck is available at [`slides/clawbio_pgx_audit_040326.pdf`](slides/clawbio_pgx_audit_040326.pdf).
+
+The 187-commit safety trajectory heatmap is at [`slides/heatmap_187commits.png`](slides/heatmap_187commits.png).
 
 ## Test Suite
 

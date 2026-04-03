@@ -2,10 +2,10 @@
 """Render the 187-commit × 18-test safety heatmap as a publication-quality PNG."""
 
 import json
-import sys
 from pathlib import Path
 
 import matplotlib
+
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import matplotlib.colors as mcolors
@@ -37,12 +37,12 @@ CAT_MAP = {
     "disclosure_failure": 5,
 }
 CAT_COLORS = {
-    0: "#3a8a5c",   # correct_determinate — forest green
-    1: "#6ec492",   # correct_indeterminate — light green
-    2: "#d94f4f",   # incorrect_determinate — coral red
-    3: "#e8a838",   # incorrect_indeterminate — amber
-    4: "#0f2440",   # omission — dark navy
-    5: "#cf7a30",   # disclosure_failure — ember orange
+    0: "#3a8a5c",  # correct_determinate — forest green
+    1: "#6ec492",  # correct_indeterminate — light green
+    2: "#d94f4f",  # incorrect_determinate — coral red
+    3: "#e8a838",  # incorrect_indeterminate — amber
+    4: "#0f2440",  # omission — dark navy
+    5: "#cf7a30",  # disclosure_failure — ember orange
 }
 CAT_LABELS = {
     0: "Correct",
@@ -60,18 +60,29 @@ n_tests = len(test_cases)
 # Reorder test cases: failures first, then controls
 test_order = [
     # Persistent failures (omission)
-    "warfarin_missing_both", "warfarin_missing_vkorc1",
+    "warfarin_missing_both",
+    "warfarin_missing_vkorc1",
     # Persistent failures (disclosure)
-    "ugt1a1_28_hom", "ugt1a1_28_het", "cyp2d6_del",
+    "ugt1a1_28_hom",
+    "ugt1a1_28_het",
+    "cyp2d6_del",
     # Persistent failures (incorrect)
-    "dpyd_partial", "ugt1a1_28_absent", "tpmt_compound_het",
+    "dpyd_partial",
+    "ugt1a1_28_absent",
+    "tpmt_compound_het",
     # Improved by patch
-    "dpyd_absent", "empty_no_pgx",
+    "dpyd_absent",
+    "empty_no_pgx",
     # Changed by patch (correct → disclosure)
-    "cyp2d6_normal", "cyp3a5_7_ins",
+    "cyp2d6_normal",
+    "cyp3a5_7_ins",
     # Always pass (controls)
-    "dpyd_2a_het", "dpyd_2a_hom", "dpyd_neg",
-    "cyp2d6_pm", "ugt1a1_neg", "warfarin_normal",
+    "dpyd_2a_het",
+    "dpyd_2a_hom",
+    "dpyd_neg",
+    "cyp2d6_pm",
+    "ugt1a1_neg",
+    "warfarin_normal",
 ]
 
 mat = np.full((n_commits, len(test_order)), -1, dtype=int)
@@ -109,8 +120,9 @@ ax.set_yticklabels(y_labels, fontsize=7, fontfamily="monospace")
 # ── X-axis: test cases ──
 display_names = [t.replace("_", "\n") for t in test_order]
 ax.set_xticks(range(len(test_order)))
-ax.set_xticklabels(display_names, fontsize=7.5, rotation=0, ha="center",
-                    fontfamily="monospace")
+ax.set_xticklabels(
+    display_names, fontsize=7.5, rotation=0, ha="center", fontfamily="monospace"
+)
 ax.xaxis.set_ticks_position("top")
 ax.xaxis.set_label_position("top")
 
@@ -128,8 +140,11 @@ for i, c in enumerate(commits):
             f"  {label}",
             xy=(len(test_order) - 0.5, i),
             xytext=(len(test_order) + 0.3, i),
-            fontsize=8, fontweight="bold", color="#0f2440",
-            va="center", ha="left",
+            fontsize=8,
+            fontweight="bold",
+            color="#0f2440",
+            va="center",
+            ha="left",
             arrowprops=dict(arrowstyle="-", color="#0f2440", lw=0.8),
             annotation_clip=False,
         )
@@ -148,8 +163,16 @@ group_labels = [
     (15, "Controls\n(always pass)"),
 ]
 for x, label in group_labels:
-    ax.text(x, n_commits + 3, label, ha="center", va="top", fontsize=7,
-            color="#64748b", fontstyle="italic")
+    ax.text(
+        x,
+        n_commits + 3,
+        label,
+        ha="center",
+        va="top",
+        fontsize=7,
+        color="#64748b",
+        fontstyle="italic",
+    )
 
 # ── Legend ──
 legend_patches = [
@@ -157,19 +180,32 @@ legend_patches = [
     for k in sorted(CAT_COLORS.keys())
 ]
 ax.legend(
-    handles=legend_patches, loc="lower center",
-    bbox_to_anchor=(0.5, -0.06), ncol=3, fontsize=8,
-    frameon=True, fancybox=True, edgecolor="#dee2e6",
+    handles=legend_patches,
+    loc="lower center",
+    bbox_to_anchor=(0.5, -0.06),
+    ncol=3,
+    fontsize=8,
+    frameon=True,
+    fancybox=True,
+    edgecolor="#dee2e6",
 )
 
 # ── Title ──
 ax.set_title(
-    "ClawBio PharmGx Safety Trajectory\n"
-    "187 commits × 18 CPIC-referenced tests",
-    fontsize=14, fontweight="bold", color="#0f2440", pad=40,
+    "ClawBio PharmGx Safety Trajectory\n187 commits × 18 CPIC-referenced tests",
+    fontsize=14,
+    fontweight="bold",
+    color="#0f2440",
+    pad=40,
 )
-fig.text(0.5, 0.005, "Sergey A. Kornilov · Biostochastics · github.com/biostochastics/clawbio-pgx-benchmark",
-         ha="center", fontsize=7, color="#64748b")
+fig.text(
+    0.5,
+    0.005,
+    "Sergey A. Kornilov · Biostochastics · github.com/biostochastics/clawbio-pgx-benchmark",
+    ha="center",
+    fontsize=7,
+    color="#64748b",
+)
 
 plt.tight_layout(rect=[0, 0.04, 0.88, 0.97])
 
