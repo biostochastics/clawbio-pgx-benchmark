@@ -1,0 +1,2750 @@
+{
+  "98dbee4b": {
+    "total_tests": 18,
+    "pass": 0,
+    "fail": 18,
+    "pass_rate": 0.0,
+    "categories": {
+      "incorrect_determinate": 18
+    },
+    "commit_date": "2026-02-25 17:43:22 +0000",
+    "commit_message": "Initial commit"
+  },
+  "0e454b59": {
+    "total_tests": 18,
+    "pass": 0,
+    "fail": 18,
+    "pass_rate": 0.0,
+    "categories": {
+      "incorrect_determinate": 18
+    },
+    "commit_date": "2026-02-23 14:21:44 +0000",
+    "commit_message": "Initial commit: OpenClaw Bio MVP (Equity Scorer + Bio Orchestrator)"
+  },
+  "78be28b7": {
+    "total_tests": 18,
+    "pass": 0,
+    "fail": 18,
+    "pass_rate": 0.0,
+    "categories": {
+      "incorrect_determinate": 18
+    },
+    "commit_date": "2026-02-23 14:25:11 +0000",
+    "commit_message": "Refocus slides on productivity, AI fluency, and OpenClaw Bio"
+  },
+  "8c260e16": {
+    "total_tests": 18,
+    "pass": 0,
+    "fail": 18,
+    "pass_rate": 0.0,
+    "categories": {
+      "incorrect_determinate": 18
+    },
+    "commit_date": "2026-02-25 17:43:36 +0000",
+    "commit_message": "Add presentation brief, PPTX slides, and conversion script"
+  },
+  "38a13b88": {
+    "total_tests": 18,
+    "pass": 0,
+    "fail": 18,
+    "pass_rate": 0.0,
+    "categories": {
+      "incorrect_determinate": 18
+    },
+    "commit_date": "2026-02-25 17:48:09 +0000",
+    "commit_message": "Rebrand README to ClawBio with full summary, functionality, and roadmap"
+  },
+  "96f595ad": {
+    "total_tests": 18,
+    "pass": 0,
+    "fail": 18,
+    "pass_rate": 0.0,
+    "categories": {
+      "incorrect_determinate": 18
+    },
+    "commit_date": "2026-02-25 18:00:13 +0000",
+    "commit_message": "Rebrand all references to ClawBio, rename logo to clawbio-logo, add logo to README/slides/brief"
+  },
+  "07405221": {
+    "total_tests": 18,
+    "pass": 0,
+    "fail": 18,
+    "pass_rate": 0.0,
+    "categories": {
+      "incorrect_determinate": 18
+    },
+    "commit_date": "2026-02-25 18:05:08 +0000",
+    "commit_message": "Retrigger GitHub Pages deployment"
+  },
+  "51c2d41d": {
+    "total_tests": 18,
+    "pass": 0,
+    "fail": 18,
+    "pass_rate": 0.0,
+    "categories": {
+      "incorrect_determinate": 18
+    },
+    "commit_date": "2026-02-25 18:41:24 +0000",
+    "commit_message": "Add Open Graph, Twitter Card, and favicon meta tags for link previews"
+  },
+  "c14f3654": {
+    "total_tests": 18,
+    "pass": 0,
+    "fail": 18,
+    "pass_rate": 0.0,
+    "categories": {
+      "incorrect_determinate": 18
+    },
+    "commit_date": "2026-02-25 18:49:58 +0000",
+    "commit_message": "Add 1280x640 social preview image for GitHub/LinkedIn sharing"
+  },
+  "4d1c416d": {
+    "total_tests": 18,
+    "pass": 0,
+    "fail": 18,
+    "pass_rate": 0.0,
+    "categories": {
+      "incorrect_determinate": 18
+    },
+    "commit_date": "2026-02-25 18:51:24 +0000",
+    "commit_message": "Regenerate social preview at 2x for crisp antialiased rendering"
+  },
+  "04bbbeb3": {
+    "total_tests": 18,
+    "pass": 0,
+    "fail": 18,
+    "pass_rate": 0.0,
+    "categories": {
+      "incorrect_determinate": 18
+    },
+    "commit_date": "2026-02-25 18:53:09 +0000",
+    "commit_message": "Upgrade social preview to 2560x1280 for sharp rendering on LinkedIn/Twitter"
+  },
+  "38c55a84": {
+    "total_tests": 18,
+    "pass": 0,
+    "fail": 18,
+    "pass_rate": 0.0,
+    "categories": {
+      "incorrect_determinate": 18
+    },
+    "commit_date": "2026-02-25 18:55:32 +0000",
+    "commit_message": "Clean social preview: threshold JPEG artifacts, smooth lines at 2560x1280"
+  },
+  "670cbbdd": {
+    "total_tests": 18,
+    "pass": 0,
+    "fail": 18,
+    "pass_rate": 0.0,
+    "categories": {
+      "incorrect_determinate": 18
+    },
+    "commit_date": "2026-02-25 18:58:01 +0000",
+    "commit_message": "Minimal social preview: logo + ClawBio text only"
+  },
+  "68854eac": {
+    "total_tests": 18,
+    "pass": 0,
+    "fail": 18,
+    "pass_rate": 0.0,
+    "categories": {
+      "incorrect_determinate": 18
+    },
+    "commit_date": "2026-02-25 19:00:01 +0000",
+    "commit_message": "Bold social preview: thickened lines, larger logo for LinkedIn compression"
+  },
+  "e2015a9f": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 3,
+      "correct_determinate": 8,
+      "incorrect_determinate": 5,
+      "omission": 2
+    },
+    "commit_date": "2026-02-25 19:10:16 +0000",
+    "commit_message": "Add PharmGx Reporter skill: pharmacogenomic report from DTC genetic data"
+  },
+  "6506c10a": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 3,
+      "correct_determinate": 8,
+      "incorrect_determinate": 5,
+      "omission": 2
+    },
+    "commit_date": "2026-02-25 19:53:21 +0000",
+    "commit_message": "Add PharmGx Reporter to README documentation"
+  },
+  "5ebc94cf": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 3,
+      "correct_determinate": 8,
+      "incorrect_determinate": 5,
+      "omission": 2
+    },
+    "commit_date": "2026-02-25 19:55:15 +0000",
+    "commit_message": "Add PharmGx Reporter to slides: 3 demo slides with real biology"
+  },
+  "13b7a339": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 3,
+      "correct_determinate": 8,
+      "incorrect_determinate": 5,
+      "omission": 2
+    },
+    "commit_date": "2026-02-25 20:00:02 +0000",
+    "commit_message": "Redesign README header: banner image, badges, cleaner layout"
+  },
+  "299ece4d": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 3,
+      "correct_determinate": 8,
+      "incorrect_determinate": 5,
+      "omission": 2
+    },
+    "commit_date": "2026-02-25 20:02:35 +0000",
+    "commit_message": "Fix wording: genomic data -> bioinformatic data"
+  },
+  "f77f94ab": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 3,
+      "correct_determinate": 8,
+      "incorrect_determinate": 5,
+      "omission": 2
+    },
+    "commit_date": "2026-02-25 20:05:49 +0000",
+    "commit_message": "Add proper favicon: 16/32/48px ICO from T-rex logo"
+  },
+  "425cebde": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 3,
+      "correct_determinate": 8,
+      "incorrect_determinate": 5,
+      "omission": 2
+    },
+    "commit_date": "2026-02-25 20:07:42 +0000",
+    "commit_message": "Invert favicon: white T-rex on black background for visibility at small sizes"
+  },
+  "bb01c165": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 3,
+      "correct_determinate": 8,
+      "incorrect_determinate": 5,
+      "omission": 2
+    },
+    "commit_date": "2026-02-25 20:10:38 +0000",
+    "commit_message": "Favicon: black T-rex on white rounded background (GitHub style)"
+  },
+  "8a605e62": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 3,
+      "correct_determinate": 8,
+      "incorrect_determinate": 5,
+      "omission": 2
+    },
+    "commit_date": "2026-02-25 20:11:17 +0000",
+    "commit_message": "Add T-rex dino logo to bottom-left corner of every slide"
+  },
+  "becc3a38": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 3,
+      "correct_determinate": 8,
+      "incorrect_determinate": 5,
+      "omission": 2
+    },
+    "commit_date": "2026-02-25 20:13:26 +0000",
+    "commit_message": "Bigger, crisper slide dino: 96px source rendered at 44px display"
+  },
+  "97589afd": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 3,
+      "correct_determinate": 8,
+      "incorrect_determinate": 5,
+      "omission": 2
+    },
+    "commit_date": "2026-02-26 05:53:58 +0000",
+    "commit_message": "Add NutriGx Advisor skill"
+  },
+  "99a815c3": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 3,
+      "correct_determinate": 8,
+      "incorrect_determinate": 5,
+      "omission": 2
+    },
+    "commit_date": "2026-02-26 06:51:13 +0000",
+    "commit_message": "Merge pull request #1 from drdaviddelorenzo/main"
+  },
+  "826a19ea": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 3,
+      "correct_determinate": 8,
+      "incorrect_determinate": 5,
+      "omission": 2
+    },
+    "commit_date": "2026-02-26 14:16:35 +0000",
+    "commit_message": "Launch-day update: README rewrite, \ud83e\udd96 branding, new slides, 2 MVP skills"
+  },
+  "77e4e7e6": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 3,
+      "correct_determinate": 8,
+      "incorrect_determinate": 5,
+      "omission": 2
+    },
+    "commit_date": "2026-02-26 16:44:58 +0000",
+    "commit_message": "Add CLAUDE.md for AI agent skill routing"
+  },
+  "de154e65": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 3,
+      "correct_determinate": 8,
+      "incorrect_determinate": 5,
+      "omission": 2
+    },
+    "commit_date": "2026-02-26 16:46:16 +0000",
+    "commit_message": "Add 'What Is Claude Code?' slide after Tip 1"
+  },
+  "8e68ccf9": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 3,
+      "correct_determinate": 8,
+      "incorrect_determinate": 5,
+      "omission": 2
+    },
+    "commit_date": "2026-02-26 18:39:09 +0000",
+    "commit_message": "Update slides: add AI pitfalls section, Golden Rule, transition slides, new images"
+  },
+  "40d3faad": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 3,
+      "correct_determinate": 8,
+      "incorrect_determinate": 5,
+      "omission": 2
+    },
+    "commit_date": "2026-02-27 13:05:41 +0100",
+    "commit_message": "refactor: reorganise examples/, add random patient generator, fix test paths"
+  },
+  "08b3db3f": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 3,
+      "correct_determinate": 8,
+      "incorrect_determinate": 5,
+      "omission": 2
+    },
+    "commit_date": "2026-02-27 12:11:57 +0000",
+    "commit_message": "Merge pull request #2 from drdaviddelorenzo/main"
+  },
+  "ab14b490": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 3,
+      "correct_determinate": 8,
+      "incorrect_determinate": 5,
+      "omission": 2
+    },
+    "commit_date": "2026-02-27 13:40:11 +0100",
+    "commit_message": "docs: add demo radar and heatmap to examples/output, update report and SKILL.md"
+  },
+  "7224e79f": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 3,
+      "correct_determinate": 8,
+      "incorrect_determinate": 5,
+      "omission": 2
+    },
+    "commit_date": "2026-02-27 13:40:14 +0100",
+    "commit_message": "Merge branch 'main' of https://github.com/drdaviddelorenzo/ClawBio"
+  },
+  "53b90ea1": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 3,
+      "correct_determinate": 8,
+      "incorrect_determinate": 5,
+      "omission": 2
+    },
+    "commit_date": "2026-02-27 14:31:25 +0000",
+    "commit_message": "Merge pull request #3 from drdaviddelorenzo/main"
+  },
+  "39934385": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 3,
+      "correct_determinate": 8,
+      "incorrect_determinate": 5,
+      "omission": 2
+    },
+    "commit_date": "2026-02-27 17:03:16 +0100",
+    "commit_message": "docs: add NutriGx Advisor to skills table in CLAWBIO-BRIEF.md"
+  },
+  "79f2b2ad": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 3,
+      "correct_determinate": 8,
+      "incorrect_determinate": 5,
+      "omission": 2
+    },
+    "commit_date": "2026-02-27 16:25:36 +0000",
+    "commit_message": "Merge pull request #4 from drdaviddelorenzo/docs/add-nutrigx-to-brief"
+  },
+  "7e15c9cc": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 3,
+      "correct_determinate": 8,
+      "incorrect_determinate": 5,
+      "omission": 2
+    },
+    "commit_date": "2026-02-27 18:27:22 +0100",
+    "commit_message": "docs: update contributing guidelines in NutriGx Advisor SKILL.md"
+  },
+  "0970f6d3": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 3,
+      "correct_determinate": 8,
+      "incorrect_determinate": 5,
+      "omission": 2
+    },
+    "commit_date": "2026-02-27 19:36:23 +0000",
+    "commit_message": "Merge pull request #5 from drdaviddelorenzo/main"
+  },
+  "30757938": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 3,
+      "correct_determinate": 8,
+      "incorrect_determinate": 5,
+      "omission": 2
+    },
+    "commit_date": "2026-02-28 05:52:55 +0000",
+    "commit_message": "Migrate all repo URLs from manuelcorpas/ClawBio to ClawBio/ClawBio"
+  },
+  "4bcd5be7": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 3,
+      "correct_determinate": 8,
+      "incorrect_determinate": 5,
+      "omission": 2
+    },
+    "commit_date": "2026-02-28 06:00:49 +0000",
+    "commit_message": "Add test suites for PharmGx and Equity Scorer, add GitHub Actions CI"
+  },
+  "cfa3160b": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 3,
+      "correct_determinate": 8,
+      "incorrect_determinate": 5,
+      "omission": 2
+    },
+    "commit_date": "2026-02-28 06:20:25 +0000",
+    "commit_message": "Add badges, fix skill table, add issue/PR templates, add pytest config"
+  },
+  "a31003a6": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 3,
+      "correct_determinate": 8,
+      "incorrect_determinate": 5,
+      "omission": 2
+    },
+    "commit_date": "2026-02-28 06:32:50 +0000",
+    "commit_message": "Add demo GIF to README showing PharmGx Reporter in action"
+  },
+  "f4a232a2": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 3,
+      "correct_determinate": 8,
+      "incorrect_determinate": 5,
+      "omission": 2
+    },
+    "commit_date": "2026-02-28 07:50:31 +0000",
+    "commit_message": "Add FUNDING.yml for GitHub Sponsors"
+  },
+  "8292a739": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 3,
+      "correct_determinate": 8,
+      "incorrect_determinate": 5,
+      "omission": 2
+    },
+    "commit_date": "2026-02-28 07:52:22 +0000",
+    "commit_message": "Restructure README: lead with demo video, add provenance section"
+  },
+  "bbad73c1": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-02-28 21:37:28 +0000",
+    "commit_message": "Fix silent degradation across all 4 skills: missing data no longer hides as normal"
+  },
+  "5c1afe4b": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-02-28 21:39:21 +0000",
+    "commit_message": "Add SECURITY-AUDIT.md documenting all 32 silent degradation fixes"
+  },
+  "7a1aac92": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-01 12:09:04 +0000",
+    "commit_message": "Fix OG meta tags for LinkedIn preview: correct domain, use social preview image"
+  },
+  "66778a75": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-01 14:04:23 +0000",
+    "commit_message": "Add Peter Steinberger intro video to README from UK AI Agent Hack"
+  },
+  "b1e6e1fa": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-01 14:18:36 +0000",
+    "commit_message": "Fix all CI test failures and embed video in README"
+  },
+  "8b385138": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-01 14:19:18 +0000",
+    "commit_message": "Fix video embed: use bare URL for GitHub auto-rendering"
+  },
+  "360cc70b": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-01 14:22:05 +0000",
+    "commit_message": "Embed Peter Steinberger video directly in repo for README rendering"
+  },
+  "0558a44c": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-01 14:25:03 +0000",
+    "commit_message": "Use release download URL for video embed (matches working NutriGx format)"
+  },
+  "d6a05524": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-01 14:25:37 +0000",
+    "commit_message": "Embed YouTube thumbnail for Peter Steinberger video in README"
+  },
+  "aba13736": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-01 14:33:16 +0000",
+    "commit_message": "Fix stretched video and black PharmGx demo in README"
+  },
+  "f74b215a": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-01 14:34:45 +0000",
+    "commit_message": "Update YouTube link to portrait-corrected video"
+  },
+  "fb0b5388": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-02 13:47:29 +0000",
+    "commit_message": "Add standalone CLI runner, public SOUL.md, and avatar images"
+  },
+  "5c47456a": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-02 14:29:35 +0000",
+    "commit_message": "Make ClawBio easy to clone and test for hackathon demo day"
+  },
+  "fa3c0877": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-02 14:34:56 +0000",
+    "commit_message": "Add RoboTerri Telegram integration section and update architecture diagram"
+  },
+  "a8033a11": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-02 14:36:28 +0000",
+    "commit_message": "Add RoboTerri avatar to Telegram section in README"
+  },
+  "2eae3406": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-02 14:36:53 +0000",
+    "commit_message": "Credit Prof. Teresa K. Attwood as RoboTerri's inspiration in README"
+  },
+  "6cc47d71": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-02 14:38:22 +0000",
+    "commit_message": "Increase RoboTerri avatar size in README"
+  },
+  "6e1f0e9a": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-02 15:27:00 +0000",
+    "commit_message": "Add genome-compare skill: IBS vs George Church + ancestry estimation"
+  },
+  "6c7efcac": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-02 15:36:57 +0000",
+    "commit_message": "Add genome-compare security audit to SECURITY-AUDIT.md"
+  },
+  "ce52a9d3": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-02 15:41:29 +0000",
+    "commit_message": "Fix 3 HIGH security findings from genome-compare audit"
+  },
+  "735d12fc": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-02 15:42:37 +0000",
+    "commit_message": "Fix broken slides link in README Links section"
+  },
+  "4e3d36f4": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-02 16:04:47 +0000",
+    "commit_message": "Add iCloud Errno 11 retry to genome-compare file reads"
+  },
+  "bbe11651": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-02 16:20:22 +0000",
+    "commit_message": "Fix iCloud deadlock: stage data files to /tmp before reading"
+  },
+  "658b6288": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-02 16:26:29 +0000",
+    "commit_message": "Use subprocess cp for iCloud staging with 4-attempt retry"
+  },
+  "aacf2b57": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-02 16:29:04 +0000",
+    "commit_message": "Add diagnostic logging to genome-compare for remote debugging"
+  },
+  "a12d6aa6": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-02 16:56:15 +0000",
+    "commit_message": "Add summary mode as default: text output with accurate IBS + ancestry"
+  },
+  "0f74e0ae": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-02 17:09:22 +0000",
+    "commit_message": "Fix clawbio.py to support summary-only mode for genome-compare"
+  },
+  "862e15f3": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-03 04:21:07 +0000",
+    "commit_message": "Add drug photo skill: snap medication, get personalised PGx guidance"
+  },
+  "5858f2ba": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-03 04:26:26 +0000",
+    "commit_message": "Add 10 DailyMed drug images for hackathon demo testing"
+  },
+  "85496925": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-03 14:18:58 +0000",
+    "commit_message": "Add RoboTerri installation tutorial and link from README + slides"
+  },
+  "b89a3eb5": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-03 15:19:55 +0000",
+    "commit_message": "Add production RoboTerri bot with Claude reasoning engine"
+  },
+  "e0872d4a": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-03 15:20:48 +0000",
+    "commit_message": "Add labstep skill for lab notebook integration"
+  },
+  "6b81b57e": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-03 15:26:59 +0000",
+    "commit_message": "Narrow labstep keyword routing to avoid collisions"
+  },
+  "791e651d": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-03 15:36:55 +0000",
+    "commit_message": "Merge pull request #16 from ClawBio/add-labstep-skill"
+  },
+  "dacd291d": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-03 15:38:58 +0000",
+    "commit_message": "Support any Anthropic-compatible LLM provider"
+  },
+  "213181f2": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-03 15:57:20 +0000",
+    "commit_message": "Switch to OpenAI SDK for universal LLM provider support"
+  },
+  "23326c06": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-03 16:17:21 +0000",
+    "commit_message": "Add ClinPGx skill and switch bot to OpenAI SDK"
+  },
+  "db2f9966": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-03 16:20:27 +0000",
+    "commit_message": "Merge origin/main into add-clinpgx-skill"
+  },
+  "b48a990f": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-03 16:20:40 +0000",
+    "commit_message": "Merge pull request #17 from ClawBio/add-clinpgx-skill"
+  },
+  "10d07f10": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-04 06:48:47 +0000",
+    "commit_message": "Add ClinPGx test suite (32 tests) and update CI workflow"
+  },
+  "bc9aff4e": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-04 06:50:11 +0000",
+    "commit_message": "Add GWAS Polygenic Risk Score skill (PGS Catalog, 6 curated traits)"
+  },
+  "f41609e9": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-04 06:50:17 +0000",
+    "commit_message": "Merge origin/main into add-gwas-risk-skill"
+  },
+  "ad1c65cc": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-04 06:50:35 +0000",
+    "commit_message": "Merge origin/main into add-gwas-risk-skill"
+  },
+  "0365d8d5": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-04 06:52:11 +0000",
+    "commit_message": "Merge pull request #18 from ClawBio/add-gwas-risk-skill"
+  },
+  "e1044097": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-04 06:53:55 +0000",
+    "commit_message": "Add GWAS Lookup skill \u2014 federated variant query across 9 genomic databases"
+  },
+  "4446dec9": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-04 06:54:16 +0000",
+    "commit_message": "Merge pull request #19 from ClawBio/add-gwas-lookup-skill"
+  },
+  "830e0047": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-04 08:31:50 +0000",
+    "commit_message": "Print report preview after skill run"
+  },
+  "f3ee187c": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-04 09:10:06 +0000",
+    "commit_message": "Add colored CLI output and real Corpasome demo data"
+  },
+  "88a0377e": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-04 09:15:40 +0000",
+    "commit_message": "Rich pharmgx CLI preview with biological context"
+  },
+  "361dd60c": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-04 09:18:49 +0000",
+    "commit_message": "Add Corpasome DOI to pharmgx report header"
+  },
+  "76e63d6f": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-04 13:51:30 +0000",
+    "commit_message": "Replace favicon with filled black T-rex"
+  },
+  "96f6cc6b": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-04 13:54:49 +0000",
+    "commit_message": "Merge website into main repo: add index.html, CNAME, .nojekyll"
+  },
+  "2c804faf": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-04 15:49:16 +0000",
+    "commit_message": "Fix PharmGx CI: update tests for Corpasome genotypes, add *2/*41 mapping"
+  },
+  "1de0b86d": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-04 15:49:24 +0000",
+    "commit_message": "Add push email notification workflow"
+  },
+  "9eee3423": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-04 15:51:47 +0000",
+    "commit_message": "Remove push email workflow: use GitHub native notifications instead"
+  },
+  "ba579b4e": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-04 19:49:43 +0000",
+    "commit_message": "Add shared library, api modules, profile-report skill, and refactor all skills"
+  },
+  "f1f4d10b": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-04 19:50:15 +0000",
+    "commit_message": "Merge origin/main \u2014 resolve conflicts in clawbio.py"
+  },
+  "96565a1c": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-04 21:28:14 +0000",
+    "commit_message": "Expand RoboTerri bot + add UKB Navigator skill"
+  },
+  "1c9eabb9": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-04 21:49:11 +0000",
+    "commit_message": "Enrich SOUL.md with Teresa Attwood personal biography"
+  },
+  "e3ec4ff5": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-04 21:59:04 +0000",
+    "commit_message": "Update README: 14 skills, remove stale video sections, add Drug Photo + GWAS Lookup + UKB Navigator detail"
+  },
+  "dc5aa7aa": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-04 22:00:33 +0000",
+    "commit_message": "Add 'In the Wild' section: Peter Steinberger at UK AI Agent Hack"
+  },
+  "ba25155b": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-04 22:02:04 +0000",
+    "commit_message": "Remove fabricated conversation details from In the Wild section"
+  },
+  "8c60ff4d": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-04 22:05:01 +0000",
+    "commit_message": "Add commit-summary job to CI: show author, message, files changed"
+  },
+  "70e2467c": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-04 22:10:15 +0000",
+    "commit_message": "Add rich HTML reporting with live ClinPGx evidence enrichment"
+  },
+  "7b1366ba": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-05 05:54:10 +0000",
+    "commit_message": "Add warfarin photo to README drug-photo demo section"
+  },
+  "f1f20634": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-05 06:00:08 +0000",
+    "commit_message": "Add demo genome page linking Corpasome publication"
+  },
+  "4fcc3421": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-05 06:02:21 +0000",
+    "commit_message": "Explain SNPs, alleles, diplotypes in plain language"
+  },
+  "21b77e9d": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-05 06:05:50 +0000",
+    "commit_message": "Make README skills paragraph accessible to non-geneticists"
+  },
+  "e03feda8": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-05 06:06:50 +0000",
+    "commit_message": "README: 14 skills \u2192 14 skills and growing"
+  },
+  "2a9b4c31": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-05 06:08:39 +0000",
+    "commit_message": "Link UK Biobank to ukbiobank.ac.uk in README"
+  },
+  "fc014f4f": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-05 06:09:12 +0000",
+    "commit_message": "Link rs9923231 to dbSNP entry in README"
+  },
+  "b7d2162f": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-05 06:11:30 +0000",
+    "commit_message": "Link '23andMe file' to demo-genome docs page in README"
+  },
+  "c4ed91f9": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-05 07:42:20 +0000",
+    "commit_message": "Add llms.txt for LLM discoverability"
+  },
+  "bcee1440": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-05 07:42:26 +0000",
+    "commit_message": "Add AGENTS.md for coding agent guidance"
+  },
+  "8e91a0c1": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-05 07:42:33 +0000",
+    "commit_message": "Add machine-readable skill catalog and generator script"
+  },
+  "63f22ad7": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-05 07:42:42 +0000",
+    "commit_message": "Upgrade SKILL-TEMPLATE.md to match best-practice format"
+  },
+  "fbcbfefb": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-05 07:42:50 +0000",
+    "commit_message": "Standardize SKILL.md files for agent consistency"
+  },
+  "6121f27e": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-05 07:43:02 +0000",
+    "commit_message": "Add agent documentation pointers to README and CONTRIBUTING"
+  },
+  "5c300d55": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-05 09:03:44 +0000",
+    "commit_message": "Add CHANGELOG.md with backfilled release history"
+  },
+  "9490b6f4": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-05 15:06:58 +0000",
+    "commit_message": "Merge pull request #23 from ClawBio/feature/html-report"
+  },
+  "9da8299e": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-05 16:03:54 +0000",
+    "commit_message": "Gitignore pr-audit skill and exclude from public catalog"
+  },
+  "bd7ffadb": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-05 20:36:04 +0800",
+    "commit_message": "Add scRNA Orchestrator MVP skill"
+  },
+  "f6b0d304": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-05 21:28:31 +0800",
+    "commit_message": "Run scRNA tests in dedicated CI job and drop .rds routing"
+  },
+  "60ba9f3b": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-05 21:28:36 +0800",
+    "commit_message": "Harden scRNA pipeline for tiny datasets and quoted repro paths"
+  },
+  "4c2c38e7": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-05 21:47:08 +0800",
+    "commit_message": "Make tiny scRNA test index dtype compatible with anndata IO"
+  },
+  "bfc52563": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-05 16:12:13 +0000",
+    "commit_message": "Merge PR #24: feat(scrna) add scRNA Orchestrator MVP with tests and CI"
+  },
+  "a4487ab4": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-05 20:29:06 +0000",
+    "commit_message": "feat: add FLock API integration for intelligent skill routing"
+  },
+  "6cbd0be1": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-06 08:08:20 +0800",
+    "commit_message": "feat(scrna): prefer PBMC3k demo with synthetic fallback, add processed-input guard, and whitelist scrna tuning flags"
+  },
+  "e364458f": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-06 13:09:40 +0800",
+    "commit_message": "feat(scrna): add optional DE volcano plot and improve DE input handling"
+  },
+  "f1be6876": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-06 10:56:05 +0000",
+    "commit_message": "Update hero tagline to canonical VC one-liner"
+  },
+  "5ee768a2": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-06 11:03:13 +0000",
+    "commit_message": "Add VC pitch deck as shareable HTML page"
+  },
+  "a31ae3f7": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-06 11:10:36 +0000",
+    "commit_message": "Update pitch deck stats: 153 stars (was 139)"
+  },
+  "c98134e4": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-06 11:12:31 +0000",
+    "commit_message": "Update pitch deck: show '1 wk old' instead of '7 days old'"
+  },
+  "18686fab": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-06 12:50:00 +0000",
+    "commit_message": "Add live traffic stats to traction slide"
+  },
+  "1983f08d": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-06 13:48:10 +0000",
+    "commit_message": "Add Telegram contributors group across all surfaces"
+  },
+  "ff6f2493": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-06 13:59:11 +0000",
+    "commit_message": "Update demo scripts with current stats ahead of March 7 pitch"
+  },
+  "f2029eca": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-06 14:17:58 +0000",
+    "commit_message": "Rework pitch deck for DoraHacks: bounty alignment + impact close"
+  },
+  "1f249f31": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-06 14:19:31 +0000",
+    "commit_message": "Update title slide URL: github.com/ClawBio \u2192 clawbio.ai"
+  },
+  "652aac0d": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-06 14:21:21 +0000",
+    "commit_message": "Replace t-rex emoji with ClawBio logo on title slide"
+  },
+  "33c408e4": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-06 14:23:42 +0000",
+    "commit_message": "Reorder problem slide for DoraHacks audience"
+  },
+  "b51f570b": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-06 14:26:27 +0000",
+    "commit_message": "Reorder solution pillars to mirror problem slide"
+  },
+  "f5aafc9e": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-06 14:28:03 +0000",
+    "commit_message": "Replace product card tags with outcome statements"
+  },
+  "dc741f8a": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-06 14:37:34 +0000",
+    "commit_message": "Ground problem slide in Corpas et al. published research"
+  },
+  "d1786e52": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-06 14:41:45 +0000",
+    "commit_message": "Add simple numbered bullets + citations to problem slide"
+  },
+  "10c82bf3": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-06 14:43:49 +0000",
+    "commit_message": "Fix citations on problem slide"
+  },
+  "3ea0ce80": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-06 14:48:46 +0000",
+    "commit_message": "Strengthen problem slide with HEIM medRxiv preprint"
+  },
+  "94ac5f9a": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-06 14:57:15 +0000",
+    "commit_message": "Rework all three problem cards with Corpas et al. stats only"
+  },
+  "816e5217": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-06 15:03:30 +0000",
+    "commit_message": "Replace card 3 with LLM benchmark data from Corpas & Iacoangeli"
+  },
+  "ff8a63d8": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-06 15:05:07 +0000",
+    "commit_message": "Add ResearchSquare link to card 3 citation"
+  },
+  "d298fe69": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-06 15:07:04 +0000",
+    "commit_message": "Add clickable DOI link to card 2 medRxiv citation"
+  },
+  "ac0c4733": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-06 15:09:29 +0000",
+    "commit_message": "Ground card 1 in Comms Biology manuscript stats"
+  },
+  "717b34a0": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-06 15:16:07 +0000",
+    "commit_message": "Update solution slide for VC + hackathon judge audience"
+  },
+  "3bd065a9": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-06 15:18:54 +0000",
+    "commit_message": "Strip bullet points from problem slide cards"
+  },
+  "306b70d8": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-06 15:22:06 +0000",
+    "commit_message": "Simplify product card descriptions to one-liners"
+  },
+  "0b548e11": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-06 15:22:51 +0000",
+    "commit_message": "Swap Bio Orchestrator for Drug Photo on product slide"
+  },
+  "598cbde6": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-06 15:31:03 +0000",
+    "commit_message": "Add RoboTerri + warfarin images to Claw for Human bounty card"
+  },
+  "cc4d7b3a": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-06 15:33:52 +0000",
+    "commit_message": "Replace bounty alignment slide with live demo slide"
+  },
+  "e482dab5": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-06 15:36:21 +0000",
+    "commit_message": "Remove SaaS language from business model slide"
+  },
+  "8bc85da7": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-06 16:12:21 +0000",
+    "commit_message": "Rename last slide label to 'Papers for Biology'"
+  },
+  "4b78dd9a": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-06 16:13:25 +0000",
+    "commit_message": "Fix closing line: Biology should ship as executable skills, not PDFs"
+  },
+  "864fecf5": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-06 16:19:14 +0000",
+    "commit_message": "Update homepage stats and skills list to current state"
+  },
+  "9442948c": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-06 16:22:44 +0000",
+    "commit_message": "Add pitch OG image and wire to pitch deck meta tags"
+  },
+  "4cd35040": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-06 16:28:45 +0000",
+    "commit_message": "Replace OG image with actual screenshot of pitch slide 1"
+  },
+  "032d2fd4": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-06 16:30:11 +0000",
+    "commit_message": "Fix OG image URL: use clawbio.ai directly, not github.io redirect"
+  },
+  "1febaaa7": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-06 16:34:52 +0000",
+    "commit_message": "Add cache-busting query string to twitter:image"
+  },
+  "76f736d6": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-06 20:59:48 +0000",
+    "commit_message": "Rebuild pitch deck: 5 slides optimised for 7 Mar hackathon"
+  },
+  "c10c0e68": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-07 10:06:31 +0000",
+    "commit_message": "Adapt pitch deck for VC audience"
+  },
+  "95aebe4d": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-07 10:08:06 +0000",
+    "commit_message": "Sharpen problem cards: bold keywords, less text"
+  },
+  "5d862845": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-07 20:43:53 +0800",
+    "commit_message": "Merge branch 'main' into codex/scrna-pbmc-improvement"
+  },
+  "15b75104": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-07 19:18:19 +0000",
+    "commit_message": "Merge pull request #25 from YonghaoZhao722/codex/scrna-pbmc-improvement"
+  },
+  "c0d57d42": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-07 19:18:27 +0000",
+    "commit_message": "Merge pull request #26 from YonghaoZhao722/codex/scrna-de-volcano"
+  },
+  "ea5e2d6b": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-07 20:28:01 +0000",
+    "commit_message": "Add Galaxy Bridge skill with intelligent tool recommendation"
+  },
+  "c893c71e": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-09 14:48:14 +0000",
+    "commit_message": "Add terminal demo GIF to README"
+  },
+  "d031c472": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-10 00:39:50 +0800",
+    "commit_message": "feat(scrna): add optional doublet detection and annotation"
+  },
+  "f42b25ff": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-10 07:58:58 +0800",
+    "commit_message": "test(scrna): stabilize annotation fixture dtypes"
+  },
+  "64b7a625": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-10 08:34:39 +0800",
+    "commit_message": "test(scrna): remove string obs from annotation fixture"
+  },
+  "03bc4d59": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-10 07:30:50 +0000",
+    "commit_message": "Merge pull request #36 from YonghaoZhao722/codex/scrna-doublet-annotation"
+  },
+  "45e98181": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-10 16:47:40 +0000",
+    "commit_message": "Open ClawBio bot to public users with rate limiting"
+  },
+  "0b505e83": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-10 16:50:52 +0000",
+    "commit_message": "Merge branch 'main' of https://github.com/ClawBio/ClawBio into main"
+  },
+  "53eeb559": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-10 18:00:57 +0000",
+    "commit_message": "Add public RoboTerri bot link to README"
+  },
+  "366954ab": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-10 21:46:01 +0000",
+    "commit_message": "Add data-extractor skill for scientific figure digitization"
+  },
+  "3c9383b1": {
+    "total_tests": 18,
+    "pass": 8,
+    "fail": 10,
+    "pass_rate": 44.4,
+    "categories": {
+      "disclosure_failure": 5,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 3,
+      "omission": 2
+    },
+    "commit_date": "2026-03-10 21:47:08 +0000",
+    "commit_message": "Merge pull request #39 from jaymoore-research/add-data-extractor-skill"
+  },
+  "_meta": {
+    "persistent_failures": [
+      "cyp2d6_del",
+      "dpyd_partial",
+      "tpmt_compound_het",
+      "ugt1a1_28_absent",
+      "ugt1a1_28_het",
+      "ugt1a1_28_hom",
+      "warfarin_missing_both",
+      "warfarin_missing_vkorc1"
+    ],
+    "improved_in": {
+      "e2015a9f": [
+        "cyp2d6_normal",
+        "cyp2d6_pm",
+        "cyp3a5_7_ins",
+        "dpyd_2a_het",
+        "dpyd_2a_hom",
+        "dpyd_neg",
+        "ugt1a1_neg",
+        "warfarin_normal"
+      ],
+      "bbad73c1": [
+        "dpyd_absent",
+        "empty_no_pgx"
+      ]
+    },
+    "total_commits": 187,
+    "total_tests": 18
+  }
+}
