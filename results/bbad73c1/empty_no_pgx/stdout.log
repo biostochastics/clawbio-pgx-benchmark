@@ -1,0 +1,8 @@
+ClawBio PharmGx Reporter v0.1.0
+================================
+
+Parsing: /Users/biostochastics/clawbio_r/scripts/benchmark/test_inputs/empty_no_pgx.txt
+  Format: unknown
+  Total SNPs: 10
+  PGx SNPs found: 0/30
+

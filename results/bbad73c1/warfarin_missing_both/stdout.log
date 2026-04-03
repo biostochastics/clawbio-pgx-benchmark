@@ -1,0 +1,32 @@
+ClawBio PharmGx Reporter v0.1.0
+================================
+
+Parsing: /Users/biostochastics/clawbio_r/scripts/benchmark/test_inputs/warfarin_missing_both.txt
+  Format: unknown
+  Total SNPs: 27
+  PGx SNPs found: 27/30
+
+Gene Profiles:
+  Gene       Diplotype            Phenotype
+  ---------- -------------------- -----------------------------------
+  CYP2C19    *1/*1                Normal Metabolizer
+  CYP2D6     *1/*1                Normal Metabolizer
+  CYP2C9     NOT_TESTED           Indeterminate (not genotyped)
+  VKORC1     NOT_TESTED           Indeterminate (not genotyped)
+  SLCO1B1    TT                   Normal Function
+  DPYD       Normal/Normal        Normal Metabolizer
+  TPMT       *1/*1                Normal Metabolizer
+  UGT1A1     *1/*1                Normal Metabolizer
+  CYP3A5     *1/*1                CYP3A5 Expressor
+  CYP2B6     *1/*1                Normal Metabolizer
+  NUDT15     *1/*1                Normal Metabolizer
+  CYP1A2     *1/*1                Normal Metabolizer
+
+Drug Recommendations (51 drugs):
+  Standard:        44
+  Caution:         1
+  Avoid:           0
+  Insufficient data: 6
+
+Report saved: /Users/biostochastics/clawbio_r/scripts/benchmark/results/3commit_v3/bbad73c1/warfarin_missing_both/tool_output/report.md
+Done.

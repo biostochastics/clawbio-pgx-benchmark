@@ -1,0 +1,92 @@
+{
+  "benchmark_version": "1.0.0",
+  "timestamp_utc": "2026-04-03T22:13:22.094548+00:00",
+  "wall_clock_seconds": 0.091,
+  "commit": {
+    "sha": "bbad73c1",
+    "short": "bbad73c1",
+    "full_sha": "bbad73c1cd99720cb5925fdd63e4c79b988e1957",
+    "date": "2026-02-28 21:37:28 +0000",
+    "message": "Fix silent degradation across all 4 skills: missing data no longer hides as normal"
+  },
+  "input": {
+    "file": "empty_no_pgx.txt",
+    "path": "/Users/biostochastics/clawbio_r/scripts/benchmark/test_inputs/empty_no_pgx.txt",
+    "sha256": "302a3c795c5848ccee04f9ef399cd36ff67ea3643259ad3790a35ddb69cf7f47"
+  },
+  "ground_truth": {
+    "BENCHMARK": "empty_no_pgx",
+    "GROUND_TRUTH_PHENOTYPE": "N/A -- no PGx data present",
+    "GROUND_TRUTH_BEHAVIOR": "File contains valid 23andMe-format SNPs but NONE are in the",
+    "EXPECTED_TOOL_OUTPUT": "The tool correctly detects 0 PGx SNPs found and exits with",
+    "FINDING": "PF-1 (edge case -- empty PGx input validation)",
+    "FINDING_CATEGORY": "correct_determinate",
+    "TARGET_GENE": "N/A",
+    "TARGET_RSID": "N/A",
+    "HAZARD_DRUG": "N/A",
+    "HAZARD_CLASS": "N/A",
+    "CPIC_REF": "N/A",
+    "EXPECTED_EXIT_CODE": "1"
+  },
+  "ground_truth_references": {
+    "N/A": "UNKNOWN"
+  },
+  "execution": {
+    "exit_code": 1,
+    "used_no_enrich": false,
+    "stdout_lines": 8,
+    "stderr_lines": 4,
+    "stderr_warnings": [
+      "WARNING: Could not detect input file format. Results may be unreliable."
+    ],
+    "stderr_sha256": "2393355ab7c49d01bd73b1e81885f93113b0d9063c733bce4ba092b57fcb508c"
+  },
+  "outputs": {
+    "report_md": {
+      "exists": false,
+      "sha256": null,
+      "size_bytes": 0
+    },
+    "report_html": {
+      "exists": false,
+      "sha256": null
+    },
+    "result_json": {
+      "exists": false,
+      "valid_json": false,
+      "has_tuple_keys": false,
+      "warfarin_in_results": false,
+      "drug_count": 0,
+      "error": null
+    }
+  },
+  "report_analysis": {
+    "gene_profiles": {},
+    "drug_classifications": {},
+    "warnings_in_report": [],
+    "data_quality_warning_present": false,
+    "disclaimer_present": false,
+    "warfarin_present": false,
+    "warfarin_classification": null,
+    "report_exists": false
+  },
+  "verdict": {
+    "category": "correct_determinate",
+    "rationale": "Tool correctly exited with code 1",
+    "details": {
+      "observed_phenotype": "NOT_IN_REPORT",
+      "expected_phenotype": "N/A -- no PGx data present",
+      "target_gene": "N/A",
+      "exit_code": 1,
+      "stderr_warnings_total": 1,
+      "stderr_warnings_gene": 1,
+      "report_exists": false,
+      "data_quality_warning": false
+    }
+  },
+  "environment": {
+    "python_version": "3.14.3",
+    "platform": "macOS-26.3.1-arm64-arm-64bit-Mach-O",
+    "hostname": "Sergeys-MacBook-Pro.local"
+  }
+}

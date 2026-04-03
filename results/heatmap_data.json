@@ -1,0 +1,260 @@
+{
+  "commits": [
+    {
+      "sha": "8292a739",
+      "short": "8292a739",
+      "date": "2026-02-28 07:52:22 +0000",
+      "message": "Restructure README: lead with demo video, add provenance section"
+    },
+    {
+      "sha": "bbad73c1",
+      "short": "bbad73c1",
+      "date": "2026-02-28 21:37:28 +0000",
+      "message": "Fix silent degradation across all 4 skills: missing data no longer hides as normal"
+    },
+    {
+      "sha": "3c9383b1",
+      "short": "3c9383b1",
+      "date": "2026-03-10 21:47:08 +0000",
+      "message": "Merge pull request #39 from jaymoore-research/add-data-extractor-skill"
+    }
+  ],
+  "test_cases": [
+    "cyp2d6_del",
+    "cyp2d6_normal",
+    "cyp2d6_pm",
+    "dpyd_2a_het",
+    "dpyd_2a_hom",
+    "dpyd_absent",
+    "dpyd_neg",
+    "dpyd_partial",
+    "empty_no_pgx",
+    "ugt1a1_28_absent",
+    "ugt1a1_28_het",
+    "ugt1a1_28_hom",
+    "ugt1a1_neg",
+    "warfarin_missing_both",
+    "warfarin_missing_vkorc1",
+    "warfarin_normal"
+  ],
+  "matrix": {
+    "8292a739:cyp2d6_del": {
+      "category": "disclosure_failure",
+      "rationale": "Expected disclosure failure for CYP2D6. Phenotype: *1/*1"
+    },
+    "8292a739:cyp2d6_normal": {
+      "category": "correct_determinate",
+      "rationale": "Tool appears to have corrected this issue. Phenotype: *1/*1"
+    },
+    "8292a739:cyp2d6_pm": {
+      "category": "correct_determinate",
+      "rationale": "Correct phenotype: *4/*4"
+    },
+    "8292a739:dpyd_2a_het": {
+      "category": "correct_determinate",
+      "rationale": "Correct phenotype: Normal/*2A"
+    },
+    "8292a739:dpyd_2a_hom": {
+      "category": "correct_determinate",
+      "rationale": "Correct phenotype: *2A/*2A"
+    },
+    "8292a739:dpyd_absent": {
+      "category": "incorrect_determinate",
+      "rationale": "False Normal when should be Indeterminate: Normal/Normal"
+    },
+    "8292a739:dpyd_neg": {
+      "category": "correct_determinate",
+      "rationale": "Correct phenotype: Normal/Normal"
+    },
+    "8292a739:dpyd_partial": {
+      "category": "incorrect_determinate",
+      "rationale": "Incorrect output as expected: Normal/Normal"
+    },
+    "8292a739:empty_no_pgx": {
+      "category": "incorrect_determinate",
+      "rationale": "Expected exit 1, got 0"
+    },
+    "8292a739:ugt1a1_28_absent": {
+      "category": "incorrect_determinate",
+      "rationale": "Incorrect output as expected: *1/*1"
+    },
+    "8292a739:ugt1a1_28_het": {
+      "category": "disclosure_failure",
+      "rationale": "Expected disclosure failure for UGT1A1. Phenotype: *1/*1"
+    },
+    "8292a739:ugt1a1_28_hom": {
+      "category": "disclosure_failure",
+      "rationale": "Expected disclosure failure for UGT1A1. Phenotype: *1/*1"
+    },
+    "8292a739:ugt1a1_neg": {
+      "category": "correct_determinate",
+      "rationale": "Correct phenotype: *1/*1"
+    },
+    "8292a739:warfarin_missing_both": {
+      "category": "omission",
+      "rationale": "Drug omission detected for warfarin"
+    },
+    "8292a739:warfarin_missing_vkorc1": {
+      "category": "omission",
+      "rationale": "Drug omission detected for warfarin"
+    },
+    "8292a739:warfarin_normal": {
+      "category": "correct_determinate",
+      "rationale": "Correct phenotype: GG"
+    },
+    "bbad73c1:cyp2d6_del": {
+      "category": "disclosure_failure",
+      "rationale": "Warnings on stderr but not in report body for CYP2D6. Phenotype: *1/*1"
+    },
+    "bbad73c1:cyp2d6_normal": {
+      "category": "disclosure_failure",
+      "rationale": "Warnings on stderr but not in report body for CYP2D6. Phenotype: *1/*1"
+    },
+    "bbad73c1:cyp2d6_pm": {
+      "category": "correct_determinate",
+      "rationale": "Correct phenotype: *4/*4"
+    },
+    "bbad73c1:dpyd_2a_het": {
+      "category": "correct_determinate",
+      "rationale": "Correct phenotype: Normal/*2A"
+    },
+    "bbad73c1:dpyd_2a_hom": {
+      "category": "correct_determinate",
+      "rationale": "Correct phenotype: *2A/*2A"
+    },
+    "bbad73c1:dpyd_absent": {
+      "category": "correct_indeterminate",
+      "rationale": "Correctly returned indeterminate: NOT_TESTED"
+    },
+    "bbad73c1:dpyd_neg": {
+      "category": "correct_determinate",
+      "rationale": "Correct phenotype: Normal/Normal"
+    },
+    "bbad73c1:dpyd_partial": {
+      "category": "incorrect_determinate",
+      "rationale": "Incorrect output as expected: Normal/Normal (1/3 SNPs tested)"
+    },
+    "bbad73c1:empty_no_pgx": {
+      "category": "correct_determinate",
+      "rationale": "Tool correctly exited with code 1"
+    },
+    "bbad73c1:ugt1a1_28_absent": {
+      "category": "incorrect_determinate",
+      "rationale": "Incorrect output as expected: *1/*1 (1/2 SNPs tested)"
+    },
+    "bbad73c1:ugt1a1_28_het": {
+      "category": "disclosure_failure",
+      "rationale": "Warnings on stderr but not in report body for UGT1A1. Phenotype: *1/*1"
+    },
+    "bbad73c1:ugt1a1_28_hom": {
+      "category": "disclosure_failure",
+      "rationale": "Warnings on stderr but not in report body for UGT1A1. Phenotype: *1/*1"
+    },
+    "bbad73c1:ugt1a1_neg": {
+      "category": "correct_determinate",
+      "rationale": "Correct phenotype: *1/*1"
+    },
+    "bbad73c1:warfarin_missing_both": {
+      "category": "omission",
+      "rationale": "Drug omission detected for warfarin"
+    },
+    "bbad73c1:warfarin_missing_vkorc1": {
+      "category": "omission",
+      "rationale": "Drug omission detected for warfarin"
+    },
+    "bbad73c1:warfarin_normal": {
+      "category": "correct_determinate",
+      "rationale": "Correct phenotype: GG"
+    },
+    "3c9383b1:cyp2d6_del": {
+      "category": "disclosure_failure",
+      "rationale": "Warnings on stderr but not in report body for CYP2D6. Phenotype: *1/*1"
+    },
+    "3c9383b1:cyp2d6_normal": {
+      "category": "disclosure_failure",
+      "rationale": "Warnings on stderr but not in report body for CYP2D6. Phenotype: *1/*1"
+    },
+    "3c9383b1:cyp2d6_pm": {
+      "category": "correct_determinate",
+      "rationale": "Correct phenotype: *4/*4"
+    },
+    "3c9383b1:dpyd_2a_het": {
+      "category": "correct_determinate",
+      "rationale": "Correct phenotype: Normal/*2A"
+    },
+    "3c9383b1:dpyd_2a_hom": {
+      "category": "correct_determinate",
+      "rationale": "Correct phenotype: *2A/*2A"
+    },
+    "3c9383b1:dpyd_absent": {
+      "category": "correct_indeterminate",
+      "rationale": "Correctly returned indeterminate: NOT_TESTED"
+    },
+    "3c9383b1:dpyd_neg": {
+      "category": "correct_determinate",
+      "rationale": "Correct phenotype: Normal/Normal"
+    },
+    "3c9383b1:dpyd_partial": {
+      "category": "incorrect_determinate",
+      "rationale": "Incorrect output as expected: Normal/Normal (1/3 SNPs tested)"
+    },
+    "3c9383b1:empty_no_pgx": {
+      "category": "correct_determinate",
+      "rationale": "Tool correctly exited with code 1"
+    },
+    "3c9383b1:ugt1a1_28_absent": {
+      "category": "incorrect_determinate",
+      "rationale": "Incorrect output as expected: *1/*1 (1/2 SNPs tested)"
+    },
+    "3c9383b1:ugt1a1_28_het": {
+      "category": "disclosure_failure",
+      "rationale": "Warnings on stderr but not in report body for UGT1A1. Phenotype: *1/*1"
+    },
+    "3c9383b1:ugt1a1_28_hom": {
+      "category": "disclosure_failure",
+      "rationale": "Warnings on stderr but not in report body for UGT1A1. Phenotype: *1/*1"
+    },
+    "3c9383b1:ugt1a1_neg": {
+      "category": "correct_determinate",
+      "rationale": "Correct phenotype: *1/*1"
+    },
+    "3c9383b1:warfarin_missing_both": {
+      "category": "omission",
+      "rationale": "Tool crashed (exit 1) \u2014 TypeError from tuple dict keys in JSON serialization. Warfarin silently absent from report."
+    },
+    "3c9383b1:warfarin_missing_vkorc1": {
+      "category": "omission",
+      "rationale": "Tool crashed (exit 1) \u2014 TypeError from tuple dict keys in JSON serialization. Warfarin silently absent from report."
+    },
+    "3c9383b1:warfarin_normal": {
+      "category": "correct_determinate",
+      "rationale": "Correct phenotype: GG"
+    }
+  },
+  "category_legend": {
+    "correct_determinate": {
+      "color": "#22c55e",
+      "label": "Correct (determinate)"
+    },
+    "correct_indeterminate": {
+      "color": "#86efac",
+      "label": "Correct (indeterminate)"
+    },
+    "incorrect_determinate": {
+      "color": "#ef4444",
+      "label": "WRONG (false Normal)"
+    },
+    "incorrect_indeterminate": {
+      "color": "#fbbf24",
+      "label": "Unnecessary indeterminate"
+    },
+    "omission": {
+      "color": "#1e1b4b",
+      "label": "Drug MISSING from report"
+    },
+    "disclosure_failure": {
+      "color": "#f97316",
+      "label": "Warning on stderr only"
+    }
+  }
+}

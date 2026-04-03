@@ -1,0 +1,139 @@
+{
+  "benchmark_version": "1.0.0",
+  "timestamp_utc": "2026-04-03T22:13:19.798679+00:00",
+  "wall_clock_seconds": 0.093,
+  "commit": {
+    "sha": "8292a739",
+    "short": "8292a739",
+    "full_sha": "8292a7398ab97eaae8e74416bf1c3c4805356208",
+    "date": "2026-02-28 07:52:22 +0000",
+    "message": "Restructure README: lead with demo video, add provenance section"
+  },
+  "input": {
+    "file": "cyp2d6_del.txt",
+    "path": "/Users/biostochastics/clawbio_r/scripts/benchmark/test_inputs/cyp2d6_del.txt",
+    "sha256": "118257c854214faf65026b8bb8a85ad3a2bd93c05041f73668313457c8076498"
+  },
+  "ground_truth": {
+    "BENCHMARK": "cyp2d6_del",
+    "GROUND_TRUTH_PHENOTYPE": "CYP2D6 at least Intermediate Metabolizer (carries *6 deletion)",
+    "GROUND_TRUTH_BEHAVIOR": "rs5030655 represents CYP2D6*6, a single-nucleotide deletion",
+    "EXPECTED_TOOL_OUTPUT": "Tool SKIPS rs5030655 entirely because alt=\"DEL\" triggers the",
+    "FINDING": "PF-1 (CYP2D6*6 indel non-detection: rs5030655 DEL)",
+    "FINDING_CATEGORY": "disclosure_failure",
+    "TARGET_GENE": "CYP2D6",
+    "TARGET_RSID": "rs5030655",
+    "HAZARD_DRUG": "Codeine",
+    "HAZARD_CLASS": "Opioid Analgesic (respiratory depression risk)",
+    "CPIC_REF": "CPIC_OPIOID",
+    "EXPECTED_EXIT_CODE": "0"
+  },
+  "ground_truth_references": {
+    "CPIC_OPIOID": "CPIC Guideline for CYP2D6 and Opioid Therapy, v3.0 (2023)"
+  },
+  "execution": {
+    "exit_code": 0,
+    "used_no_enrich": false,
+    "stdout_lines": 31,
+    "stderr_lines": 0,
+    "stderr_warnings": [],
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "outputs": {
+    "report_md": {
+      "exists": true,
+      "sha256": "b7450a486641286eadff2b3803e0aeaa1b6a263cac39f2d71834f7c4048fba7f",
+      "size_bytes": 9180
+    },
+    "report_html": {
+      "exists": false,
+      "sha256": null
+    },
+    "result_json": {
+      "exists": false,
+      "valid_json": false,
+      "has_tuple_keys": false,
+      "warfarin_in_results": false,
+      "drug_count": 0,
+      "error": null
+    }
+  },
+  "report_analysis": {
+    "gene_profiles": {
+      "CYP2C19": {
+        "diplotype": "Cytochrome P450 2C19",
+        "phenotype": "*1/*1"
+      },
+      "CYP2D6": {
+        "diplotype": "Cytochrome P450 2D6",
+        "phenotype": "*1/*1"
+      },
+      "CYP2C9": {
+        "diplotype": "Cytochrome P450 2C9",
+        "phenotype": "*1/*1"
+      },
+      "VKORC1": {
+        "diplotype": "Vitamin K Epoxide Reductase",
+        "phenotype": "GG"
+      },
+      "SLCO1B1": {
+        "diplotype": "Solute Carrier Organic Anion Transporter 1B1",
+        "phenotype": "TT"
+      },
+      "DPYD": {
+        "diplotype": "Dihydropyrimidine Dehydrogenase",
+        "phenotype": "Normal/Normal"
+      },
+      "TPMT": {
+        "diplotype": "Thiopurine S-Methyltransferase",
+        "phenotype": "*1/*1"
+      },
+      "UGT1A1": {
+        "diplotype": "UDP-Glucuronosyltransferase 1A1",
+        "phenotype": "*1/*1"
+      },
+      "CYP3A5": {
+        "diplotype": "Cytochrome P450 3A5",
+        "phenotype": "*1/*1"
+      },
+      "CYP2B6": {
+        "diplotype": "Cytochrome P450 2B6",
+        "phenotype": "*1/*1"
+      },
+      "NUDT15": {
+        "diplotype": "Nudix Hydrolase 15",
+        "phenotype": "*1/*1"
+      },
+      "CYP1A2": {
+        "diplotype": "Cytochrome P450 1A2",
+        "phenotype": "*1/*1"
+      }
+    },
+    "drug_classifications": {},
+    "warnings_in_report": [],
+    "data_quality_warning_present": false,
+    "disclaimer_present": true,
+    "warfarin_present": true,
+    "warfarin_classification": "caution",
+    "report_exists": true
+  },
+  "verdict": {
+    "category": "disclosure_failure",
+    "rationale": "Expected disclosure failure for CYP2D6. Phenotype: *1/*1",
+    "details": {
+      "observed_phenotype": "*1/*1",
+      "expected_phenotype": "CYP2D6 at least Intermediate Metabolizer (carries *6 deletion)",
+      "target_gene": "CYP2D6",
+      "exit_code": 0,
+      "stderr_warnings_total": 0,
+      "stderr_warnings_gene": 0,
+      "report_exists": true,
+      "data_quality_warning": false
+    }
+  },
+  "environment": {
+    "python_version": "3.14.3",
+    "platform": "macOS-26.3.1-arm64-arm-64bit-Mach-O",
+    "hostname": "Sergeys-MacBook-Pro.local"
+  }
+}

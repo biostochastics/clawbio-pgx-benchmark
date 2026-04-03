@@ -1,0 +1,146 @@
+{
+  "benchmark_version": "1.0.0",
+  "timestamp_utc": "2026-04-03T22:13:24.069428+00:00",
+  "wall_clock_seconds": 0.065,
+  "commit": {
+    "sha": "3c9383b1",
+    "short": "3c9383b1",
+    "full_sha": "3c9383b136b6ab6d721e8e578c7d75d2d5a43621",
+    "date": "2026-03-10 21:47:08 +0000",
+    "message": "Merge pull request #39 from jaymoore-research/add-data-extractor-skill"
+  },
+  "input": {
+    "file": "ugt1a1_28_hom.txt",
+    "path": "/Users/biostochastics/clawbio_r/scripts/benchmark/test_inputs/ugt1a1_28_hom.txt",
+    "sha256": "dbde705937f859d44e84bf5ee26944c7380f41ad42d61aa636c2786f9c422e4c"
+  },
+  "ground_truth": {
+    "BENCHMARK": "ugt1a1_28_hom",
+    "GROUND_TRUTH_PHENOTYPE": "UGT1A1 Poor Metabolizer (*28/*28)",
+    "GROUND_TRUTH_BEHAVIOR": "Tool should detect homozygous UGT1A1*28 (TA7 repeat) and report",
+    "EXPECTED_TOOL_OUTPUT": "Tool reports Normal Metabolizer (*1/*1) because alt=\"TA7\" triggers",
+    "FINDING": "PF-1 (PharmGx indel non-detection: rs8175347 TA7 repeat)",
+    "FINDING_CATEGORY": "disclosure_failure",
+    "TARGET_GENE": "UGT1A1",
+    "TARGET_RSID": "rs8175347",
+    "HAZARD_DRUG": "Irinotecan",
+    "HAZARD_CLASS": "NTI Oncology (severe neutropenia/diarrhea risk)",
+    "CPIC_REF": "CPIC_IRINOTECAN",
+    "EXPECTED_EXIT_CODE": "0"
+  },
+  "ground_truth_references": {
+    "CPIC_IRINOTECAN": "CPIC Guideline for UGT1A1 and Irinotecan, v2.0 (2020)"
+  },
+  "execution": {
+    "exit_code": 0,
+    "used_no_enrich": true,
+    "stdout_lines": 33,
+    "stderr_lines": 3,
+    "stderr_warnings": [
+      "WARNING: CYP2D6 rs5030655 has structural variant alt=DEL, cannot interpret from DTC data",
+      "WARNING: UGT1A1 rs8175347 has structural variant alt=TA7, cannot interpret from DTC data",
+      "WARNING: CYP3A5 rs41303343 has structural variant alt=INS, cannot interpret from DTC data"
+    ],
+    "stderr_sha256": "90f32a9b3b71f2fd6a8a68f9cae40e812145fecc7e53b978bf0492df234faf96"
+  },
+  "outputs": {
+    "report_md": {
+      "exists": true,
+      "sha256": "3c3e945ed46267e3f5b8074cbfefd5af2928d32f817c35a668a9f2cb98287a07",
+      "size_bytes": 7600
+    },
+    "report_html": {
+      "exists": true,
+      "sha256": "260662990e205cc8d66072e1e7681449d8306e3e1ca9685264250a7221352be8"
+    },
+    "result_json": {
+      "exists": true,
+      "valid_json": true,
+      "has_tuple_keys": false,
+      "warfarin_in_results": false,
+      "drug_count": 0,
+      "error": null
+    }
+  },
+  "report_analysis": {
+    "gene_profiles": {
+      "CYP2C19": {
+        "diplotype": "Cytochrome P450 2C19",
+        "phenotype": "*1/*1"
+      },
+      "CYP2D6": {
+        "diplotype": "Cytochrome P450 2D6",
+        "phenotype": "*1/*1"
+      },
+      "CYP2C9": {
+        "diplotype": "Cytochrome P450 2C9",
+        "phenotype": "*1/*1"
+      },
+      "VKORC1": {
+        "diplotype": "Vitamin K Epoxide Reductase",
+        "phenotype": "GG"
+      },
+      "SLCO1B1": {
+        "diplotype": "Solute Carrier Organic Anion Transporter 1B1",
+        "phenotype": "TT"
+      },
+      "DPYD": {
+        "diplotype": "Dihydropyrimidine Dehydrogenase",
+        "phenotype": "Normal/Normal"
+      },
+      "TPMT": {
+        "diplotype": "Thiopurine S-Methyltransferase",
+        "phenotype": "*1/*1"
+      },
+      "UGT1A1": {
+        "diplotype": "UDP-Glucuronosyltransferase 1A1",
+        "phenotype": "*1/*1"
+      },
+      "CYP3A5": {
+        "diplotype": "Cytochrome P450 3A5",
+        "phenotype": "*1/*1"
+      },
+      "CYP2B6": {
+        "diplotype": "Cytochrome P450 2B6",
+        "phenotype": "*1/*1"
+      },
+      "NUDT15": {
+        "diplotype": "Nudix Hydrolase 15",
+        "phenotype": "*1/*1"
+      },
+      "CYP1A2": {
+        "diplotype": "Cytochrome P450 1A2",
+        "phenotype": "*1/*1"
+      }
+    },
+    "drug_classifications": {},
+    "warnings_in_report": [],
+    "data_quality_warning_present": false,
+    "disclaimer_present": true,
+    "warfarin_present": true,
+    "warfarin_classification": "caution",
+    "report_exists": true
+  },
+  "verdict": {
+    "category": "disclosure_failure",
+    "rationale": "Warnings on stderr but not in report body for UGT1A1. Phenotype: *1/*1",
+    "details": {
+      "observed_phenotype": "*1/*1",
+      "expected_phenotype": "UGT1A1 Poor Metabolizer (*28/*28)",
+      "target_gene": "UGT1A1",
+      "exit_code": 0,
+      "stderr_warnings_total": 3,
+      "stderr_warnings_gene": 1,
+      "report_exists": true,
+      "data_quality_warning": false,
+      "gene_stderr_warnings": [
+        "WARNING: UGT1A1 rs8175347 has structural variant alt=TA7, cannot interpret from DTC data"
+      ]
+    }
+  },
+  "environment": {
+    "python_version": "3.14.3",
+    "platform": "macOS-26.3.1-arm64-arm-64bit-Mach-O",
+    "hostname": "Sergeys-MacBook-Pro.local"
+  }
+}

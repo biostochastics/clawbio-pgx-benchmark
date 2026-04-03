@@ -1,0 +1,142 @@
+{
+  "benchmark_version": "1.0.0",
+  "timestamp_utc": "2026-04-03T22:13:23.930040+00:00",
+  "wall_clock_seconds": 0.063,
+  "commit": {
+    "sha": "3c9383b1",
+    "short": "3c9383b1",
+    "full_sha": "3c9383b136b6ab6d721e8e578c7d75d2d5a43621",
+    "date": "2026-03-10 21:47:08 +0000",
+    "message": "Merge pull request #39 from jaymoore-research/add-data-extractor-skill"
+  },
+  "input": {
+    "file": "ugt1a1_28_absent.txt",
+    "path": "/Users/biostochastics/clawbio_r/scripts/benchmark/test_inputs/ugt1a1_28_absent.txt",
+    "sha256": "5dd46cd122b8aa902bad4a4ae6ccaa83640000751f78cd448d8926ef380caf44"
+  },
+  "ground_truth": {
+    "BENCHMARK": "ugt1a1_28_absent",
+    "GROUND_TRUTH_PHENOTYPE": "UGT1A1 Indeterminate (rs8175347 not tested)",
+    "GROUND_TRUTH_BEHAVIOR": "With rs8175347 absent, UGT1A1 should report as having incomplete",
+    "EXPECTED_TOOL_OUTPUT": "Tool reports \"*1/*1 (1/2 SNPs tested)\" for UGT1A1 diplotype.",
+    "FINDING": "PF-1 (PharmGx indel non-detection -- absent SNP variant)",
+    "FINDING_CATEGORY": "incorrect_determinate",
+    "TARGET_GENE": "UGT1A1",
+    "TARGET_RSID": "rs8175347",
+    "HAZARD_DRUG": "Irinotecan",
+    "HAZARD_CLASS": "NTI Oncology (severe neutropenia/diarrhea risk)",
+    "CPIC_REF": "CPIC_IRINOTECAN",
+    "EXPECTED_EXIT_CODE": "0"
+  },
+  "ground_truth_references": {
+    "CPIC_IRINOTECAN": "CPIC Guideline for UGT1A1 and Irinotecan, v2.0 (2020)"
+  },
+  "execution": {
+    "exit_code": 0,
+    "used_no_enrich": true,
+    "stdout_lines": 33,
+    "stderr_lines": 2,
+    "stderr_warnings": [
+      "WARNING: CYP2D6 rs5030655 has structural variant alt=DEL, cannot interpret from DTC data",
+      "WARNING: CYP3A5 rs41303343 has structural variant alt=INS, cannot interpret from DTC data"
+    ],
+    "stderr_sha256": "7e46931ee61efcb30a1d899aaddf089592bd2a35974ec872b52392488bfb0116"
+  },
+  "outputs": {
+    "report_md": {
+      "exists": true,
+      "sha256": "098446db257222ecc5b2a1ac65e68ec432ae2091c6d5415aa26096e82524e745",
+      "size_bytes": 7569
+    },
+    "report_html": {
+      "exists": true,
+      "sha256": "b747cbe75fcd18878a606222406ba3f55087e6c0c1fa5ab7f0d4d084c8482324"
+    },
+    "result_json": {
+      "exists": true,
+      "valid_json": true,
+      "has_tuple_keys": false,
+      "warfarin_in_results": false,
+      "drug_count": 0,
+      "error": null
+    }
+  },
+  "report_analysis": {
+    "gene_profiles": {
+      "CYP2C19": {
+        "diplotype": "Cytochrome P450 2C19",
+        "phenotype": "*1/*1"
+      },
+      "CYP2D6": {
+        "diplotype": "Cytochrome P450 2D6",
+        "phenotype": "*1/*1"
+      },
+      "CYP2C9": {
+        "diplotype": "Cytochrome P450 2C9",
+        "phenotype": "*1/*1"
+      },
+      "VKORC1": {
+        "diplotype": "Vitamin K Epoxide Reductase",
+        "phenotype": "GG"
+      },
+      "SLCO1B1": {
+        "diplotype": "Solute Carrier Organic Anion Transporter 1B1",
+        "phenotype": "TT"
+      },
+      "DPYD": {
+        "diplotype": "Dihydropyrimidine Dehydrogenase",
+        "phenotype": "Normal/Normal"
+      },
+      "TPMT": {
+        "diplotype": "Thiopurine S-Methyltransferase",
+        "phenotype": "*1/*1"
+      },
+      "UGT1A1": {
+        "diplotype": "UDP-Glucuronosyltransferase 1A1",
+        "phenotype": "*1/*1 (1/2 SNPs tested)"
+      },
+      "CYP3A5": {
+        "diplotype": "Cytochrome P450 3A5",
+        "phenotype": "*1/*1"
+      },
+      "CYP2B6": {
+        "diplotype": "Cytochrome P450 2B6",
+        "phenotype": "*1/*1"
+      },
+      "NUDT15": {
+        "diplotype": "Nudix Hydrolase 15",
+        "phenotype": "*1/*1"
+      },
+      "CYP1A2": {
+        "diplotype": "Cytochrome P450 1A2",
+        "phenotype": "*1/*1"
+      }
+    },
+    "drug_classifications": {},
+    "warnings_in_report": [],
+    "data_quality_warning_present": false,
+    "disclaimer_present": true,
+    "warfarin_present": true,
+    "warfarin_classification": "caution",
+    "report_exists": true
+  },
+  "verdict": {
+    "category": "incorrect_determinate",
+    "rationale": "Incorrect output as expected: *1/*1 (1/2 SNPs tested)",
+    "details": {
+      "observed_phenotype": "*1/*1 (1/2 SNPs tested)",
+      "expected_phenotype": "UGT1A1 Indeterminate (rs8175347 not tested)",
+      "target_gene": "UGT1A1",
+      "exit_code": 0,
+      "stderr_warnings_total": 2,
+      "stderr_warnings_gene": 0,
+      "report_exists": true,
+      "data_quality_warning": false
+    }
+  },
+  "environment": {
+    "python_version": "3.14.3",
+    "platform": "macOS-26.3.1-arm64-arm-64bit-Mach-O",
+    "hostname": "Sergeys-MacBook-Pro.local"
+  }
+}

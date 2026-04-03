@@ -1,0 +1,139 @@
+{
+  "benchmark_version": "1.0.0",
+  "timestamp_utc": "2026-04-03T22:13:20.159919+00:00",
+  "wall_clock_seconds": 0.09,
+  "commit": {
+    "sha": "8292a739",
+    "short": "8292a739",
+    "full_sha": "8292a7398ab97eaae8e74416bf1c3c4805356208",
+    "date": "2026-02-28 07:52:22 +0000",
+    "message": "Restructure README: lead with demo video, add provenance section"
+  },
+  "input": {
+    "file": "dpyd_2a_hom.txt",
+    "path": "/Users/biostochastics/clawbio_r/scripts/benchmark/test_inputs/dpyd_2a_hom.txt",
+    "sha256": "da5bf39da8d3f0ba0b91ee1422bf2058961cbb89804afb9058751f053d036210"
+  },
+  "ground_truth": {
+    "BENCHMARK": "dpyd_2a_hom",
+    "GROUND_TRUTH_PHENOTYPE": "DPYD Poor Metabolizer (*2A/*2A)",
+    "GROUND_TRUTH_BEHAVIOR": "Homozygous DPYD*2A (rs3918290 TT). CPIC STRONGLY recommends",
+    "EXPECTED_TOOL_OUTPUT": "Tool detects rs3918290 alt=\"T\", genotype \"TT\" -> gt.count(\"T\")=2",
+    "FINDING": "PF-1 (DPYD positive control -- homozygous severe case)",
+    "FINDING_CATEGORY": "correct_determinate",
+    "TARGET_GENE": "DPYD",
+    "TARGET_RSID": "rs3918290",
+    "HAZARD_DRUG": "Fluorouracil",
+    "HAZARD_CLASS": "NTI Oncology (lethal toxicity risk)",
+    "CPIC_REF": "CPIC_FLUOROPYRIMIDINE",
+    "EXPECTED_EXIT_CODE": "0"
+  },
+  "ground_truth_references": {
+    "CPIC_FLUOROPYRIMIDINE": "CPIC Guideline for DPYD and Fluoropyrimidines, v3.0 (2018, updated 2023)"
+  },
+  "execution": {
+    "exit_code": 0,
+    "used_no_enrich": false,
+    "stdout_lines": 35,
+    "stderr_lines": 0,
+    "stderr_warnings": [],
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "outputs": {
+    "report_md": {
+      "exists": true,
+      "sha256": "c54faaa307e9fde3188f0f35bc0e163b102c060464d123f5647ef038b7113052",
+      "size_bytes": 9409
+    },
+    "report_html": {
+      "exists": false,
+      "sha256": null
+    },
+    "result_json": {
+      "exists": false,
+      "valid_json": false,
+      "has_tuple_keys": false,
+      "warfarin_in_results": false,
+      "drug_count": 0,
+      "error": null
+    }
+  },
+  "report_analysis": {
+    "gene_profiles": {
+      "CYP2C19": {
+        "diplotype": "Cytochrome P450 2C19",
+        "phenotype": "*1/*1"
+      },
+      "CYP2D6": {
+        "diplotype": "Cytochrome P450 2D6",
+        "phenotype": "*1/*1"
+      },
+      "CYP2C9": {
+        "diplotype": "Cytochrome P450 2C9",
+        "phenotype": "*1/*1"
+      },
+      "VKORC1": {
+        "diplotype": "Vitamin K Epoxide Reductase",
+        "phenotype": "GG"
+      },
+      "SLCO1B1": {
+        "diplotype": "Solute Carrier Organic Anion Transporter 1B1",
+        "phenotype": "TT"
+      },
+      "DPYD": {
+        "diplotype": "Dihydropyrimidine Dehydrogenase",
+        "phenotype": "*2A/*2A"
+      },
+      "TPMT": {
+        "diplotype": "Thiopurine S-Methyltransferase",
+        "phenotype": "*1/*1"
+      },
+      "UGT1A1": {
+        "diplotype": "UDP-Glucuronosyltransferase 1A1",
+        "phenotype": "*1/*1"
+      },
+      "CYP3A5": {
+        "diplotype": "Cytochrome P450 3A5",
+        "phenotype": "*1/*1"
+      },
+      "CYP2B6": {
+        "diplotype": "Cytochrome P450 2B6",
+        "phenotype": "*1/*1"
+      },
+      "NUDT15": {
+        "diplotype": "Nudix Hydrolase 15",
+        "phenotype": "*1/*1"
+      },
+      "CYP1A2": {
+        "diplotype": "Cytochrome P450 1A2",
+        "phenotype": "*1/*1"
+      }
+    },
+    "drug_classifications": {},
+    "warnings_in_report": [],
+    "data_quality_warning_present": false,
+    "disclaimer_present": true,
+    "warfarin_present": true,
+    "warfarin_classification": "avoid",
+    "report_exists": true
+  },
+  "verdict": {
+    "category": "correct_determinate",
+    "rationale": "Correct phenotype: *2A/*2A",
+    "details": {
+      "observed_phenotype": "*2A/*2A",
+      "expected_phenotype": "DPYD Poor Metabolizer (*2A/*2A)",
+      "target_gene": "DPYD",
+      "exit_code": 0,
+      "stderr_warnings_total": 0,
+      "stderr_warnings_gene": 0,
+      "report_exists": true,
+      "data_quality_warning": false
+    }
+  },
+  "environment": {
+    "python_version": "3.14.3",
+    "platform": "macOS-26.3.1-arm64-arm-64bit-Mach-O",
+    "hostname": "Sergeys-MacBook-Pro.local"
+  }
+}

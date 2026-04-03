@@ -1,0 +1,143 @@
+{
+  "benchmark_version": "1.0.0",
+  "timestamp_utc": "2026-04-03T22:13:23.405782+00:00",
+  "wall_clock_seconds": 0.064,
+  "commit": {
+    "sha": "3c9383b1",
+    "short": "3c9383b1",
+    "full_sha": "3c9383b136b6ab6d721e8e578c7d75d2d5a43621",
+    "date": "2026-03-10 21:47:08 +0000",
+    "message": "Merge pull request #39 from jaymoore-research/add-data-extractor-skill"
+  },
+  "input": {
+    "file": "cyp2d6_pm.txt",
+    "path": "/Users/biostochastics/clawbio_r/scripts/benchmark/test_inputs/cyp2d6_pm.txt",
+    "sha256": "919853bd88f4e857e62b2875ecf1b2e97aab18e05e168572fd42280f56bf3a9f"
+  },
+  "ground_truth": {
+    "BENCHMARK": "cyp2d6_pm",
+    "GROUND_TRUTH_PHENOTYPE": "CYP2D6 Poor Metabolizer (*4/*4)",
+    "GROUND_TRUTH_BEHAVIOR": "Homozygous CYP2D6*4 (rs3892097 TT). Tool should report Poor",
+    "EXPECTED_TOOL_OUTPUT": "Tool detects rs3892097 alt=\"T\", genotype \"TT\" -> gt.count(\"T\")=2",
+    "FINDING": "PF-1 (CYP2D6 positive control -- PM detection)",
+    "FINDING_CATEGORY": "correct_determinate",
+    "TARGET_GENE": "CYP2D6",
+    "TARGET_RSID": "rs3892097",
+    "HAZARD_DRUG": "Codeine",
+    "HAZARD_CLASS": "Opioid Analgesic",
+    "CPIC_REF": "CPIC_OPIOID",
+    "EXPECTED_EXIT_CODE": "0"
+  },
+  "ground_truth_references": {
+    "CPIC_OPIOID": "CPIC Guideline for CYP2D6 and Opioid Therapy, v3.0 (2023)"
+  },
+  "execution": {
+    "exit_code": 0,
+    "used_no_enrich": true,
+    "stdout_lines": 45,
+    "stderr_lines": 3,
+    "stderr_warnings": [
+      "WARNING: CYP2D6 rs5030655 has structural variant alt=DEL, cannot interpret from DTC data",
+      "WARNING: UGT1A1 rs8175347 has structural variant alt=TA7, cannot interpret from DTC data",
+      "WARNING: CYP3A5 rs41303343 has structural variant alt=INS, cannot interpret from DTC data"
+    ],
+    "stderr_sha256": "90f32a9b3b71f2fd6a8a68f9cae40e812145fecc7e53b978bf0492df234faf96"
+  },
+  "outputs": {
+    "report_md": {
+      "exists": true,
+      "sha256": "a600c781cf4a3df5519742c4e54713fcb6c721d7583e3679491c1141c5dcc7dd",
+      "size_bytes": 8494
+    },
+    "report_html": {
+      "exists": true,
+      "sha256": "1bbdeb572d867ca41319850ed096c834d2c8162623d036aa70d0fe9c40c368e3"
+    },
+    "result_json": {
+      "exists": true,
+      "valid_json": true,
+      "has_tuple_keys": false,
+      "warfarin_in_results": false,
+      "drug_count": 0,
+      "error": null
+    }
+  },
+  "report_analysis": {
+    "gene_profiles": {
+      "CYP2C19": {
+        "diplotype": "Cytochrome P450 2C19",
+        "phenotype": "*1/*1"
+      },
+      "CYP2D6": {
+        "diplotype": "Cytochrome P450 2D6",
+        "phenotype": "*4/*4"
+      },
+      "CYP2C9": {
+        "diplotype": "Cytochrome P450 2C9",
+        "phenotype": "*1/*1"
+      },
+      "VKORC1": {
+        "diplotype": "Vitamin K Epoxide Reductase",
+        "phenotype": "GG"
+      },
+      "SLCO1B1": {
+        "diplotype": "Solute Carrier Organic Anion Transporter 1B1",
+        "phenotype": "TT"
+      },
+      "DPYD": {
+        "diplotype": "Dihydropyrimidine Dehydrogenase",
+        "phenotype": "Normal/Normal"
+      },
+      "TPMT": {
+        "diplotype": "Thiopurine S-Methyltransferase",
+        "phenotype": "*1/*1"
+      },
+      "UGT1A1": {
+        "diplotype": "UDP-Glucuronosyltransferase 1A1",
+        "phenotype": "*1/*1"
+      },
+      "CYP3A5": {
+        "diplotype": "Cytochrome P450 3A5",
+        "phenotype": "*1/*1"
+      },
+      "CYP2B6": {
+        "diplotype": "Cytochrome P450 2B6",
+        "phenotype": "*1/*1"
+      },
+      "NUDT15": {
+        "diplotype": "Nudix Hydrolase 15",
+        "phenotype": "*1/*1"
+      },
+      "CYP1A2": {
+        "diplotype": "Cytochrome P450 1A2",
+        "phenotype": "*1/*1"
+      }
+    },
+    "drug_classifications": {},
+    "warnings_in_report": [],
+    "data_quality_warning_present": false,
+    "disclaimer_present": true,
+    "warfarin_present": true,
+    "warfarin_classification": "avoid",
+    "report_exists": true
+  },
+  "verdict": {
+    "category": "correct_determinate",
+    "rationale": "Correct phenotype: *4/*4",
+    "details": {
+      "observed_phenotype": "*4/*4",
+      "expected_phenotype": "CYP2D6 Poor Metabolizer (*4/*4)",
+      "target_gene": "CYP2D6",
+      "exit_code": 0,
+      "stderr_warnings_total": 3,
+      "stderr_warnings_gene": 1,
+      "report_exists": true,
+      "data_quality_warning": false
+    }
+  },
+  "environment": {
+    "python_version": "3.14.3",
+    "platform": "macOS-26.3.1-arm64-arm-64bit-Mach-O",
+    "hostname": "Sergeys-MacBook-Pro.local"
+  }
+}

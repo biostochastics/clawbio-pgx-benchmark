@@ -1,0 +1,46 @@
+{
+  "8292a739": {
+    "total_tests": 16,
+    "pass": 7,
+    "fail": 9,
+    "pass_rate": 43.8,
+    "categories": {
+      "disclosure_failure": 3,
+      "correct_determinate": 7,
+      "incorrect_determinate": 4,
+      "omission": 2
+    },
+    "commit_date": "2026-02-28 07:52:22 +0000",
+    "commit_message": "Restructure README: lead with demo video, add provenance section"
+  },
+  "bbad73c1": {
+    "total_tests": 16,
+    "pass": 8,
+    "fail": 8,
+    "pass_rate": 50.0,
+    "categories": {
+      "disclosure_failure": 4,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 2,
+      "omission": 2
+    },
+    "commit_date": "2026-02-28 21:37:28 +0000",
+    "commit_message": "Fix silent degradation across all 4 skills: missing data no longer hides as normal"
+  },
+  "3c9383b1": {
+    "total_tests": 16,
+    "pass": 8,
+    "fail": 8,
+    "pass_rate": 50.0,
+    "categories": {
+      "disclosure_failure": 4,
+      "correct_determinate": 7,
+      "correct_indeterminate": 1,
+      "incorrect_determinate": 2,
+      "omission": 2
+    },
+    "commit_date": "2026-03-10 21:47:08 +0000",
+    "commit_message": "Merge pull request #39 from jaymoore-research/add-data-extractor-skill"
+  }
+}

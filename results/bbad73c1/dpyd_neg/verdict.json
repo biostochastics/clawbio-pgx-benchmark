@@ -1,0 +1,143 @@
+{
+  "benchmark_version": "1.0.0",
+  "timestamp_utc": "2026-04-03T22:13:21.912544+00:00",
+  "wall_clock_seconds": 0.087,
+  "commit": {
+    "sha": "bbad73c1",
+    "short": "bbad73c1",
+    "full_sha": "bbad73c1cd99720cb5925fdd63e4c79b988e1957",
+    "date": "2026-02-28 21:37:28 +0000",
+    "message": "Fix silent degradation across all 4 skills: missing data no longer hides as normal"
+  },
+  "input": {
+    "file": "dpyd_neg.txt",
+    "path": "/Users/biostochastics/clawbio_r/scripts/benchmark/test_inputs/dpyd_neg.txt",
+    "sha256": "5d468fa293e3f95d04bd5b5d08d7f7545f84805988cba5acae6995838d3fdbde"
+  },
+  "ground_truth": {
+    "BENCHMARK": "dpyd_neg",
+    "GROUND_TRUTH_PHENOTYPE": "DPYD Normal Metabolizer (Normal/Normal)",
+    "GROUND_TRUTH_BEHAVIOR": "All three DPYD SNPs at reference. Tool should report Normal",
+    "EXPECTED_TOOL_OUTPUT": "Tool reports \"Normal/Normal\", Normal Metabolizer.",
+    "FINDING": "PF-1 (DPYD negative control)",
+    "FINDING_CATEGORY": "correct_determinate",
+    "TARGET_GENE": "DPYD",
+    "TARGET_RSID": "rs3918290",
+    "HAZARD_DRUG": "Fluorouracil",
+    "HAZARD_CLASS": "NTI Oncology",
+    "CPIC_REF": "CPIC_FLUOROPYRIMIDINE",
+    "EXPECTED_EXIT_CODE": "0"
+  },
+  "ground_truth_references": {
+    "CPIC_FLUOROPYRIMIDINE": "CPIC Guideline for DPYD and Fluoropyrimidines, v3.0 (2018, updated 2023)"
+  },
+  "execution": {
+    "exit_code": 0,
+    "used_no_enrich": false,
+    "stdout_lines": 31,
+    "stderr_lines": 3,
+    "stderr_warnings": [
+      "WARNING: CYP2D6 rs5030655 has structural variant alt=DEL, cannot interpret from DTC data",
+      "WARNING: UGT1A1 rs8175347 has structural variant alt=TA7, cannot interpret from DTC data",
+      "WARNING: CYP3A5 rs41303343 has structural variant alt=INS, cannot interpret from DTC data"
+    ],
+    "stderr_sha256": "90f32a9b3b71f2fd6a8a68f9cae40e812145fecc7e53b978bf0492df234faf96"
+  },
+  "outputs": {
+    "report_md": {
+      "exists": true,
+      "sha256": "7ff5816e4512780cd72405c1b2aaa54e5b15d36181232db2b00674423b9b0954",
+      "size_bytes": 9176
+    },
+    "report_html": {
+      "exists": false,
+      "sha256": null
+    },
+    "result_json": {
+      "exists": false,
+      "valid_json": false,
+      "has_tuple_keys": false,
+      "warfarin_in_results": false,
+      "drug_count": 0,
+      "error": null
+    }
+  },
+  "report_analysis": {
+    "gene_profiles": {
+      "CYP2C19": {
+        "diplotype": "Cytochrome P450 2C19",
+        "phenotype": "*1/*1"
+      },
+      "CYP2D6": {
+        "diplotype": "Cytochrome P450 2D6",
+        "phenotype": "*1/*1"
+      },
+      "CYP2C9": {
+        "diplotype": "Cytochrome P450 2C9",
+        "phenotype": "*1/*1"
+      },
+      "VKORC1": {
+        "diplotype": "Vitamin K Epoxide Reductase",
+        "phenotype": "GG"
+      },
+      "SLCO1B1": {
+        "diplotype": "Solute Carrier Organic Anion Transporter 1B1",
+        "phenotype": "TT"
+      },
+      "DPYD": {
+        "diplotype": "Dihydropyrimidine Dehydrogenase",
+        "phenotype": "Normal/Normal"
+      },
+      "TPMT": {
+        "diplotype": "Thiopurine S-Methyltransferase",
+        "phenotype": "*1/*1"
+      },
+      "UGT1A1": {
+        "diplotype": "UDP-Glucuronosyltransferase 1A1",
+        "phenotype": "*1/*1"
+      },
+      "CYP3A5": {
+        "diplotype": "Cytochrome P450 3A5",
+        "phenotype": "*1/*1"
+      },
+      "CYP2B6": {
+        "diplotype": "Cytochrome P450 2B6",
+        "phenotype": "*1/*1"
+      },
+      "NUDT15": {
+        "diplotype": "Nudix Hydrolase 15",
+        "phenotype": "*1/*1"
+      },
+      "CYP1A2": {
+        "diplotype": "Cytochrome P450 1A2",
+        "phenotype": "*1/*1"
+      }
+    },
+    "drug_classifications": {},
+    "warnings_in_report": [],
+    "data_quality_warning_present": false,
+    "disclaimer_present": true,
+    "warfarin_present": true,
+    "warfarin_classification": "caution",
+    "report_exists": true
+  },
+  "verdict": {
+    "category": "correct_determinate",
+    "rationale": "Correct phenotype: Normal/Normal",
+    "details": {
+      "observed_phenotype": "Normal/Normal",
+      "expected_phenotype": "DPYD Normal Metabolizer (Normal/Normal)",
+      "target_gene": "DPYD",
+      "exit_code": 0,
+      "stderr_warnings_total": 3,
+      "stderr_warnings_gene": 0,
+      "report_exists": true,
+      "data_quality_warning": false
+    }
+  },
+  "environment": {
+    "python_version": "3.14.3",
+    "platform": "macOS-26.3.1-arm64-arm-64bit-Mach-O",
+    "hostname": "Sergeys-MacBook-Pro.local"
+  }
+}

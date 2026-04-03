@@ -1,0 +1,139 @@
+{
+  "benchmark_version": "1.0.0",
+  "timestamp_utc": "2026-04-03T22:13:20.620914+00:00",
+  "wall_clock_seconds": 0.092,
+  "commit": {
+    "sha": "8292a739",
+    "short": "8292a739",
+    "full_sha": "8292a7398ab97eaae8e74416bf1c3c4805356208",
+    "date": "2026-02-28 07:52:22 +0000",
+    "message": "Restructure README: lead with demo video, add provenance section"
+  },
+  "input": {
+    "file": "ugt1a1_28_absent.txt",
+    "path": "/Users/biostochastics/clawbio_r/scripts/benchmark/test_inputs/ugt1a1_28_absent.txt",
+    "sha256": "5dd46cd122b8aa902bad4a4ae6ccaa83640000751f78cd448d8926ef380caf44"
+  },
+  "ground_truth": {
+    "BENCHMARK": "ugt1a1_28_absent",
+    "GROUND_TRUTH_PHENOTYPE": "UGT1A1 Indeterminate (rs8175347 not tested)",
+    "GROUND_TRUTH_BEHAVIOR": "With rs8175347 absent, UGT1A1 should report as having incomplete",
+    "EXPECTED_TOOL_OUTPUT": "Tool reports \"*1/*1 (1/2 SNPs tested)\" for UGT1A1 diplotype.",
+    "FINDING": "PF-1 (PharmGx indel non-detection -- absent SNP variant)",
+    "FINDING_CATEGORY": "incorrect_determinate",
+    "TARGET_GENE": "UGT1A1",
+    "TARGET_RSID": "rs8175347",
+    "HAZARD_DRUG": "Irinotecan",
+    "HAZARD_CLASS": "NTI Oncology (severe neutropenia/diarrhea risk)",
+    "CPIC_REF": "CPIC_IRINOTECAN",
+    "EXPECTED_EXIT_CODE": "0"
+  },
+  "ground_truth_references": {
+    "CPIC_IRINOTECAN": "CPIC Guideline for UGT1A1 and Irinotecan, v2.0 (2020)"
+  },
+  "execution": {
+    "exit_code": 0,
+    "used_no_enrich": false,
+    "stdout_lines": 31,
+    "stderr_lines": 0,
+    "stderr_warnings": [],
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "outputs": {
+    "report_md": {
+      "exists": true,
+      "sha256": "8012e816e86389f396ee97d7db26b011e4519e820521fe08811a31914cabc049",
+      "size_bytes": 9137
+    },
+    "report_html": {
+      "exists": false,
+      "sha256": null
+    },
+    "result_json": {
+      "exists": false,
+      "valid_json": false,
+      "has_tuple_keys": false,
+      "warfarin_in_results": false,
+      "drug_count": 0,
+      "error": null
+    }
+  },
+  "report_analysis": {
+    "gene_profiles": {
+      "CYP2C19": {
+        "diplotype": "Cytochrome P450 2C19",
+        "phenotype": "*1/*1"
+      },
+      "CYP2D6": {
+        "diplotype": "Cytochrome P450 2D6",
+        "phenotype": "*1/*1"
+      },
+      "CYP2C9": {
+        "diplotype": "Cytochrome P450 2C9",
+        "phenotype": "*1/*1"
+      },
+      "VKORC1": {
+        "diplotype": "Vitamin K Epoxide Reductase",
+        "phenotype": "GG"
+      },
+      "SLCO1B1": {
+        "diplotype": "Solute Carrier Organic Anion Transporter 1B1",
+        "phenotype": "TT"
+      },
+      "DPYD": {
+        "diplotype": "Dihydropyrimidine Dehydrogenase",
+        "phenotype": "Normal/Normal"
+      },
+      "TPMT": {
+        "diplotype": "Thiopurine S-Methyltransferase",
+        "phenotype": "*1/*1"
+      },
+      "UGT1A1": {
+        "diplotype": "UDP-Glucuronosyltransferase 1A1",
+        "phenotype": "*1/*1"
+      },
+      "CYP3A5": {
+        "diplotype": "Cytochrome P450 3A5",
+        "phenotype": "*1/*1"
+      },
+      "CYP2B6": {
+        "diplotype": "Cytochrome P450 2B6",
+        "phenotype": "*1/*1"
+      },
+      "NUDT15": {
+        "diplotype": "Nudix Hydrolase 15",
+        "phenotype": "*1/*1"
+      },
+      "CYP1A2": {
+        "diplotype": "Cytochrome P450 1A2",
+        "phenotype": "*1/*1"
+      }
+    },
+    "drug_classifications": {},
+    "warnings_in_report": [],
+    "data_quality_warning_present": false,
+    "disclaimer_present": true,
+    "warfarin_present": true,
+    "warfarin_classification": "caution",
+    "report_exists": true
+  },
+  "verdict": {
+    "category": "incorrect_determinate",
+    "rationale": "Incorrect output as expected: *1/*1",
+    "details": {
+      "observed_phenotype": "*1/*1",
+      "expected_phenotype": "UGT1A1 Indeterminate (rs8175347 not tested)",
+      "target_gene": "UGT1A1",
+      "exit_code": 0,
+      "stderr_warnings_total": 0,
+      "stderr_warnings_gene": 0,
+      "report_exists": true,
+      "data_quality_warning": false
+    }
+  },
+  "environment": {
+    "python_version": "3.14.3",
+    "platform": "macOS-26.3.1-arm64-arm-64bit-Mach-O",
+    "hostname": "Sergeys-MacBook-Pro.local"
+  }
+}

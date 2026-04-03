@@ -1,0 +1,100 @@
+{
+  "benchmark_version": "1.0.0",
+  "run_timestamp_utc": "2026-04-03T22:13:19.603362+00:00",
+  "repo_path": "/Users/biostochastics/clawbio_r/ClawBio",
+  "commits": [
+    "8292a739",
+    "bbad73c1",
+    "3c9383b1"
+  ],
+  "commit_count": 3,
+  "input_files": [
+    {
+      "file": "cyp2d6_del.txt",
+      "sha256": "118257c854214faf65026b8bb8a85ad3a2bd93c05041f73668313457c8076498"
+    },
+    {
+      "file": "cyp2d6_normal.txt",
+      "sha256": "8531061b243583f86ad219e2b2784876a0ec3537ccfb2cb172d6eda05a390991"
+    },
+    {
+      "file": "cyp2d6_pm.txt",
+      "sha256": "919853bd88f4e857e62b2875ecf1b2e97aab18e05e168572fd42280f56bf3a9f"
+    },
+    {
+      "file": "dpyd_2a_het.txt",
+      "sha256": "94e6e04443a956740b11fb4b5936b9c005ab550a587a537570139581dd8a4cbe"
+    },
+    {
+      "file": "dpyd_2a_hom.txt",
+      "sha256": "da5bf39da8d3f0ba0b91ee1422bf2058961cbb89804afb9058751f053d036210"
+    },
+    {
+      "file": "dpyd_absent.txt",
+      "sha256": "59580257df8ca7d3d2d31c36d4d8914b022aa5922c1a4963bf1e0c90129ef4e4"
+    },
+    {
+      "file": "dpyd_neg.txt",
+      "sha256": "5d468fa293e3f95d04bd5b5d08d7f7545f84805988cba5acae6995838d3fdbde"
+    },
+    {
+      "file": "dpyd_partial.txt",
+      "sha256": "4022688f428e1850a58c99545d9bffb9505a3a19c2131e83b9bae0fe1917d6ff"
+    },
+    {
+      "file": "empty_no_pgx.txt",
+      "sha256": "302a3c795c5848ccee04f9ef399cd36ff67ea3643259ad3790a35ddb69cf7f47"
+    },
+    {
+      "file": "ugt1a1_28_absent.txt",
+      "sha256": "5dd46cd122b8aa902bad4a4ae6ccaa83640000751f78cd448d8926ef380caf44"
+    },
+    {
+      "file": "ugt1a1_28_het.txt",
+      "sha256": "0093ff3eaac23986d093f4fe75893ca4ed59aac386debc8d4c75fefa1d8711f7"
+    },
+    {
+      "file": "ugt1a1_28_hom.txt",
+      "sha256": "dbde705937f859d44e84bf5ee26944c7380f41ad42d61aa636c2786f9c422e4c"
+    },
+    {
+      "file": "ugt1a1_neg.txt",
+      "sha256": "f97f5ebf0578aed73e51e75cdd7901cf019d895982abc0a964c73457061ec288"
+    },
+    {
+      "file": "warfarin_missing_both.txt",
+      "sha256": "d6df399ca10e49daaf335b8f8a14709ebcd6f654dbc36e1375c8f75d3ac01e18"
+    },
+    {
+      "file": "warfarin_missing_vkorc1.txt",
+      "sha256": "a5e24962b63d26f7a9fe76fce587ec5b92fefd2227ba8a1ca68d3842c35cc69b"
+    },
+    {
+      "file": "warfarin_normal.txt",
+      "sha256": "7f84bda6188a5746b1b04ca8b6e6bed29c00b60228dfd4e324374ad0a7f0928b"
+    }
+  ],
+  "input_count": 16,
+  "total_runs": 48,
+  "ground_truth_references": {
+    "CPIC_OPIOID": "CPIC Guideline for CYP2D6 and Opioid Therapy, v3.0 (2023)",
+    "CPIC_FLUOROPYRIMIDINE": "CPIC Guideline for DPYD and Fluoropyrimidines, v3.0 (2018, updated 2023)",
+    "CPIC_IRINOTECAN": "CPIC Guideline for UGT1A1 and Irinotecan, v2.0 (2020)",
+    "CPIC_WARFARIN": "CPIC Guideline for CYP2C9/VKORC1 and Warfarin, v2.0 (2017)",
+    "FDA_CODEINE": "FDA Boxed Warning: Codeine in CYP2D6 Ultra-rapid Metabolizers (2017)",
+    "PHARMVAR_CYP2D6": "PharmVar CYP2D6 Allele Definitions (accessed 2026-04-03)"
+  },
+  "rubric_categories": [
+    "correct_determinate",
+    "correct_indeterminate",
+    "incorrect_determinate",
+    "incorrect_indeterminate",
+    "omission",
+    "disclosure_failure"
+  ],
+  "environment": {
+    "python_version": "3.14.3",
+    "platform": "macOS-26.3.1-arm64-arm-64bit-Mach-O",
+    "hostname": "Sergeys-MacBook-Pro.local"
+  }
+}

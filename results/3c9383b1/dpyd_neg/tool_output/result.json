@@ -1,0 +1,435 @@
+{
+  "skill": "pharmgx",
+  "version": "0.2.0",
+  "completed_at": "2026-04-03T22:13:23.733446+00:00",
+  "input_checksum": "sha256:5d468fa293e3f95d",
+  "summary": {
+    "total_snps_in_file": 30,
+    "pgx_snps_found": 30,
+    "pgx_snps_total": 30,
+    "genes_profiled": 12,
+    "drugs_assessed": 51,
+    "drugs_standard": 50,
+    "drugs_caution": 1,
+    "drugs_avoid": 0,
+    "drugs_indeterminate": 0,
+    "clinpgx_enriched": 0
+  },
+  "data": {
+    "gene_profiles": {
+      "CYP2C19": {
+        "diplotype": "*1/*1",
+        "phenotype": "Normal Metabolizer"
+      },
+      "CYP2D6": {
+        "diplotype": "*1/*1",
+        "phenotype": "Normal Metabolizer"
+      },
+      "CYP2C9": {
+        "diplotype": "*1/*1",
+        "phenotype": "Normal Metabolizer"
+      },
+      "VKORC1": {
+        "diplotype": "GG",
+        "phenotype": "Normal Warfarin Sensitivity"
+      },
+      "SLCO1B1": {
+        "diplotype": "TT",
+        "phenotype": "Normal Function"
+      },
+      "DPYD": {
+        "diplotype": "Normal/Normal",
+        "phenotype": "Normal Metabolizer"
+      },
+      "TPMT": {
+        "diplotype": "*1/*1",
+        "phenotype": "Normal Metabolizer"
+      },
+      "UGT1A1": {
+        "diplotype": "*1/*1",
+        "phenotype": "Normal Metabolizer"
+      },
+      "CYP3A5": {
+        "diplotype": "*1/*1",
+        "phenotype": "CYP3A5 Expressor"
+      },
+      "CYP2B6": {
+        "diplotype": "*1/*1",
+        "phenotype": "Normal Metabolizer"
+      },
+      "NUDT15": {
+        "diplotype": "*1/*1",
+        "phenotype": "Normal Metabolizer"
+      },
+      "CYP1A2": {
+        "diplotype": "*1/*1",
+        "phenotype": "Normal Metabolizer"
+      }
+    },
+    "drug_recommendations": {
+      "standard": [
+        {
+          "drug": "Clopidogrel",
+          "brand": "Plavix",
+          "class": "Antiplatelet Agent",
+          "gene": "CYP2C19",
+          "classification": "standard"
+        },
+        {
+          "drug": "Omeprazole",
+          "brand": "Prilosec",
+          "class": "Proton Pump Inhibitor",
+          "gene": "CYP2C19",
+          "classification": "standard"
+        },
+        {
+          "drug": "Pantoprazole",
+          "brand": "Protonix",
+          "class": "Proton Pump Inhibitor",
+          "gene": "CYP2C19",
+          "classification": "standard"
+        },
+        {
+          "drug": "Lansoprazole",
+          "brand": "Prevacid",
+          "class": "Proton Pump Inhibitor",
+          "gene": "CYP2C19",
+          "classification": "standard"
+        },
+        {
+          "drug": "Esomeprazole",
+          "brand": "Nexium",
+          "class": "Proton Pump Inhibitor",
+          "gene": "CYP2C19",
+          "classification": "standard"
+        },
+        {
+          "drug": "Dexlansoprazole",
+          "brand": "Dexilant",
+          "class": "Proton Pump Inhibitor",
+          "gene": "CYP2C19",
+          "classification": "standard"
+        },
+        {
+          "drug": "Citalopram",
+          "brand": "Celexa",
+          "class": "SSRI Antidepressant",
+          "gene": "CYP2C19",
+          "classification": "standard"
+        },
+        {
+          "drug": "Escitalopram",
+          "brand": "Lexapro",
+          "class": "SSRI Antidepressant",
+          "gene": "CYP2C19",
+          "classification": "standard"
+        },
+        {
+          "drug": "Sertraline",
+          "brand": "Zoloft",
+          "class": "SSRI Antidepressant",
+          "gene": "CYP2C19",
+          "classification": "standard"
+        },
+        {
+          "drug": "Voriconazole",
+          "brand": "Vfend",
+          "class": "Antifungal",
+          "gene": "CYP2C19",
+          "classification": "standard"
+        },
+        {
+          "drug": "Codeine",
+          "brand": "Tylenol w/ Codeine",
+          "class": "Opioid Analgesic",
+          "gene": "CYP2D6",
+          "classification": "standard"
+        },
+        {
+          "drug": "Tramadol",
+          "brand": "Ultram",
+          "class": "Opioid Analgesic",
+          "gene": "CYP2D6",
+          "classification": "standard"
+        },
+        {
+          "drug": "Hydrocodone",
+          "brand": "Vicodin",
+          "class": "Opioid Analgesic",
+          "gene": "CYP2D6",
+          "classification": "standard"
+        },
+        {
+          "drug": "Oxycodone",
+          "brand": "OxyContin",
+          "class": "Opioid Analgesic",
+          "gene": "CYP2D6",
+          "classification": "standard"
+        },
+        {
+          "drug": "Tamoxifen",
+          "brand": "Nolvadex",
+          "class": "SERM (Oncology)",
+          "gene": "CYP2D6",
+          "classification": "standard"
+        },
+        {
+          "drug": "Amitriptyline",
+          "brand": "Elavil",
+          "class": "Tricyclic Antidepressant",
+          "gene": "CYP2D6",
+          "classification": "standard"
+        },
+        {
+          "drug": "Nortriptyline",
+          "brand": "Pamelor",
+          "class": "Tricyclic Antidepressant",
+          "gene": "CYP2D6",
+          "classification": "standard"
+        },
+        {
+          "drug": "Desipramine",
+          "brand": "Norpramin",
+          "class": "Tricyclic Antidepressant",
+          "gene": "CYP2D6",
+          "classification": "standard"
+        },
+        {
+          "drug": "Imipramine",
+          "brand": "Tofranil",
+          "class": "Tricyclic Antidepressant",
+          "gene": "CYP2D6",
+          "classification": "standard"
+        },
+        {
+          "drug": "Doxepin",
+          "brand": "Sinequan",
+          "class": "Tricyclic Antidepressant",
+          "gene": "CYP2D6",
+          "classification": "standard"
+        },
+        {
+          "drug": "Trimipramine",
+          "brand": "Surmontil",
+          "class": "Tricyclic Antidepressant",
+          "gene": "CYP2D6",
+          "classification": "standard"
+        },
+        {
+          "drug": "Clomipramine",
+          "brand": "Anafranil",
+          "class": "Tricyclic Antidepressant",
+          "gene": "CYP2D6",
+          "classification": "standard"
+        },
+        {
+          "drug": "Paroxetine",
+          "brand": "Paxil",
+          "class": "SSRI Antidepressant",
+          "gene": "CYP2D6",
+          "classification": "standard"
+        },
+        {
+          "drug": "Fluoxetine",
+          "brand": "Prozac",
+          "class": "SSRI Antidepressant",
+          "gene": "CYP2D6",
+          "classification": "standard"
+        },
+        {
+          "drug": "Venlafaxine",
+          "brand": "Effexor",
+          "class": "SNRI Antidepressant",
+          "gene": "CYP2D6",
+          "classification": "standard"
+        },
+        {
+          "drug": "Metoprolol",
+          "brand": "Lopressor",
+          "class": "Beta-Blocker",
+          "gene": "CYP2D6",
+          "classification": "standard"
+        },
+        {
+          "drug": "Ondansetron",
+          "brand": "Zofran",
+          "class": "Antiemetic",
+          "gene": "CYP2D6",
+          "classification": "standard"
+        },
+        {
+          "drug": "Risperidone",
+          "brand": "Risperdal",
+          "class": "Antipsychotic",
+          "gene": "CYP2D6",
+          "classification": "standard"
+        },
+        {
+          "drug": "Aripiprazole",
+          "brand": "Abilify",
+          "class": "Antipsychotic",
+          "gene": "CYP2D6",
+          "classification": "standard"
+        },
+        {
+          "drug": "Haloperidol",
+          "brand": "Haldol",
+          "class": "Antipsychotic",
+          "gene": "CYP2D6",
+          "classification": "standard"
+        },
+        {
+          "drug": "Atomoxetine",
+          "brand": "Strattera",
+          "class": "ADHD Medication",
+          "gene": "CYP2D6",
+          "classification": "standard"
+        },
+        {
+          "drug": "Phenytoin",
+          "brand": "Dilantin",
+          "class": "Antiepileptic",
+          "gene": "CYP2C9",
+          "classification": "standard"
+        },
+        {
+          "drug": "Celecoxib",
+          "brand": "Celebrex",
+          "class": "NSAID",
+          "gene": "CYP2C9",
+          "classification": "standard"
+        },
+        {
+          "drug": "Flurbiprofen",
+          "brand": "Ansaid",
+          "class": "NSAID",
+          "gene": "CYP2C9",
+          "classification": "standard"
+        },
+        {
+          "drug": "Piroxicam",
+          "brand": "Feldene",
+          "class": "NSAID",
+          "gene": "CYP2C9",
+          "classification": "standard"
+        },
+        {
+          "drug": "Meloxicam",
+          "brand": "Mobic",
+          "class": "NSAID",
+          "gene": "CYP2C9",
+          "classification": "standard"
+        },
+        {
+          "drug": "Warfarin",
+          "brand": "Coumadin",
+          "class": "Anticoagulant",
+          "gene": "CYP2C9+VKORC1",
+          "classification": "standard"
+        },
+        {
+          "drug": "Simvastatin",
+          "brand": "Zocor",
+          "class": "Statin",
+          "gene": "SLCO1B1",
+          "classification": "standard"
+        },
+        {
+          "drug": "Atorvastatin",
+          "brand": "Lipitor",
+          "class": "Statin",
+          "gene": "SLCO1B1",
+          "classification": "standard"
+        },
+        {
+          "drug": "Rosuvastatin",
+          "brand": "Crestor",
+          "class": "Statin",
+          "gene": "SLCO1B1",
+          "classification": "standard"
+        },
+        {
+          "drug": "Pravastatin",
+          "brand": "Pravachol",
+          "class": "Statin",
+          "gene": "SLCO1B1",
+          "classification": "standard"
+        },
+        {
+          "drug": "Fluorouracil",
+          "brand": "5-FU",
+          "class": "Antineoplastic",
+          "gene": "DPYD",
+          "classification": "standard"
+        },
+        {
+          "drug": "Capecitabine",
+          "brand": "Xeloda",
+          "class": "Antineoplastic",
+          "gene": "DPYD",
+          "classification": "standard"
+        },
+        {
+          "drug": "Azathioprine",
+          "brand": "Imuran",
+          "class": "Immunosuppressant",
+          "gene": "TPMT",
+          "classification": "standard"
+        },
+        {
+          "drug": "Mercaptopurine",
+          "brand": "Purinethol",
+          "class": "Immunosuppressant",
+          "gene": "TPMT",
+          "classification": "standard"
+        },
+        {
+          "drug": "Thioguanine",
+          "brand": "Tabloid",
+          "class": "Immunosuppressant",
+          "gene": "TPMT",
+          "classification": "standard"
+        },
+        {
+          "drug": "Irinotecan",
+          "brand": "Camptosar",
+          "class": "Antineoplastic",
+          "gene": "UGT1A1",
+          "classification": "standard"
+        },
+        {
+          "drug": "Atazanavir",
+          "brand": "Reyataz",
+          "class": "Antiretroviral",
+          "gene": "UGT1A1",
+          "classification": "standard"
+        },
+        {
+          "drug": "Efavirenz",
+          "brand": "Sustiva",
+          "class": "Antiretroviral",
+          "gene": "CYP2B6",
+          "classification": "standard"
+        },
+        {
+          "drug": "Clozapine",
+          "brand": "Clozaril",
+          "class": "Antipsychotic",
+          "gene": "CYP1A2",
+          "classification": "standard"
+        }
+      ],
+      "caution": [
+        {
+          "drug": "Tacrolimus",
+          "brand": "Prograf",
+          "class": "Immunosuppressant",
+          "gene": "CYP3A5",
+          "classification": "caution"
+        }
+      ],
+      "avoid": [],
+      "indeterminate": []
+    }
+  }
+}

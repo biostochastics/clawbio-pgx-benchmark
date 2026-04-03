@@ -1,0 +1,147 @@
+{
+  "benchmark_version": "1.0.0",
+  "timestamp_utc": "2026-04-03T22:13:22.681471+00:00",
+  "wall_clock_seconds": 0.093,
+  "commit": {
+    "sha": "bbad73c1",
+    "short": "bbad73c1",
+    "full_sha": "bbad73c1cd99720cb5925fdd63e4c79b988e1957",
+    "date": "2026-02-28 21:37:28 +0000",
+    "message": "Fix silent degradation across all 4 skills: missing data no longer hides as normal"
+  },
+  "input": {
+    "file": "warfarin_missing_both.txt",
+    "path": "/Users/biostochastics/clawbio_r/scripts/benchmark/test_inputs/warfarin_missing_both.txt",
+    "sha256": "d6df399ca10e49daaf335b8f8a14709ebcd6f654dbc36e1375c8f75d3ac01e18"
+  },
+  "ground_truth": {
+    "BENCHMARK": "warfarin_missing_both",
+    "GROUND_TRUTH_PHENOTYPE": "Warfarin guidance indeterminate (CYP2C9 and VKORC1 both incomplete)",
+    "GROUND_TRUTH_BEHAVIOR": "Without both CYP2C9 and VKORC1 data, warfarin dosing cannot be",
+    "EXPECTED_TOOL_OUTPUT": "BUG -- same tuple bug as warfarin_missing_vkorc1. CYP2C9 becomes",
+    "FINDING": "PF-1 (warfarin tuple bug -- triggered by CYP2C9 missing path too)",
+    "FINDING_CATEGORY": "omission",
+    "TARGET_GENE": "CYP2C9",
+    "TARGET_RSID": "rs1799853",
+    "HAZARD_DRUG": "Warfarin",
+    "HAZARD_CLASS": "Anticoagulant (narrow therapeutic index)",
+    "CPIC_REF": "CPIC_WARFARIN",
+    "EXPECTED_EXIT_CODE": "0"
+  },
+  "ground_truth_references": {
+    "CPIC_WARFARIN": "CPIC Guideline for CYP2C9/VKORC1 and Warfarin, v2.0 (2017)"
+  },
+  "execution": {
+    "exit_code": 0,
+    "used_no_enrich": false,
+    "stdout_lines": 32,
+    "stderr_lines": 5,
+    "stderr_warnings": [
+      "WARNING: Could not detect input file format. Results may be unreliable.",
+      "WARNING: CYP2D6 rs5030655 has structural variant alt=DEL, cannot interpret from DTC data",
+      "WARNING: UGT1A1 rs8175347 has structural variant alt=TA7, cannot interpret from DTC data",
+      "WARNING: CYP3A5 rs41303343 has structural variant alt=INS, cannot interpret from DTC data",
+      "WARNING: 2 gene(s) not testable from this data: CYP2C9, VKORC1"
+    ],
+    "stderr_sha256": "85b5184ec9ca1f01ee6800357599fcf3fdda6ca990e4e7c4b11f4526e7541cff"
+  },
+  "outputs": {
+    "report_md": {
+      "exists": true,
+      "sha256": "def086df8ad205e65f548a89276ae865debee965cb681c1da88e6f3d9c94b5db",
+      "size_bytes": 9750
+    },
+    "report_html": {
+      "exists": false,
+      "sha256": null
+    },
+    "result_json": {
+      "exists": false,
+      "valid_json": false,
+      "has_tuple_keys": false,
+      "warfarin_in_results": false,
+      "drug_count": 0,
+      "error": null
+    }
+  },
+  "report_analysis": {
+    "gene_profiles": {
+      "CYP2C19": {
+        "diplotype": "Cytochrome P450 2C19",
+        "phenotype": "*1/*1"
+      },
+      "CYP2D6": {
+        "diplotype": "Cytochrome P450 2D6",
+        "phenotype": "*1/*1"
+      },
+      "CYP2C9": {
+        "diplotype": "Cytochrome P450 2C9",
+        "phenotype": "NOT_TESTED"
+      },
+      "VKORC1": {
+        "diplotype": "Vitamin K Epoxide Reductase",
+        "phenotype": "NOT_TESTED"
+      },
+      "SLCO1B1": {
+        "diplotype": "Solute Carrier Organic Anion Transporter 1B1",
+        "phenotype": "TT"
+      },
+      "DPYD": {
+        "diplotype": "Dihydropyrimidine Dehydrogenase",
+        "phenotype": "Normal/Normal"
+      },
+      "TPMT": {
+        "diplotype": "Thiopurine S-Methyltransferase",
+        "phenotype": "*1/*1"
+      },
+      "UGT1A1": {
+        "diplotype": "UDP-Glucuronosyltransferase 1A1",
+        "phenotype": "*1/*1"
+      },
+      "CYP3A5": {
+        "diplotype": "Cytochrome P450 3A5",
+        "phenotype": "*1/*1"
+      },
+      "CYP2B6": {
+        "diplotype": "Cytochrome P450 2B6",
+        "phenotype": "*1/*1"
+      },
+      "NUDT15": {
+        "diplotype": "Nudix Hydrolase 15",
+        "phenotype": "*1/*1"
+      },
+      "CYP1A2": {
+        "diplotype": "Cytochrome P450 1A2",
+        "phenotype": "*1/*1"
+      }
+    },
+    "drug_classifications": {},
+    "warnings_in_report": [
+      "**2 gene(s) could not be assessed** because the relevant SNPs were not found in the input file: CYP2C9, VKORC1\n\nDrugs depending on these genes are marked INSUFFICIENT DATA below. Do not assume normal metabolism for untested genes."
+    ],
+    "data_quality_warning_present": true,
+    "disclaimer_present": true,
+    "warfarin_present": true,
+    "warfarin_classification": "standard",
+    "report_exists": true
+  },
+  "verdict": {
+    "category": "omission",
+    "rationale": "Drug omission detected for warfarin",
+    "details": {
+      "observed_phenotype": "NOT_TESTED",
+      "expected_phenotype": "Warfarin guidance indeterminate (CYP2C9 and VKORC1 both incomplete)",
+      "target_gene": "CYP2C9",
+      "exit_code": 0,
+      "stderr_warnings_total": 5,
+      "stderr_warnings_gene": 1,
+      "report_exists": true,
+      "data_quality_warning": true
+    }
+  },
+  "environment": {
+    "python_version": "3.14.3",
+    "platform": "macOS-26.3.1-arm64-arm-64bit-Mach-O",
+    "hostname": "Sergeys-MacBook-Pro.local"
+  }
+}

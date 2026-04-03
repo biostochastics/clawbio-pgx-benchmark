@@ -1,0 +1,27 @@
+  WARNING: CYP2D6 rs5030655 has structural variant alt=DEL, cannot interpret from DTC data
+  WARNING: UGT1A1 rs8175347 has structural variant alt=TA7, cannot interpret from DTC data
+  WARNING: CYP3A5 rs41303343 has structural variant alt=INS, cannot interpret from DTC data
+WARNING: 2 gene(s) not testable from this data: CYP2C9, VKORC1
+Traceback (most recent call last):
+  File "/Users/biostochastics/clawbio_r/ClawBio/skills/pharmgx-reporter/pharmgx_reporter.py", line 1863, in <module>
+    main()
+    ~~~~^^
+  File "/Users/biostochastics/clawbio_r/ClawBio/skills/pharmgx-reporter/pharmgx_reporter.py", line 1836, in main
+    result_json_path = write_result_json(
+        output_dir=outdir,
+    ...<15 lines>...
+        input_checksum=input_checksum,
+    )
+  File "/Users/biostochastics/clawbio_r/ClawBio/clawbio/common/report.py", line 106, in write_result_json
+    result_path.write_text(json.dumps(envelope, indent=2, default=str))
+                           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.3_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/json/__init__.py", line 242, in dumps
+    **kw).encode(obj)
+          ~~~~~~^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.3_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/json/encoder.py", line 202, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/opt/homebrew/Cellar/python@3.14/3.14.3_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/json/encoder.py", line 263, in iterencode
+    return _iterencode(o, 0)
+TypeError: keys must be str, int, float, bool or None, not tuple
+when serializing dict item 'drug_recommendations'
+when serializing dict item 'data'

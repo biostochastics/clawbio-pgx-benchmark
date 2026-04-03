@@ -1,0 +1,31 @@
+ClawBio PharmGx Reporter v0.1.0
+================================
+
+Parsing: /Users/biostochastics/clawbio_r/scripts/benchmark/test_inputs/cyp2d6_del.txt
+  Format: unknown
+  Total SNPs: 30
+  PGx SNPs found: 30/30
+
+Gene Profiles:
+  Gene       Diplotype            Phenotype
+  ---------- -------------------- -----------------------------------
+  CYP2C19    *1/*1                Normal Metabolizer
+  CYP2D6     *1/*1                Normal Metabolizer
+  CYP2C9     *1/*1                Normal Metabolizer
+  VKORC1     GG                   Normal Warfarin Sensitivity
+  SLCO1B1    TT                   Normal Function
+  DPYD       Normal/Normal        Normal Metabolizer
+  TPMT       *1/*1                Normal Metabolizer
+  UGT1A1     *1/*1                Normal Metabolizer
+  CYP3A5     *1/*1                CYP3A5 Expressor
+  CYP2B6     *1/*1                Normal Metabolizer
+  NUDT15     *1/*1                Normal Metabolizer
+  CYP1A2     *1/*1                Normal Metabolizer
+
+Drug Recommendations (51 drugs):
+  Standard:        50
+  Caution:         1
+  Avoid:           0
+
+Report saved: /Users/biostochastics/clawbio_r/scripts/benchmark/results/3commit_v3/bbad73c1/cyp2d6_del/tool_output/report.md
+Done.

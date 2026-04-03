@@ -1,0 +1,3 @@
+ERROR: No pharmacogenomic SNPs found in this file.
+Cannot generate a report from zero data. Verify the input file
+is a valid 23andMe or AncestryDNA export.

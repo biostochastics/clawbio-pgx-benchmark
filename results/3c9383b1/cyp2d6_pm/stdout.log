@@ -1,0 +1,45 @@
+ClawBio PharmGx Reporter v0.2.0
+================================
+
+Parsing: /Users/biostochastics/clawbio_r/scripts/benchmark/test_inputs/cyp2d6_pm.txt
+  Format: 23andme
+  Total SNPs: 30
+  PGx SNPs found: 30/30
+
+Gene Profiles:
+  Gene       Diplotype            Phenotype
+  ---------- -------------------- -----------------------------------
+  CYP2C19    *1/*1                Normal Metabolizer
+  CYP2D6     *4/*4                Poor Metabolizer
+  CYP2C9     *1/*1                Normal Metabolizer
+  VKORC1     GG                   Normal Warfarin Sensitivity
+  SLCO1B1    TT                   Normal Function
+  DPYD       Normal/Normal        Normal Metabolizer
+  TPMT       *1/*1                Normal Metabolizer
+  UGT1A1     *1/*1                Normal Metabolizer
+  CYP3A5     *1/*1                CYP3A5 Expressor
+  CYP2B6     *1/*1                Normal Metabolizer
+  NUDT15     *1/*1                Normal Metabolizer
+  CYP1A2     *1/*1                Normal Metabolizer
+
+Drug Recommendations (51 drugs):
+  Standard:        29
+  Caution:         12
+  Avoid:           10
+
+ALERT - Drugs to AVOID:
+  * Codeine (Tylenol w/ Codeine)
+  * Tramadol (Ultram)
+  * Tamoxifen (Nolvadex)
+  * Amitriptyline (Elavil)
+  * Nortriptyline (Pamelor)
+  * Desipramine (Norpramin)
+  * Imipramine (Tofranil)
+  * Doxepin (Sinequan)
+  * Trimipramine (Surmontil)
+  * Clomipramine (Anafranil)
+
+Report saved: /Users/biostochastics/clawbio_r/scripts/benchmark/results/3commit_v3/3c9383b1/cyp2d6_pm/tool_output/report.md
+HTML report:  /Users/biostochastics/clawbio_r/scripts/benchmark/results/3commit_v3/3c9383b1/cyp2d6_pm/tool_output/report.html
+Result JSON:  /Users/biostochastics/clawbio_r/scripts/benchmark/results/3commit_v3/3c9383b1/cyp2d6_pm/tool_output/result.json
+Done.

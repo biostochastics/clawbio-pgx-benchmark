@@ -1,0 +1,146 @@
+{
+  "benchmark_version": "1.0.0",
+  "timestamp_utc": "2026-04-03T22:13:23.616695+00:00",
+  "wall_clock_seconds": 0.062,
+  "commit": {
+    "sha": "3c9383b1",
+    "short": "3c9383b1",
+    "full_sha": "3c9383b136b6ab6d721e8e578c7d75d2d5a43621",
+    "date": "2026-03-10 21:47:08 +0000",
+    "message": "Merge pull request #39 from jaymoore-research/add-data-extractor-skill"
+  },
+  "input": {
+    "file": "dpyd_absent.txt",
+    "path": "/Users/biostochastics/clawbio_r/scripts/benchmark/test_inputs/dpyd_absent.txt",
+    "sha256": "59580257df8ca7d3d2d31c36d4d8914b022aa5922c1a4963bf1e0c90129ef4e4"
+  },
+  "ground_truth": {
+    "BENCHMARK": "dpyd_absent",
+    "GROUND_TRUTH_PHENOTYPE": "DPYD Indeterminate (not genotyped)",
+    "GROUND_TRUTH_BEHAVIOR": "With all three DPYD SNPs absent, the tool should report DPYD as",
+    "EXPECTED_TOOL_OUTPUT": "Tool returns diplotype \"NOT_TESTED\", phenotype \"Indeterminate",
+    "FINDING": "PF-1 (DPYD absent control -- verifies NOT_TESTED pathway)",
+    "FINDING_CATEGORY": "correct_indeterminate",
+    "TARGET_GENE": "DPYD",
+    "TARGET_RSID": "rs3918290",
+    "HAZARD_DRUG": "Fluorouracil",
+    "HAZARD_CLASS": "NTI Oncology (lethal toxicity risk)",
+    "CPIC_REF": "CPIC_FLUOROPYRIMIDINE",
+    "EXPECTED_EXIT_CODE": "0"
+  },
+  "ground_truth_references": {
+    "CPIC_FLUOROPYRIMIDINE": "CPIC Guideline for DPYD and Fluoropyrimidines, v3.0 (2018, updated 2023)"
+  },
+  "execution": {
+    "exit_code": 0,
+    "used_no_enrich": true,
+    "stdout_lines": 34,
+    "stderr_lines": 4,
+    "stderr_warnings": [
+      "WARNING: CYP2D6 rs5030655 has structural variant alt=DEL, cannot interpret from DTC data",
+      "WARNING: UGT1A1 rs8175347 has structural variant alt=TA7, cannot interpret from DTC data",
+      "WARNING: CYP3A5 rs41303343 has structural variant alt=INS, cannot interpret from DTC data",
+      "WARNING: 1 gene(s) not testable from this data: DPYD"
+    ],
+    "stderr_sha256": "354f56ce706f911e4989164592842338caf8b8c524ffa77e9bf4f1659799fc94"
+  },
+  "outputs": {
+    "report_md": {
+      "exists": true,
+      "sha256": "6643b3a5d8739e89233aee3dd1c5e424a92ea3bc5e6854149396aa643b42234b",
+      "size_bytes": 7763
+    },
+    "report_html": {
+      "exists": true,
+      "sha256": "7c4d95c72a95201ea7e24fd394b29f828bf0dba0ec263049770f3251d6c22e53"
+    },
+    "result_json": {
+      "exists": true,
+      "valid_json": true,
+      "has_tuple_keys": false,
+      "warfarin_in_results": false,
+      "drug_count": 0,
+      "error": null
+    }
+  },
+  "report_analysis": {
+    "gene_profiles": {
+      "CYP2C19": {
+        "diplotype": "Cytochrome P450 2C19",
+        "phenotype": "*1/*1"
+      },
+      "CYP2D6": {
+        "diplotype": "Cytochrome P450 2D6",
+        "phenotype": "*1/*1"
+      },
+      "CYP2C9": {
+        "diplotype": "Cytochrome P450 2C9",
+        "phenotype": "*1/*1"
+      },
+      "VKORC1": {
+        "diplotype": "Vitamin K Epoxide Reductase",
+        "phenotype": "GG"
+      },
+      "SLCO1B1": {
+        "diplotype": "Solute Carrier Organic Anion Transporter 1B1",
+        "phenotype": "TT"
+      },
+      "DPYD": {
+        "diplotype": "Dihydropyrimidine Dehydrogenase",
+        "phenotype": "NOT_TESTED"
+      },
+      "TPMT": {
+        "diplotype": "Thiopurine S-Methyltransferase",
+        "phenotype": "*1/*1"
+      },
+      "UGT1A1": {
+        "diplotype": "UDP-Glucuronosyltransferase 1A1",
+        "phenotype": "*1/*1"
+      },
+      "CYP3A5": {
+        "diplotype": "Cytochrome P450 3A5",
+        "phenotype": "*1/*1"
+      },
+      "CYP2B6": {
+        "diplotype": "Cytochrome P450 2B6",
+        "phenotype": "*1/*1"
+      },
+      "NUDT15": {
+        "diplotype": "Nudix Hydrolase 15",
+        "phenotype": "*1/*1"
+      },
+      "CYP1A2": {
+        "diplotype": "Cytochrome P450 1A2",
+        "phenotype": "*1/*1"
+      }
+    },
+    "drug_classifications": {},
+    "warnings_in_report": [
+      "**1 gene(s) could not be assessed** because the relevant SNPs were not found in the input file: DPYD\n\nDrugs depending on these genes are marked INSUFFICIENT DATA below. Do not assume normal metabolism for untested genes."
+    ],
+    "data_quality_warning_present": true,
+    "disclaimer_present": true,
+    "warfarin_present": true,
+    "warfarin_classification": "indeterminate",
+    "report_exists": true
+  },
+  "verdict": {
+    "category": "correct_indeterminate",
+    "rationale": "Correctly returned indeterminate: NOT_TESTED",
+    "details": {
+      "observed_phenotype": "NOT_TESTED",
+      "expected_phenotype": "DPYD Indeterminate (not genotyped)",
+      "target_gene": "DPYD",
+      "exit_code": 0,
+      "stderr_warnings_total": 4,
+      "stderr_warnings_gene": 1,
+      "report_exists": true,
+      "data_quality_warning": true
+    }
+  },
+  "environment": {
+    "python_version": "3.14.3",
+    "platform": "macOS-26.3.1-arm64-arm-64bit-Mach-O",
+    "hostname": "Sergeys-MacBook-Pro.local"
+  }
+}

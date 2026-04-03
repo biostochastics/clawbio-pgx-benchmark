@@ -1,0 +1,143 @@
+{
+  "benchmark_version": "1.0.0",
+  "timestamp_utc": "2026-04-03T22:13:24.350790+00:00",
+  "wall_clock_seconds": 0.062,
+  "commit": {
+    "sha": "3c9383b1",
+    "short": "3c9383b1",
+    "full_sha": "3c9383b136b6ab6d721e8e578c7d75d2d5a43621",
+    "date": "2026-03-10 21:47:08 +0000",
+    "message": "Merge pull request #39 from jaymoore-research/add-data-extractor-skill"
+  },
+  "input": {
+    "file": "warfarin_normal.txt",
+    "path": "/Users/biostochastics/clawbio_r/scripts/benchmark/test_inputs/warfarin_normal.txt",
+    "sha256": "7f84bda6188a5746b1b04ca8b6e6bed29c00b60228dfd4e324374ad0a7f0928b"
+  },
+  "ground_truth": {
+    "BENCHMARK": "warfarin_normal",
+    "GROUND_TRUTH_PHENOTYPE": "CYP2C9 Normal Metabolizer (*1/*1), VKORC1 Normal Warfarin Sensitivity (GG)",
+    "GROUND_TRUTH_BEHAVIOR": "Standard warfarin dosing expected. Both CYP2C9 and VKORC1 at",
+    "EXPECTED_TOOL_OUTPUT": "CYP2C9 *1/*1 Normal Metabolizer. VKORC1 GG Normal Warfarin",
+    "FINDING": "PF-1 (warfarin baseline control -- verifies normal pathway)",
+    "FINDING_CATEGORY": "correct_determinate",
+    "TARGET_GENE": "VKORC1",
+    "TARGET_RSID": "rs9923231",
+    "HAZARD_DRUG": "Warfarin",
+    "HAZARD_CLASS": "Anticoagulant",
+    "CPIC_REF": "CPIC_WARFARIN",
+    "EXPECTED_EXIT_CODE": "0"
+  },
+  "ground_truth_references": {
+    "CPIC_WARFARIN": "CPIC Guideline for CYP2C9/VKORC1 and Warfarin, v2.0 (2017)"
+  },
+  "execution": {
+    "exit_code": 0,
+    "used_no_enrich": true,
+    "stdout_lines": 33,
+    "stderr_lines": 3,
+    "stderr_warnings": [
+      "WARNING: CYP2D6 rs5030655 has structural variant alt=DEL, cannot interpret from DTC data",
+      "WARNING: UGT1A1 rs8175347 has structural variant alt=TA7, cannot interpret from DTC data",
+      "WARNING: CYP3A5 rs41303343 has structural variant alt=INS, cannot interpret from DTC data"
+    ],
+    "stderr_sha256": "90f32a9b3b71f2fd6a8a68f9cae40e812145fecc7e53b978bf0492df234faf96"
+  },
+  "outputs": {
+    "report_md": {
+      "exists": true,
+      "sha256": "18b715a104392c9e6182c2ce638395434c60588a9d51e4a2006a4c4afec77d3d",
+      "size_bytes": 7604
+    },
+    "report_html": {
+      "exists": true,
+      "sha256": "ba1916a4d585e63fc00b4f15d500e7190fddbd189a65f8db44993ad662e3466a"
+    },
+    "result_json": {
+      "exists": true,
+      "valid_json": true,
+      "has_tuple_keys": false,
+      "warfarin_in_results": false,
+      "drug_count": 0,
+      "error": null
+    }
+  },
+  "report_analysis": {
+    "gene_profiles": {
+      "CYP2C19": {
+        "diplotype": "Cytochrome P450 2C19",
+        "phenotype": "*1/*1"
+      },
+      "CYP2D6": {
+        "diplotype": "Cytochrome P450 2D6",
+        "phenotype": "*1/*1"
+      },
+      "CYP2C9": {
+        "diplotype": "Cytochrome P450 2C9",
+        "phenotype": "*1/*1"
+      },
+      "VKORC1": {
+        "diplotype": "Vitamin K Epoxide Reductase",
+        "phenotype": "GG"
+      },
+      "SLCO1B1": {
+        "diplotype": "Solute Carrier Organic Anion Transporter 1B1",
+        "phenotype": "TT"
+      },
+      "DPYD": {
+        "diplotype": "Dihydropyrimidine Dehydrogenase",
+        "phenotype": "Normal/Normal"
+      },
+      "TPMT": {
+        "diplotype": "Thiopurine S-Methyltransferase",
+        "phenotype": "*1/*1"
+      },
+      "UGT1A1": {
+        "diplotype": "UDP-Glucuronosyltransferase 1A1",
+        "phenotype": "*1/*1"
+      },
+      "CYP3A5": {
+        "diplotype": "Cytochrome P450 3A5",
+        "phenotype": "*1/*1"
+      },
+      "CYP2B6": {
+        "diplotype": "Cytochrome P450 2B6",
+        "phenotype": "*1/*1"
+      },
+      "NUDT15": {
+        "diplotype": "Nudix Hydrolase 15",
+        "phenotype": "*1/*1"
+      },
+      "CYP1A2": {
+        "diplotype": "Cytochrome P450 1A2",
+        "phenotype": "*1/*1"
+      }
+    },
+    "drug_classifications": {},
+    "warnings_in_report": [],
+    "data_quality_warning_present": false,
+    "disclaimer_present": true,
+    "warfarin_present": true,
+    "warfarin_classification": "standard",
+    "report_exists": true
+  },
+  "verdict": {
+    "category": "correct_determinate",
+    "rationale": "Correct phenotype: GG",
+    "details": {
+      "observed_phenotype": "GG",
+      "expected_phenotype": "CYP2C9 Normal Metabolizer (*1/*1), VKORC1 Normal Warfarin Sensitivity (GG)",
+      "target_gene": "VKORC1",
+      "exit_code": 0,
+      "stderr_warnings_total": 3,
+      "stderr_warnings_gene": 0,
+      "report_exists": true,
+      "data_quality_warning": false
+    }
+  },
+  "environment": {
+    "python_version": "3.14.3",
+    "platform": "macOS-26.3.1-arm64-arm-64bit-Mach-O",
+    "hostname": "Sergeys-MacBook-Pro.local"
+  }
+}
