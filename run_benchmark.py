@@ -47,7 +47,6 @@ import json
 import os
 import platform
 import re
-import shutil
 import subprocess
 import sys
 import time
@@ -61,12 +60,12 @@ from pathlib import Path
 
 BENCHMARK_VERSION = "1.0.0"
 RUBRIC_CATEGORIES = [
-    "correct_determinate",       # Right phenotype, right drug classification
-    "correct_indeterminate",     # Correctly returns insufficient/indeterminate
-    "incorrect_determinate",     # Wrong phenotype or drug classification (false Normal)
-    "incorrect_indeterminate",   # Returns Indeterminate when answer IS determinable
-    "omission",                  # Drug row silently missing from report
-    "disclosure_failure",        # Warning on stderr but NOT in report body
+    "correct_determinate",  # Right phenotype, right drug classification
+    "correct_indeterminate",  # Correctly returns insufficient/indeterminate
+    "incorrect_determinate",  # Wrong phenotype or drug classification (false Normal)
+    "incorrect_indeterminate",  # Returns Indeterminate when answer IS determinable
+    "omission",  # Drug row silently missing from report
+    "disclosure_failure",  # Warning on stderr but NOT in report body
 ]
 
 # CPIC ground truth references (version-pinned)
@@ -83,6 +82,7 @@ GROUND_TRUTH_REFS = {
 # ---------------------------------------------------------------------------
 # Utility functions
 # ---------------------------------------------------------------------------
+
 
 def sha256_file(filepath):
     """Compute SHA-256 of a file."""
@@ -118,14 +118,22 @@ def parse_ground_truth(input_path):
             if not line.startswith("#"):
                 break
             for key in [
-                "BENCHMARK", "GROUND_TRUTH_PHENOTYPE", "GROUND_TRUTH_BEHAVIOR",
-                "EXPECTED_TOOL_OUTPUT", "FINDING", "FINDING_CATEGORY",
-                "HAZARD_DRUG", "HAZARD_CLASS", "CPIC_REF",
-                "TARGET_GENE", "TARGET_RSID", "EXPECTED_EXIT_CODE",
+                "BENCHMARK",
+                "GROUND_TRUTH_PHENOTYPE",
+                "GROUND_TRUTH_BEHAVIOR",
+                "EXPECTED_TOOL_OUTPUT",
+                "FINDING",
+                "FINDING_CATEGORY",
+                "HAZARD_DRUG",
+                "HAZARD_CLASS",
+                "CPIC_REF",
+                "TARGET_GENE",
+                "TARGET_RSID",
+                "EXPECTED_EXIT_CODE",
             ]:
                 prefix = f"# {key}:"
                 if line.startswith(prefix):
-                    gt[key] = line[len(prefix):].strip()
+                    gt[key] = line[len(prefix) :].strip()
     return gt
 
 
@@ -133,9 +141,18 @@ def get_commit_metadata(repo_path, commit_sha):
     """Get commit date, message, and full SHA."""
     try:
         result = subprocess.run(
-            ["git", "-C", str(repo_path), "log", "-1",
-             "--format=%H|%ai|%s", commit_sha],
-            capture_output=True, text=True, timeout=10
+            [
+                "git",
+                "-C",
+                str(repo_path),
+                "log",
+                "-1",
+                "--format=%H|%ai|%s",
+                commit_sha,
+            ],
+            capture_output=True,
+            text=True,
+            timeout=10,
         )
         if result.returncode == 0:
             parts = result.stdout.strip().split("|", 2)
@@ -153,7 +170,9 @@ def get_all_commits(repo_path):
     """Get all commit SHAs in chronological order (oldest first)."""
     result = subprocess.run(
         ["git", "-C", str(repo_path), "log", "--format=%H", "--reverse", "main"],
-        capture_output=True, text=True, timeout=30
+        capture_output=True,
+        text=True,
+        timeout=30,
     )
     if result.returncode != 0:
         print(f"ERROR: git log failed: {result.stderr}", file=sys.stderr)
@@ -164,6 +183,7 @@ def get_all_commits(repo_path):
 # ---------------------------------------------------------------------------
 # Report analysis (extract phenotypes, drug recs, warnings from output)
 # ---------------------------------------------------------------------------
+
 
 def analyze_report(report_path):
     """Parse a generated report.md to extract phenotypes and drug classifications."""
@@ -190,7 +210,12 @@ def analyze_report(report_path):
     in_gene_table = False
     gene_table_headers = []
     for line in text.split("\n"):
-        if "Gene" in line and "Diplotype" in line and "Phenotype" in line and "|" in line:
+        if (
+            "Gene" in line
+            and "Diplotype" in line
+            and "Phenotype" in line
+            and "|" in line
+        ):
             # Parse header to find column indices
             gene_table_headers = [h.strip() for h in line.split("|") if h.strip()]
             in_gene_table = True
@@ -223,8 +248,11 @@ def analyze_report(report_path):
     # Extract drug classifications from the Complete Drug Recommendations table
     in_drug_table = False
     for line in text.split("\n"):
-        if ("Drug" in line and ("Classification" in line or "Status" in line)
-                and "|" in line):
+        if (
+            "Drug" in line
+            and ("Classification" in line or "Status" in line)
+            and "|" in line
+        ):
             in_drug_table = True
             continue
         if in_drug_table and line.startswith("|"):
@@ -245,12 +273,15 @@ def analyze_report(report_path):
     # Check for warfarin in drug recommendations (from parsed table AND text search)
     if "Warfarin" in analysis["drug_classifications"]:
         analysis["warfarin_present"] = True
-        analysis["warfarin_classification"] = analysis["drug_classifications"]["Warfarin"]
+        analysis["warfarin_classification"] = analysis["drug_classifications"][
+            "Warfarin"
+        ]
     elif "warfarin" in text.lower():
         analysis["warfarin_present"] = True
         warf_match = re.search(
             r"Warfarin.*?\b(standard|caution|avoid|indeterminate)\b",
-            text, re.IGNORECASE | re.DOTALL
+            text,
+            re.IGNORECASE | re.DOTALL,
         )
         if warf_match:
             analysis["warfarin_classification"] = warf_match.group(1).lower()
@@ -266,13 +297,23 @@ def analyze_report(report_path):
             analysis["warnings_in_report"].append(dqw_match.group(1).strip())
 
     # Check for disclaimer
-    if "research and educational" in text.lower() or "not a medical device" in text.lower():
+    if (
+        "research and educational" in text.lower()
+        or "not a medical device" in text.lower()
+    ):
         analysis["disclaimer_present"] = True
 
     # Check for specific limitation disclosures IN the report body
-    for term in ["structural variant", "cannot interpret", "CNV",
-                 "copy number", "TA-repeat", "gene duplication",
-                 "ultrarapid", "not assessed"]:
+    for term in [
+        "structural variant",
+        "cannot interpret",
+        "CNV",
+        "copy number",
+        "TA-repeat",
+        "gene duplication",
+        "ultrarapid",
+        "not assessed",
+    ]:
         if term.lower() in text.lower():
             analysis["warnings_in_report"].append(f"report_mentions: {term}")
 
@@ -281,7 +322,9 @@ def analyze_report(report_path):
     gp_match = re.search(r"(## Gene Profiles.*?)(?=\n## |\Z)", text, re.DOTALL)
     analysis["gene_table_snippet"] = gp_match.group(1)[:600] if gp_match else ""
     # Drug summary (first 400 chars from ## Drug Response Summary)
-    ds_match = re.search(r"(## Drug Response Summary.*?)(?=\n---|\n## Gene)", text, re.DOTALL)
+    ds_match = re.search(
+        r"(## Drug Response Summary.*?)(?=\n---|\n## Gene)", text, re.DOTALL
+    )
     analysis["drug_summary_snippet"] = ds_match.group(1)[:400] if ds_match else ""
     # Actionable alerts section
     aa_match = re.search(r"(### Actionable Alerts.*?)(?=\n---|\n## )", text, re.DOTALL)
@@ -325,7 +368,10 @@ def analyze_result_json(result_json_path):
                 analysis["drug_count"] += len(drugs) if isinstance(drugs, list) else 0
                 if isinstance(drugs, list):
                     for d in drugs:
-                        if isinstance(d, dict) and d.get("drug", "").lower() == "warfarin":
+                        if (
+                            isinstance(d, dict)
+                            and d.get("drug", "").lower() == "warfarin"
+                        ):
                             analysis["warfarin_in_results"] = True
     except json.JSONDecodeError as e:
         analysis["error"] = f"JSONDecodeError: {e}"
@@ -343,6 +389,7 @@ def analyze_result_json(result_json_path):
 # Scoring engine (6-category rubric)
 # ---------------------------------------------------------------------------
 
+
 def _phenotype_matches(observed, expected):
     """Flexible phenotype matching — handles verbose ground truth vs terse tool output.
 
@@ -356,10 +403,20 @@ def _phenotype_matches(observed, expected):
     if obs in exp or exp in obs:
         return True
     # Key term matching: extract metabolizer/function/sensitivity type
-    for term in ["normal metabolizer", "intermediate metabolizer", "poor metabolizer",
-                 "ultrarapid metabolizer", "normal function", "intermediate function",
-                 "poor function", "expressor", "non-expressor", "indeterminate",
-                 "not genotyped", "not_tested"]:
+    for term in [
+        "normal metabolizer",
+        "intermediate metabolizer",
+        "poor metabolizer",
+        "ultrarapid metabolizer",
+        "normal function",
+        "intermediate function",
+        "poor function",
+        "expressor",
+        "non-expressor",
+        "indeterminate",
+        "not genotyped",
+        "not_tested",
+    ]:
         if term in obs and term in exp:
             return True
     return False
@@ -372,7 +429,9 @@ def _gene_relevant_warnings(stderr_warnings, target_gene):
     return [w for w in stderr_warnings if target_gene.lower() in w.lower()]
 
 
-def score_verdict(ground_truth, report_analysis, stderr_warnings, result_json_analysis, exit_code):
+def score_verdict(
+    ground_truth, report_analysis, stderr_warnings, result_json_analysis, exit_code
+):
     """Score a single (commit, input) pair against the 6-category rubric.
 
     Scoring priority:
@@ -390,7 +449,11 @@ def score_verdict(ground_truth, report_analysis, stderr_warnings, result_json_an
     gt_behavior = gt.get("GROUND_TRUTH_BEHAVIOR", "").lower()
     hazard_drug = gt.get("HAZARD_DRUG", "").lower()
 
-    gene_data = ra.get("gene_profiles", {}).get(target_gene, {}) if target_gene and target_gene != "N/A" else {}
+    gene_data = (
+        ra.get("gene_profiles", {}).get(target_gene, {})
+        if target_gene and target_gene != "N/A"
+        else {}
+    )
     observed_phenotype = gene_data.get("phenotype", "NOT_IN_REPORT")
 
     gene_warnings = _gene_relevant_warnings(stderr_warnings, target_gene)
@@ -410,12 +473,16 @@ def score_verdict(ground_truth, report_analysis, stderr_warnings, result_json_an
     # ── Step 1: Exit code ──
     if expected_exit != 0:
         if exit_code == expected_exit:
-            return {"category": "correct_determinate",
-                    "rationale": f"Tool correctly exited with code {exit_code}",
-                    "details": details}
-        return {"category": "incorrect_determinate",
-                "rationale": f"Expected exit {expected_exit}, got {exit_code}",
-                "details": details}
+            return {
+                "category": "correct_determinate",
+                "rationale": f"Tool correctly exited with code {exit_code}",
+                "details": details,
+            }
+        return {
+            "category": "incorrect_determinate",
+            "rationale": f"Expected exit {expected_exit}, got {exit_code}",
+            "details": details,
+        }
 
     # ── Step 2: Unexpected crash — with warfarin special case ──
     if exit_code != 0:
@@ -424,115 +491,169 @@ def score_verdict(ground_truth, report_analysis, stderr_warnings, result_json_an
             if hazard_drug == "warfarin":
                 details["crash_type"] = "warfarin_tuple_json_serialization"
                 details["result_json_error"] = result_json_analysis.get("error")
-                return {"category": "omission",
-                        "rationale": f"Tool crashed (exit {exit_code}) — TypeError from tuple dict keys in JSON serialization. "
-                                     f"Warfarin silently absent from report.",
-                        "details": details}
+                return {
+                    "category": "omission",
+                    "rationale": f"Tool crashed (exit {exit_code}) — TypeError from tuple dict keys in JSON serialization. "
+                    f"Warfarin silently absent from report.",
+                    "details": details,
+                }
         details["crash"] = True
-        return {"category": "incorrect_determinate",
-                "rationale": f"Tool crashed with exit code {exit_code}",
-                "details": details}
+        return {
+            "category": "incorrect_determinate",
+            "rationale": f"Tool crashed with exit code {exit_code}",
+            "details": details,
+        }
 
     # ── Step 3: No report ──
     if not ra.get("report_exists"):
-        return {"category": "incorrect_determinate",
-                "rationale": "No report generated",
-                "details": details}
+        return {
+            "category": "incorrect_determinate",
+            "rationale": "No report generated",
+            "details": details,
+        }
 
     # ── Step 4: Omission (warfarin missing from report without crash) ──
     if hazard_drug == "warfarin" and expected_category == "omission":
         if not ra.get("warfarin_present"):
             details["warfarin_in_report"] = False
-            return {"category": "omission",
-                    "rationale": "Warfarin silently absent from report",
-                    "details": details}
+            return {
+                "category": "omission",
+                "rationale": "Warfarin silently absent from report",
+                "details": details,
+            }
 
     # ── Step 5: Category-driven scoring ──
     # For tests where we pre-specified the expected category, verify the behavior matches
 
     if expected_category == "correct_determinate":
         if _phenotype_matches(observed_phenotype, expected_phenotype):
-            return {"category": "correct_determinate",
-                    "rationale": f"Correct phenotype: {observed_phenotype}",
-                    "details": details}
-        return {"category": "incorrect_determinate",
-                "rationale": f"Wrong phenotype: {observed_phenotype} (expected match for: {expected_phenotype})",
-                "details": details}
+            return {
+                "category": "correct_determinate",
+                "rationale": f"Correct phenotype: {observed_phenotype}",
+                "details": details,
+            }
+        return {
+            "category": "incorrect_determinate",
+            "rationale": f"Wrong phenotype: {observed_phenotype} (expected match for: {expected_phenotype})",
+            "details": details,
+        }
 
     if expected_category == "correct_indeterminate":
-        if "indeterminate" in observed_phenotype.lower() or "not genotyped" in observed_phenotype.lower() \
-                or "not_tested" in observed_phenotype.lower():
-            return {"category": "correct_indeterminate",
-                    "rationale": f"Correctly returned indeterminate: {observed_phenotype}",
-                    "details": details}
+        if (
+            "indeterminate" in observed_phenotype.lower()
+            or "not genotyped" in observed_phenotype.lower()
+            or "not_tested" in observed_phenotype.lower()
+        ):
+            return {
+                "category": "correct_indeterminate",
+                "rationale": f"Correctly returned indeterminate: {observed_phenotype}",
+                "details": details,
+            }
         if "normal" in observed_phenotype.lower():
-            return {"category": "incorrect_determinate",
-                    "rationale": f"False Normal when should be Indeterminate: {observed_phenotype}",
-                    "details": details}
-        return {"category": "incorrect_indeterminate",
-                "rationale": f"Unexpected output for indeterminate test: {observed_phenotype}",
-                "details": details}
+            return {
+                "category": "incorrect_determinate",
+                "rationale": f"False Normal when should be Indeterminate: {observed_phenotype}",
+                "details": details,
+            }
+        return {
+            "category": "incorrect_indeterminate",
+            "rationale": f"Unexpected output for indeterminate test: {observed_phenotype}",
+            "details": details,
+        }
 
     if expected_category == "disclosure_failure":
         # Check: are there stderr warnings for this gene but not in the report body?
         has_relevant_stderr = len(gene_warnings) > 0 or len(all_warnings) > 0
-        has_report_disclosure = ra.get("data_quality_warning_present") or any(
-            target_gene.lower() in w.lower() for w in ra.get("warnings_in_report", [])
-        ) if target_gene and target_gene != "N/A" else False
+        has_report_disclosure = (
+            ra.get("data_quality_warning_present")
+            or any(
+                target_gene.lower() in w.lower()
+                for w in ra.get("warnings_in_report", [])
+            )
+            if target_gene and target_gene != "N/A"
+            else False
+        )
 
         if has_relevant_stderr and not has_report_disclosure:
-            return {"category": "disclosure_failure",
-                    "rationale": f"Warnings on stderr but not in report body for {target_gene}. "
-                                 f"Phenotype: {observed_phenotype}",
-                    "details": {**details, "gene_stderr_warnings": gene_warnings}}
+            return {
+                "category": "disclosure_failure",
+                "rationale": f"Warnings on stderr but not in report body for {target_gene}. "
+                f"Phenotype: {observed_phenotype}",
+                "details": {**details, "gene_stderr_warnings": gene_warnings},
+            }
         # Even if no stderr warning, if the tool can't detect this variant class and doesn't say so
-        if "cnv" in gt_behavior or "copy number" in gt_behavior or "gene duplication" in gt_behavior:
+        if (
+            "cnv" in gt_behavior
+            or "copy number" in gt_behavior
+            or "gene duplication" in gt_behavior
+        ):
             # CNV disclosure failure — tool should mention CNV limitation but doesn't
-            cnv_in_report = any("cnv" in w.lower() or "copy number" in w.lower() or "duplication" in w.lower()
-                                for w in ra.get("warnings_in_report", []))
+            cnv_in_report = any(
+                "cnv" in w.lower()
+                or "copy number" in w.lower()
+                or "duplication" in w.lower()
+                for w in ra.get("warnings_in_report", [])
+            )
             if not cnv_in_report:
-                return {"category": "disclosure_failure",
-                        "rationale": f"No CNV/duplication limitation disclosed for {target_gene}. "
-                                     f"Phenotype: {observed_phenotype}",
-                        "details": details}
+                return {
+                    "category": "disclosure_failure",
+                    "rationale": f"No CNV/duplication limitation disclosed for {target_gene}. "
+                    f"Phenotype: {observed_phenotype}",
+                    "details": details,
+                }
         # Fallback: if we expected disclosure_failure but it looks correct, maybe the tool improved
         if _phenotype_matches(observed_phenotype, expected_phenotype):
-            return {"category": "correct_determinate",
-                    "rationale": f"Tool appears to have corrected this issue. Phenotype: {observed_phenotype}",
-                    "details": details}
-        return {"category": "disclosure_failure",
-                "rationale": f"Expected disclosure failure for {target_gene}. Phenotype: {observed_phenotype}",
-                "details": details}
+            return {
+                "category": "correct_determinate",
+                "rationale": f"Tool appears to have corrected this issue. Phenotype: {observed_phenotype}",
+                "details": details,
+            }
+        return {
+            "category": "disclosure_failure",
+            "rationale": f"Expected disclosure failure for {target_gene}. Phenotype: {observed_phenotype}",
+            "details": details,
+        }
 
     if expected_category == "incorrect_determinate":
         if _phenotype_matches(observed_phenotype, expected_phenotype):
-            return {"category": "correct_determinate",
-                    "rationale": f"Tool appears to have fixed this. Phenotype: {observed_phenotype}",
-                    "details": details}
-        return {"category": "incorrect_determinate",
-                "rationale": f"Incorrect output as expected: {observed_phenotype}",
-                "details": details}
+            return {
+                "category": "correct_determinate",
+                "rationale": f"Tool appears to have fixed this. Phenotype: {observed_phenotype}",
+                "details": details,
+            }
+        return {
+            "category": "incorrect_determinate",
+            "rationale": f"Incorrect output as expected: {observed_phenotype}",
+            "details": details,
+        }
 
     if expected_category == "omission":
         # Non-warfarin omission
-        return {"category": "omission",
-                "rationale": f"Drug omission detected for {hazard_drug}",
-                "details": details}
+        return {
+            "category": "omission",
+            "rationale": f"Drug omission detected for {hazard_drug}",
+            "details": details,
+        }
 
     # ── Step 6: Fallback — no expected category ──
     if _phenotype_matches(observed_phenotype, expected_phenotype):
-        return {"category": "correct_determinate",
-                "rationale": f"Phenotype matches: {observed_phenotype}",
-                "details": details}
+        return {
+            "category": "correct_determinate",
+            "rationale": f"Phenotype matches: {observed_phenotype}",
+            "details": details,
+        }
 
-    return {"category": "incorrect_determinate",
-            "rationale": f"Unmatched phenotype: {observed_phenotype} vs {expected_phenotype}",
-            "details": details}
+    return {
+        "category": "incorrect_determinate",
+        "rationale": f"Unmatched phenotype: {observed_phenotype} vs {expected_phenotype}",
+        "details": details,
+    }
 
 
 # ---------------------------------------------------------------------------
 # Single run executor
 # ---------------------------------------------------------------------------
+
 
 def run_single(repo_path, commit_sha, input_path, output_base, commit_meta=None):
     """Execute pharmgx_reporter.py for one (commit, input) pair.
@@ -554,9 +675,12 @@ def run_single(repo_path, commit_sha, input_path, output_base, commit_meta=None)
     report_dir.mkdir(exist_ok=True)
 
     cmd = [
-        sys.executable, str(tool_path),
-        "--input", str(input_path),
-        "--output", str(report_dir),
+        sys.executable,
+        str(tool_path),
+        "--input",
+        str(input_path),
+        "--output",
+        str(report_dir),
     ]
 
     # Check if --no-enrich flag exists (may not in older commits)
@@ -564,7 +688,7 @@ def run_single(repo_path, commit_sha, input_path, output_base, commit_meta=None)
     cmd_with_flag = cmd + ["--no-enrich"]
 
     # Record start time
-    start_time = datetime.now(timezone.utc)
+    datetime.now(timezone.utc)
     wall_start = time.monotonic()
 
     # Execute — try with --no-enrich first, fall back without it for older commits
@@ -572,7 +696,8 @@ def run_single(repo_path, commit_sha, input_path, output_base, commit_meta=None)
     try:
         result = subprocess.run(
             cmd_with_flag,
-            capture_output=True, text=True,
+            capture_output=True,
+            text=True,
             timeout=60,
             cwd=str(repo_path),
             env=env,
@@ -582,16 +707,17 @@ def run_single(repo_path, commit_sha, input_path, output_base, commit_meta=None)
         if result.returncode == 2 and "unrecognized arguments" in result.stderr:
             result = subprocess.run(
                 cmd,
-                capture_output=True, text=True,
+                capture_output=True,
+                text=True,
                 timeout=60,
                 cwd=str(repo_path),
                 env=env,
             )
             used_no_enrich = False
     except subprocess.TimeoutExpired:
-        result = type("R", (), {
-            "returncode": -1, "stdout": "", "stderr": "TIMEOUT after 60s"
-        })()
+        result = type(
+            "R", (), {"returncode": -1, "stdout": "", "stderr": "TIMEOUT after 60s"}
+        )()
         used_no_enrich = True
 
     wall_elapsed = time.monotonic() - wall_start
@@ -612,8 +738,11 @@ def run_single(repo_path, commit_sha, input_path, output_base, commit_meta=None)
 
     # Score
     verdict = score_verdict(
-        ground_truth, report_analysis, stderr_warnings,
-        result_json_analysis, result.returncode
+        ground_truth,
+        report_analysis,
+        stderr_warnings,
+        result_json_analysis,
+        result.returncode,
     )
 
     # Build comprehensive verdict JSON
@@ -621,26 +750,22 @@ def run_single(repo_path, commit_sha, input_path, output_base, commit_meta=None)
         "benchmark_version": BENCHMARK_VERSION,
         "timestamp_utc": end_time.isoformat(),
         "wall_clock_seconds": round(wall_elapsed, 3),
-
         "commit": {
             "sha": commit_sha,
             "short": commit_short,
             **(commit_meta or {}),
         },
-
         "input": {
             "file": str(Path(input_path).name),
             "path": str(input_path),
             "sha256": sha256_file(input_path),
         },
-
         "ground_truth": ground_truth,
         "ground_truth_references": {
             ref_key: GROUND_TRUTH_REFS.get(ref_key, "UNKNOWN")
             for ref_key in [ground_truth.get("CPIC_REF", "")]
             if ref_key
         },
-
         "execution": {
             "exit_code": result.returncode,
             "used_no_enrich": used_no_enrich,
@@ -649,7 +774,6 @@ def run_single(repo_path, commit_sha, input_path, output_base, commit_meta=None)
             "stderr_warnings": stderr_warnings,
             "stderr_sha256": sha256_string(result.stderr),
         },
-
         "outputs": {
             "report_md": {
                 "exists": report_md.exists(),
@@ -662,11 +786,8 @@ def run_single(repo_path, commit_sha, input_path, output_base, commit_meta=None)
             },
             "result_json": result_json_analysis,
         },
-
         "report_analysis": report_analysis,
-
         "verdict": verdict,
-
         "environment": {
             "python_version": platform.python_version(),
             "platform": platform.platform(),
@@ -686,6 +807,7 @@ def run_single(repo_path, commit_sha, input_path, output_base, commit_meta=None)
 # Batch executor
 # ---------------------------------------------------------------------------
 
+
 def run_benchmark(repo_path, commits, input_files, output_base):
     """Run full benchmark matrix: commits × inputs."""
     all_verdicts = []
@@ -695,30 +817,44 @@ def run_benchmark(repo_path, commits, input_files, output_base):
     # Capture starting ref for safe restoration (Codex recommendation)
     starting_ref_result = subprocess.run(
         ["git", "-C", str(repo_path), "rev-parse", "--abbrev-ref", "HEAD"],
-        capture_output=True, text=True
+        capture_output=True,
+        text=True,
     )
-    starting_ref = starting_ref_result.stdout.strip() if starting_ref_result.returncode == 0 else "main"
+    starting_ref = (
+        starting_ref_result.stdout.strip()
+        if starting_ref_result.returncode == 0
+        else "main"
+    )
     if starting_ref == "HEAD":
         # Detached HEAD — capture full SHA
         starting_ref_result = subprocess.run(
             ["git", "-C", str(repo_path), "rev-parse", "HEAD"],
-            capture_output=True, text=True
+            capture_output=True,
+            text=True,
         )
         starting_ref = starting_ref_result.stdout.strip()
 
     try:
-        return _run_benchmark_inner(repo_path, commits, input_files, output_base,
-                                     all_verdicts, total_runs, run_count)
+        return _run_benchmark_inner(
+            repo_path,
+            commits,
+            input_files,
+            output_base,
+            all_verdicts,
+            total_runs,
+            run_count,
+        )
     finally:
         # Always restore to starting ref
         subprocess.run(
             ["git", "-C", str(repo_path), "checkout", starting_ref, "--quiet"],
-            capture_output=True
+            capture_output=True,
         )
 
 
-def _run_benchmark_inner(repo_path, commits, input_files, output_base,
-                          all_verdicts, total_runs, run_count):
+def _run_benchmark_inner(
+    repo_path, commits, input_files, output_base, all_verdicts, total_runs, run_count
+):
     """Inner benchmark loop (wrapped for safe git restore)."""
     for commit_sha in commits:
         # Get commit metadata
@@ -726,22 +862,28 @@ def _run_benchmark_inner(repo_path, commits, input_files, output_base,
         commit_short = commit_sha[:8]
 
         # Checkout commit
-        print(f"\n{'='*60}")
+        print(f"\n{'=' * 60}")
         print(f"COMMIT: {commit_short} ({commit_meta.get('date', '?')})")
         print(f"  {commit_meta.get('message', '?')}")
-        print(f"{'='*60}")
+        print(f"{'=' * 60}")
 
         checkout_result = subprocess.run(
             ["git", "-C", str(repo_path), "checkout", commit_sha, "--quiet"],
-            capture_output=True, text=True
+            capture_output=True,
+            text=True,
         )
         if checkout_result.returncode != 0:
-            print(f"  WARNING: checkout failed: {checkout_result.stderr}", file=sys.stderr)
+            print(
+                f"  WARNING: checkout failed: {checkout_result.stderr}", file=sys.stderr
+            )
             # Record failure for all inputs at this commit
             for input_path in input_files:
                 verdict = {
                     "commit": {"sha": commit_sha, "short": commit_short, **commit_meta},
-                    "input": {"file": Path(input_path).name, "sha256": sha256_file(input_path)},
+                    "input": {
+                        "file": Path(input_path).name,
+                        "sha256": sha256_file(input_path),
+                    },
                     "verdict": {
                         "category": "incorrect_determinate",
                         "rationale": f"Git checkout failed: {checkout_result.stderr.strip()}",
@@ -758,8 +900,7 @@ def _run_benchmark_inner(repo_path, commits, input_files, output_base,
 
             try:
                 verdict = run_single(
-                    repo_path, commit_sha, input_path,
-                    output_base, commit_meta
+                    repo_path, commit_sha, input_path, output_base, commit_meta
                 )
                 cat = verdict["verdict"]["category"]
                 symbol = {
@@ -774,15 +915,17 @@ def _run_benchmark_inner(repo_path, commits, input_files, output_base,
                 all_verdicts.append(verdict)
             except Exception as e:
                 print(f"ERROR: {e}")
-                all_verdicts.append({
-                    "commit": {"sha": commit_sha, "short": commit_short},
-                    "input": {"file": Path(input_path).name},
-                    "verdict": {
-                        "category": "incorrect_determinate",
-                        "rationale": f"Harness exception: {e}",
-                        "details": {"exception": str(e)},
-                    },
-                })
+                all_verdicts.append(
+                    {
+                        "commit": {"sha": commit_sha, "short": commit_short},
+                        "input": {"file": Path(input_path).name},
+                        "verdict": {
+                            "category": "incorrect_determinate",
+                            "rationale": f"Harness exception: {e}",
+                            "details": {"exception": str(e)},
+                        },
+                    }
+                )
 
     # Git restore is handled by the caller's finally block
     return all_verdicts
@@ -803,12 +946,14 @@ def build_heatmap_data(verdicts):
         category = v.get("verdict", {}).get("category", "unknown")
 
         if commit_sha not in seen_commits:
-            commits.append({
-                "sha": commit_sha,
-                "short": commit_sha[:8],
-                "date": v.get("commit", {}).get("date", ""),
-                "message": v.get("commit", {}).get("message", ""),
-            })
+            commits.append(
+                {
+                    "sha": commit_sha,
+                    "short": commit_sha[:8],
+                    "date": v.get("commit", {}).get("date", ""),
+                    "message": v.get("commit", {}).get("message", ""),
+                }
+            )
             seen_commits.add(commit_sha)
 
         if test_name not in seen_tests:
@@ -825,12 +970,27 @@ def build_heatmap_data(verdicts):
         "test_cases": test_cases,
         "matrix": matrix,
         "category_legend": {
-            "correct_determinate": {"color": "#22c55e", "label": "Correct (determinate)"},
-            "correct_indeterminate": {"color": "#86efac", "label": "Correct (indeterminate)"},
-            "incorrect_determinate": {"color": "#ef4444", "label": "WRONG (false Normal)"},
-            "incorrect_indeterminate": {"color": "#fbbf24", "label": "Unnecessary indeterminate"},
+            "correct_determinate": {
+                "color": "#22c55e",
+                "label": "Correct (determinate)",
+            },
+            "correct_indeterminate": {
+                "color": "#86efac",
+                "label": "Correct (indeterminate)",
+            },
+            "incorrect_determinate": {
+                "color": "#ef4444",
+                "label": "WRONG (false Normal)",
+            },
+            "incorrect_indeterminate": {
+                "color": "#fbbf24",
+                "label": "Unnecessary indeterminate",
+            },
             "omission": {"color": "#1e1b4b", "label": "Drug MISSING from report"},
-            "disclosure_failure": {"color": "#f97316", "label": "Warning on stderr only"},
+            "disclosure_failure": {
+                "color": "#f97316",
+                "label": "Warning on stderr only",
+            },
         },
     }
 
@@ -851,7 +1011,9 @@ def build_summary(verdicts):
     for sha, vlist in by_commit.items():
         cats = Counter(v.get("verdict", {}).get("category", "unknown") for v in vlist)
         total = len(vlist)
-        pass_count = cats.get("correct_determinate", 0) + cats.get("correct_indeterminate", 0)
+        pass_count = cats.get("correct_determinate", 0) + cats.get(
+            "correct_indeterminate", 0
+        )
         summaries[sha[:8]] = {
             "total_tests": total,
             "pass": pass_count,
@@ -895,32 +1057,40 @@ def build_summary(verdicts):
 # Main
 # ---------------------------------------------------------------------------
 
+
 def main():
     parser = argparse.ArgumentParser(
         description="ClawBio PharmGx Benchmark Harness",
         formatter_class=argparse.RawDescriptionHelpFormatter,
     )
     parser.add_argument(
-        "--repo", type=Path,
+        "--repo",
+        type=Path,
         default=Path(__file__).resolve().parent.parent.parent / "ClawBio",
-        help="Path to ClawBio repo (default: ../../ClawBio relative to this script)"
+        help="Path to ClawBio repo (default: ../../ClawBio relative to this script)",
     )
     parser.add_argument(
-        "--commits", type=str, default=None,
-        help="Comma-separated commit SHAs (use HEAD for current)"
+        "--commits",
+        type=str,
+        default=None,
+        help="Comma-separated commit SHAs (use HEAD for current)",
     )
     parser.add_argument(
-        "--all-commits", action="store_true",
-        help="Run against ALL commits in history (longitudinal sweep)"
+        "--all-commits",
+        action="store_true",
+        help="Run against ALL commits in history (longitudinal sweep)",
     )
     parser.add_argument(
-        "--inputs", type=Path,
+        "--inputs",
+        type=Path,
         default=Path(__file__).resolve().parent / "test_inputs",
-        help="Directory of test input files, or a single file"
+        help="Directory of test input files, or a single file",
     )
     parser.add_argument(
-        "--output", type=Path, default=None,
-        help="Output directory (default: results/<timestamp>)"
+        "--output",
+        type=Path,
+        default=None,
+        help="Output directory (default: results/<timestamp>)",
     )
 
     args = parser.parse_args()
@@ -938,7 +1108,8 @@ def main():
             if c == "HEAD":
                 result = subprocess.run(
                     ["git", "-C", str(repo_path), "rev-parse", "HEAD"],
-                    capture_output=True, text=True
+                    capture_output=True,
+                    text=True,
                 )
                 c = result.stdout.strip()
             commits.append(c)
@@ -962,7 +1133,9 @@ def main():
 
     # Create output directory
     timestamp = datetime.now(timezone.utc).strftime("%Y%m%d_%H%M%S")
-    output_base = (args.output or Path(__file__).resolve().parent / "results" / timestamp).resolve()
+    output_base = (
+        args.output or Path(__file__).resolve().parent / "results" / timestamp
+    ).resolve()
     output_base.mkdir(parents=True, exist_ok=True)
 
     # Write manifest
@@ -1013,22 +1186,24 @@ def main():
         json.dump(verdicts, f, indent=2, default=str)
 
     # Print summary
-    print(f"\n{'='*60}")
+    print(f"\n{'=' * 60}")
     print("BENCHMARK COMPLETE")
-    print(f"{'='*60}")
+    print(f"{'=' * 60}")
     for sha_short, s in summary.items():
         if sha_short == "_meta":
             continue
-        print(f"\n  {sha_short} ({s['commit_date'][:10]}): "
-              f"{s['pass']}/{s['total_tests']} pass ({s['pass_rate']}%)")
+        print(
+            f"\n  {sha_short} ({s['commit_date'][:10]}): "
+            f"{s['pass']}/{s['total_tests']} pass ({s['pass_rate']}%)"
+        )
         for cat, count in sorted(s["categories"].items()):
             print(f"    {cat}: {count}")
 
     print(f"\nResults: {output_base}")
-    print(f"  manifest.json       — run metadata")
-    print(f"  all_verdicts.json   — every (commit, input) verdict")
-    print(f"  heatmap_data.json   — visualization-ready matrix")
-    print(f"  summary.json        — per-commit statistics")
+    print("  manifest.json       — run metadata")
+    print("  all_verdicts.json   — every (commit, input) verdict")
+    print("  heatmap_data.json   — visualization-ready matrix")
+    print("  summary.json        — per-commit statistics")
 
 
 if __name__ == "__main__":

@@ -1,5 +1,5 @@
-// ClawBio PharmGx Audit — LinkedIn Slide Deck
-// 6 slides, landscape format, professional design
+// ClawBio PharmGx Audit — LinkedIn Carousel (Portrait)
+// 6 slides: concrete findings with specific variants and results
 
 #let accent = rgb("#1e3a5f")
 #let accent-light = rgb("#4a90d9")
@@ -8,10 +8,13 @@
 #let warn = rgb("#e67e22")
 #let muted = rgb("#6c757d")
 #let bg-light = rgb("#f8f9fa")
+#let code-bg = rgb("#1e1e2e")
+#let code-fg = rgb("#cdd6f4")
 
 #set page(
-  paper: "presentation-16-9",
-  margin: (x: 2.2cm, y: 1.8cm),
+  width: 21cm,
+  height: 26.25cm,
+  margin: (x: 2cm, y: 2cm),
   fill: white,
 )
 #set text(font: "Libertinus Serif", size: 14pt, fill: rgb("#2c3e50"))
@@ -23,358 +26,386 @@
 
 #align(center + horizon)[
   #block(width: 100%)[
-    #v(0.5cm)
-    #text(28pt, weight: "bold", fill: accent)[
-      When a PGx Tool Says "Normal"
-    ]
-    #v(0.3cm)
-    #text(22pt, fill: accent-light)[
-      And the Patient Isn't
-    ]
-    #v(1.2cm)
-    #text(13pt, fill: muted)[
-      A reproducible safety benchmark of ClawBio's PharmGx Reporter
+    #text(30pt, weight: "bold", fill: accent)[
+      Pharmacogenomics Safety Audit
     ]
     #v(0.4cm)
+    #text(20pt, fill: accent-light)[
+      ClawBio PharmGx Reporter
+    ]
+    #v(2cm)
+    #text(15pt, fill: rgb("#2c3e50"))[
+      18 synthetic test cases scored against \
+      CPIC guidelines across 3 git commits
+    ]
+    #v(1.5cm)
+    #block(fill: bg-light, inset: 16pt, radius: 8pt, width: 85%)[
+      #text(14pt)[
+        *44% pass rate* --- identical before and after \
+        a claimed patch of 32 safety fixes. \
+        137 subsequent commits changed no safety outcomes.
+      ]
+    ]
+    #v(1.5cm)
+    #text(12pt, fill: muted)[
+      Ground truth: CPIC guidelines, PharmVar \
+      allele definitions, FDA drug labeling
+    ]
+    #v(0.6cm)
     #line(length: 30%, stroke: 0.5pt + accent-light)
     #v(0.4cm)
-    #text(12pt, fill: muted)[
-      3 April 2026 #h(1.5cm) 18 synthetic test cases #h(1.5cm) 3 commits #h(1.5cm) 6-category rubric
-    ]
-    #v(0.3cm)
-    #text(11pt, style: "italic", fill: muted)[
-      Ground truth: CPIC guidelines, PharmVar allele definitions, FDA drug labeling
-    ]
+    #text(11pt, fill: muted)[April 2026]
   ]
 ]
 
 #pagebreak()
 
 // ──────────────────────────────────────────────
-// SLIDE 2 — The Tool and the Stakes
+// SLIDE 2 — Warfarin: the drug that disappears
 // ──────────────────────────────────────────────
 
-#text(22pt, weight: "bold", fill: accent)[What the tool does]
+#text(24pt, weight: "bold", fill: danger)[Finding 1: Warfarin silently disappears]
+#v(0.1cm)
+#text(12pt, fill: muted)[Anticoagulant. Narrow therapeutic index. Wrong dose causes bleeding or stroke.]
+#v(0.5cm)
+
+#text(14pt)[
+  When a patient's VKORC1 genotype is missing, the tool should report
+  warfarin as *indeterminate*. Instead:
+]
 #v(0.4cm)
+
+#block(fill: code-bg, inset: 14pt, radius: 6pt, width: 100%)[
+  #text(11pt, font: "DejaVu Sans Mono", fill: code-fg)[
+    \# pharmgx\_reporter.py, line 1007 \
+    return "indeterminate", "VKORC1 not genotyped..."  \#\# returns TUPLE \
+    \
+    \# line 1029 \
+    classification = get\_warfarin\_rec(profiles)  \#\# tuple, not string \
+    results.setdefault(classification, []).append(...)  \#\# tuple as dict key
+  ]
+]
+#v(0.3cm)
+
+#text(14pt)[
+  The report iterates `results["standard"]`, `results["avoid"]`, etc.
+  None match a tuple key. *Warfarin is silently absent.*
+  Then `json.dumps()` crashes:
+]
+#v(0.3cm)
+
+#block(fill: rgb("#fef3f3"), inset: 14pt, radius: 6pt, width: 100%)[
+  #text(11pt, font: "DejaVu Sans Mono", fill: danger)[
+    TypeError: keys must be str, int, float, bool or None, not tuple
+  ]
+]
+#v(0.5cm)
 
 #grid(
   columns: (1fr, 1fr),
-  column-gutter: 1.5cm,
+  column-gutter: 1cm,
   [
-    #text(13pt)[
-      ClawBio's *PharmGx Reporter* takes a 23andMe genotype file,
-      calls star alleles for 12 pharmacogenes, and outputs drug
-      recommendations for 51 medications.
+    #block(fill: bg-light, inset: 12pt, radius: 6pt, width: 100%)[
+      #text(13pt, weight: "bold", fill: accent)[Report output:]
+      #v(0.2cm)
+      #text(13pt)[
+        *50 drugs assessed* \
+        (should be 51 --- warfarin missing) \
+        No error message. No warning.
+      ]
     ]
-    #v(0.5cm)
-    #text(13pt)[
-      The drugs include *codeine* (opioid), *warfarin* (anticoagulant),
-      *irinotecan* (chemotherapy), and *fluorouracil* (5-FU) --- all
-      narrow-therapeutic-index medications where wrong dosing can be fatal.
+  ],
+  [
+    #block(fill: bg-light, inset: 12pt, radius: 6pt, width: 100%)[
+      #text(13pt, weight: "bold", fill: accent)[Benchmark verdict:]
+      #v(0.2cm)
+      #text(13pt, fill: danger, weight: "bold")[OMISSION]
+      #text(13pt)[ --- drug silently \
+      absent from report. Present in \
+      *all 3 commits tested*.]
     ]
-    #v(0.5cm)
-    #text(13pt)[
-      The tool is labeled "research and educational purposes only."
-      It produces reports with clinical-looking headers like
-      *"AVOID --- DO NOT USE"* and *"Normal Metabolizer."*
+  ],
+)
+#v(0.5cm)
+#text(13pt, style: "italic", fill: muted)[
+  This is not a regression. The warfarin handler never worked correctly.
+]
+
+#pagebreak()
+
+// ──────────────────────────────────────────────
+// SLIDE 3 — UGT1A1*28: stderr vs report
+// ──────────────────────────────────────────────
+
+#text(24pt, weight: "bold", fill: warn)[Finding 2: The warning nobody reads]
+#v(0.1cm)
+#text(12pt, fill: muted)[UGT1A1\*28 (rs8175347) --- irinotecan toxicity. Oncology drug. Severe neutropenia risk.]
+#v(0.5cm)
+
+#text(14pt)[
+  UGT1A1\*28 is a TA-repeat polymorphism that DTC arrays cannot represent
+  as a two-character genotype. The tool *knows this* --- it prints a warning.
+  But the warning goes to stderr. The report says Normal.
+]
+#v(0.5cm)
+
+#grid(
+  columns: (1fr, 1fr),
+  column-gutter: 0.8cm,
+  [
+    #text(14pt, weight: "bold", fill: danger)[What the user sees]
+    #text(12pt, fill: muted)[ (report.md)]
+    #v(0.3cm)
+    #block(fill: bg-light, inset: 12pt, radius: 6pt, width: 100%)[
+      #text(12pt, font: "DejaVu Sans Mono")[
+        Gene: UGT1A1 \
+        Diplotype: \*1/\*1 \
+        Phenotype: *Normal Metabolizer* \
+        \
+        Irinotecan: *Standard dose*
+      ]
+    ]
+  ],
+  [
+    #text(14pt, weight: "bold", fill: muted)[What the terminal shows]
+    #text(12pt, fill: muted)[ (stderr)]
+    #v(0.3cm)
+    #block(fill: code-bg, inset: 12pt, radius: 6pt, width: 100%)[
+      #text(11pt, font: "DejaVu Sans Mono", fill: warn)[
+        WARNING: UGT1A1 rs8175347 \
+        has structural variant \
+        alt=TA7, cannot interpret \
+        from DTC data
+      ]
+    ]
+  ],
+)
+#v(0.6cm)
+
+#block(fill: rgb("#fff8f0"), inset: 14pt, radius: 6pt, width: 100%)[
+  #text(14pt)[
+    The same pattern affects three structural variants:
+  ]
+  #v(0.3cm)
+  #table(
+    columns: (auto, auto, auto, auto),
+    align: (left, left, left, left),
+    inset: 8pt,
+    stroke: none,
+    fill: (x, y) => if y == 0 { warn.lighten(80%) } else { none },
+    [*Variant*], [*Gene*], [*Drug affected*], [*Risk*],
+    [rs8175347 (TA7)], [UGT1A1\*28], [Irinotecan], [Severe neutropenia],
+    [rs5030655 (DEL)], [CYP2D6\*6], [Codeine], [Respiratory depression],
+    [rs41303343 (INS)], [CYP3A5\*7], [Tacrolimus], [Nephrotoxicity],
+  )
+  #v(0.2cm)
+  #text(13pt)[
+    All three: stderr warning present, report says *Normal Metabolizer*.
+  ]
+]
+#v(0.5cm)
+#text(13pt, weight: "bold")[Benchmark verdict: #text(fill: warn)[DISCLOSURE FAILURE] --- 5 of 18 tests]
+
+#pagebreak()
+
+// ──────────────────────────────────────────────
+// SLIDE 4 — DPYD partial coverage: decorative annotation
+// ──────────────────────────────────────────────
+
+#text(24pt, weight: "bold", fill: accent)[Finding 3: The annotation that does nothing]
+#v(0.1cm)
+#text(12pt, fill: muted)[DPYD + fluorouracil (5-FU). Standard dose in DPYD-deficient patients: 3--5% mortality.]
+#v(0.5cm)
+
+#text(14pt)[
+  DPYD has 3 SNPs in the panel. When only 1 is tested,
+  the tool annotates the diplotype:
+]
+#v(0.3cm)
+
+#align(center)[
+  #block(fill: bg-light, inset: 16pt, radius: 8pt)[
+    #text(16pt, font: "DejaVu Sans Mono")[
+      "Normal/Normal (1/3 SNPs tested)"
+    ]
+  ]
+]
+#v(0.4cm)
+
+#text(14pt)[
+  This *looks* like transparency. But two lines later in the code:
+]
+#v(0.3cm)
+
+#block(fill: code-bg, inset: 14pt, radius: 6pt, width: 100%)[
+  #text(11.5pt, font: "DejaVu Sans Mono", fill: code-fg)[
+    \# pharmgx\_reporter.py, line 950 \
+    match\_str = norm.split("(")[0].strip() \
+    \
+    \# "Normal/Normal (1/3 SNPs tested)" becomes "Normal/Normal" \
+    \# Matches phenotype table entry -> "Normal Metabolizer"
+  ]
+]
+#v(0.5cm)
+
+#text(14pt)[
+  The parenthetical annotation is *created* at line 913
+  and *stripped* at line 950. It cannot affect the phenotype assignment.
+]
+#v(0.5cm)
+
+#grid(
+  columns: (1fr, 1fr),
+  column-gutter: 1cm,
+  [
+    #block(fill: rgb("#fef3f3"), inset: 14pt, radius: 6pt, width: 100%)[
+      #text(14pt, weight: "bold", fill: danger)[Report output:]
+      #v(0.2cm)
+      #text(13pt)[
+        DPYD: Normal Metabolizer \
+        Fluorouracil: *Standard dose* \
+        Capecitabine: *Standard dose*
+      ]
+      #v(0.2cm)
+      #text(11pt, fill: muted)[
+        Missing: rs55886062 (\*13), rs67376798 (D949V)
+      ]
     ]
   ],
   [
     #block(fill: bg-light, inset: 14pt, radius: 6pt, width: 100%)[
-      #text(12pt, weight: "bold", fill: accent)[The question we tested:]
-      #v(0.3cm)
-      #text(13pt)[
-        When the tool *doesn't know* the answer ---
-        because the input data can't represent certain
-        variant types --- does it say so?
-      ]
-      #v(0.5cm)
-      #text(13pt)[
-        Or does it say #text(fill: danger, weight: "bold")["Normal Metabolizer"]?
-      ]
-    ]
-    #v(0.8cm)
-    #block(fill: rgb("#fef3f3"), inset: 14pt, radius: 6pt, width: 100%)[
-      #text(12pt, fill: danger, weight: "bold")[Key populations at risk:]
+      #text(14pt, weight: "bold", fill: accent)[What CPIC requires:]
       #v(0.2cm)
-      #text(12pt)[
-        CYP2D6 Ultrarapid Metabolizers: up to *29%* in some African populations.
-        The tool has no way to detect this status.
-        It never says so.
+      #text(13pt)[
+        Incomplete DPYD coverage \
+        should produce: *Indeterminate* \
+        or prominent safety warning.
+      ]
+      #v(0.2cm)
+      #text(11pt, fill: muted)[
+        CPIC Fluoropyrimidine Guideline v3.0
       ]
     ]
   ],
 )
+#v(0.5cm)
+#text(13pt, weight: "bold")[Benchmark verdict: #text(fill: danger)[INCORRECT DETERMINATE] --- false Normal]
 
 #pagebreak()
 
 // ──────────────────────────────────────────────
-// SLIDE 3 — Three Failure Modes
+// SLIDE 5 — Results matrix
 // ──────────────────────────────────────────────
 
-#text(22pt, weight: "bold", fill: accent)[Three failure modes, one pattern]
-#v(0.3cm)
-#text(12pt, fill: muted)[Each independently confirmed across all commits. None fixed by the claimed patch.]
+#text(24pt, weight: "bold", fill: accent)[Results: 18 tests, 3 commits]
 #v(0.5cm)
 
-#grid(
-  columns: (1fr, 1fr, 1fr),
-  column-gutter: 0.8cm,
-  [
-    #block(fill: rgb("#fef3f3"), inset: 12pt, radius: 6pt, width: 100%, height: 10cm)[
-      #text(13pt, weight: "bold", fill: danger)[1. Silent Drug Omission]
-      #v(0.3cm)
-      #text(11.5pt)[
-        When VKORC1 is not genotyped, `get_warfarin_rec()` returns a
-        Python *tuple* instead of a string.
-      ]
-      #v(0.2cm)
-      #text(11.5pt)[
-        `lookup_drugs()` uses this as a dictionary key.
-        The key is a tuple. The report iterates string keys.
-      ]
-      #v(0.2cm)
-      #text(11.5pt, weight: "bold")[
-        Warfarin silently disappears.
-      ]
-      #v(0.2cm)
-      #text(11.5pt)[
-        Then `json.dumps()` crashes with `TypeError`. The report was already written --- without warfarin.
-      ]
-      #v(0.3cm)
-      #text(10pt, fill: muted)[
-        Present in all 3 commits tested.
-        Not a regression --- never worked.
-      ]
-    ]
-  ],
-  [
-    #block(fill: rgb("#fff8f0"), inset: 12pt, radius: 6pt, width: 100%, height: 10cm)[
-      #text(13pt, weight: "bold", fill: warn)[2. Non-Functional Transparency]
-      #v(0.3cm)
-      #text(11.5pt)[
-        The tool cannot interpret DEL/INS/TA-repeat variants from DTC data. It *knows this* --- line 899 prints a `WARNING` to stderr.
-      ]
-      #v(0.2cm)
-      #text(11.5pt)[
-        But the report says *Normal Metabolizer*.
-      ]
-      #v(0.2cm)
-      #text(11.5pt)[
-        The warning goes where users don't look.
-        The phenotype goes where they do.
-      ]
-      #v(0.3cm)
-      #text(11.5pt)[
-        This affects *irinotecan* (UGT1A1\*28), *codeine* (CYP2D6\*6), and *tacrolimus* (CYP3A5\*7).
-      ]
-      #v(0.3cm)
-      #text(10pt, fill: muted)[
-        Patch added the stderr warning.
-        Did not change the report output.
-      ]
-    ]
-  ],
-  [
-    #block(fill: rgb("#f0f7ff"), inset: 12pt, radius: 6pt, width: 100%, height: 10cm)[
-      #text(13pt, weight: "bold", fill: accent)[3. False Reassurance]
-      #v(0.3cm)
-      #text(11.5pt)[
-        When 1 of 3 DPYD SNPs is tested and found normal, the diplotype is annotated: `"Normal/Normal (1/3 SNPs tested)"`
-      ]
-      #v(0.2cm)
-      #text(11.5pt)[
-        This *looks* like transparency.
-      ]
-      #v(0.2cm)
-      #text(11.5pt)[
-        But `call_phenotype()` strips the parenthetical before matching. The phenotype becomes *Normal Metabolizer*.
-      ]
-      #v(0.2cm)
-      #text(11.5pt)[
-        5-FU recommendation: *standard dose*.
-      ]
-      #v(0.3cm)
-      #text(10pt, fill: muted)[
-        The annotation is decorative.
-        The decision logic ignores it.
-      ]
-    ]
-  ],
-)
+#show table.cell.where(y: 0): set text(weight: "bold", fill: white, size: 11pt)
 
-#pagebreak()
-
-// ──────────────────────────────────────────────
-// SLIDE 4 — The Three-Commit Comparison
-// ──────────────────────────────────────────────
-
-#text(22pt, weight: "bold", fill: accent)[The patch that changed nothing]
-#v(0.3cm)
-#text(12pt, fill: muted)[18 synthetic test cases scored against CPIC ground truth across 3 commits]
-#v(0.5cm)
-
-#show table.cell.where(y: 0): set text(weight: "bold", fill: white, size: 10pt)
-
-#figure(
-  table(
-    columns: (3.5cm, auto, auto, auto, auto, auto, auto),
-    align: (left, center, center, center, center, center, center),
-    inset: 8pt,
+#align(center)[
+  #table(
+    columns: (5cm, auto, auto, auto, auto, auto),
+    align: (left, center, center, center, center, center),
+    inset: 10pt,
     fill: (x, y) => if y == 0 { accent } else if calc.odd(y) { bg-light } else { white },
     stroke: none,
-    [Commit], [Date], [Pass], [Disclosure], [Incorrect], [Omission], [Pass Rate],
-    [Pre-patch], [Feb 28], [8], [3], [5], [2], [44%],
-    [*Patch* `bbad73c`], [Feb 28], [8], [5], [3], [2], [44%],
-    [*HEAD* `3c9383b`], [Mar 10], [8], [5], [3], [2], [44%],
-  ),
-)
-
+    [Commit], [Pass], [Disclosure], [Incorrect], [Omission], [Rate],
+    [Pre-patch (Feb 28)], [8], [3], [5], [2], [*44%*],
+    [Patch `bbad73c`], [8], [5], [3], [2], [*44%*],
+    [HEAD `3c9383b`], [8], [5], [3], [2], [*44%*],
+  )
+]
 #v(0.5cm)
 
-#grid(
-  columns: (1fr, 1fr),
-  column-gutter: 1.5cm,
-  [
-    #block(fill: bg-light, inset: 12pt, radius: 6pt)[
-      #text(12pt, weight: "bold", fill: accent)[What the patch fixed (2 tests):]
-      #v(0.2cm)
-      #text(11.5pt)[
-        - Empty file no longer produces a full report \
-        - Completely absent DPYD now returns Indeterminate
-      ]
-    ]
-  ],
-  [
-    #block(fill: rgb("#fef3f3"), inset: 12pt, radius: 6pt)[
-      #text(12pt, weight: "bold", fill: danger)[What persists across all 3 commits:]
-      #v(0.2cm)
-      #text(11.5pt)[
-        - Warfarin silently missing (TypeError crash) \
-        - UGT1A1\*28 partial coverage #sym.arrow Normal \
-        - DPYD 1/3 SNPs #sym.arrow Normal Metabolizer \
-        - CYP2D6 CNV never disclosed
-      ]
-    ]
-  ],
+#text(14pt)[
+  The patch claimed 32 fixes. On 18 safety-critical tests,
+  it changed the outcome for *2*. Both were edge cases
+  (empty file, fully absent gene). Every clinically dangerous
+  failure mode is identical before and after.
+]
+#v(0.5cm)
+
+#text(15pt, weight: "bold", fill: accent)[Per-test breakdown (safety-critical tests only)]
+#v(0.2cm)
+
+#show table.cell.where(y: 0): set text(weight: "bold", size: 9.5pt)
+
+#table(
+  columns: (4cm, 2cm, 2.8cm, 2.8cm, 2.8cm),
+  align: (left, left, center, center, center),
+  inset: 6pt,
+  stroke: 0.3pt + rgb("#dee2e6"),
+  fill: (x, y) => if y == 0 { bg-light } else { none },
+  [*Test*], [*Gene*], [*Pre-patch*], [*Patch*], [*HEAD*],
+  [warfarin\_missing], [VKORC1], [#text(fill: rgb("#1e1b4b"))[OMIT]], [#text(fill: rgb("#1e1b4b"))[OMIT]], [#text(fill: rgb("#1e1b4b"))[OMIT]],
+  [ugt1a1\_28\_hom], [UGT1A1], [#text(fill: warn)[DISC]], [#text(fill: warn)[DISC]], [#text(fill: warn)[DISC]],
+  [dpyd\_partial], [DPYD], [#text(fill: danger)[FAIL]], [#text(fill: danger)[FAIL]], [#text(fill: danger)[FAIL]],
+  [cyp2d6\_del], [CYP2D6], [#text(fill: warn)[DISC]], [#text(fill: warn)[DISC]], [#text(fill: warn)[DISC]],
+  [tpmt\_compound], [TPMT], [#text(fill: danger)[FAIL]], [#text(fill: danger)[FAIL]], [#text(fill: danger)[FAIL]],
+  [cyp3a5\_7\_ins], [CYP3A5], [#text(fill: safe)[PASS]], [#text(fill: warn)[DISC]], [#text(fill: warn)[DISC]],
+  [dpyd\_absent], [DPYD], [#text(fill: danger)[FAIL]], [#text(fill: safe)[PASS]], [#text(fill: safe)[PASS]],
+  [empty\_no\_pgx], [---], [#text(fill: danger)[FAIL]], [#text(fill: safe)[PASS]], [#text(fill: safe)[PASS]],
 )
+#v(0.15cm)
+#text(10pt, fill: muted)[
+  #text(fill: safe)[PASS] = correct #h(0.4cm)
+  #text(fill: warn)[DISC] = stderr-only warning #h(0.4cm)
+  #text(fill: danger)[FAIL] = false Normal #h(0.4cm)
+  #text(fill: rgb("#1e1b4b"))[OMIT] = drug missing
+]
+#v(0.1cm)
+#text(10pt, fill: muted)[6 positive/negative controls (all PASS) omitted for space.]
 
 #pagebreak()
 
 // ──────────────────────────────────────────────
-// SLIDE 5 — Methodology
+// SLIDE 6 — The pattern and next steps
 // ──────────────────────────────────────────────
 
-#text(22pt, weight: "bold", fill: accent)[Reproducible methodology]
+#text(24pt, weight: "bold", fill: accent)[The pattern]
+#v(0.5cm)
+
+#block(fill: rgb("#fef3f3"), inset: 18pt, radius: 8pt, width: 100%)[
+  #text(18pt, weight: "bold", fill: danger)[
+    Missing data #sym.arrow.r Reference assumption #sym.arrow.r \
+    Normal phenotype #sym.arrow.r Standard dosing
+  ]
+  #v(0.4cm)
+  #text(14pt)[
+    Every step looks reasonable in isolation. Together they convert
+    *absence of evidence* into *evidence of safety*.
+    The report never mentions the gap.
+  ]
+]
+#v(0.7cm)
+
+#text(16pt, weight: "bold", fill: accent)[What we tested --- and what we didn't]
 #v(0.3cm)
+#text(14pt)[
+  We did *not* penalize the tool for limitations inherent to DTC microarrays.
+  No consumer genotyping chip can detect CYP2D6 gene duplications or TA-repeat
+  lengths. That's biology, not a bug.
+]
+#v(0.3cm)
+#text(14pt)[
+  We tested *what the tool does when it encounters data it cannot interpret*.
+  The clinically safe behavior is to say so. The observed behavior --- across
+  every commit in 187 days of development --- is to say "Normal."
+]
+#v(0.7cm)
 
-#grid(
-  columns: (1fr, 1fr),
-  column-gutter: 1.5cm,
-  [
-    #text(14pt, weight: "bold", fill: accent)[Benchmark design]
-    #v(0.3cm)
-    #text(12pt)[
-      - *18 synthetic 23andMe-format test files* with pre-specified ground truth
-      - *Positive controls* (variant present, correct answer known)
-      - *Negative controls* (variant absent, Normal expected)
-      - *Indeterminate controls* (correct answer is "insufficient data")
-      - No real patient data --- fully synthetic, fully reproducible
-    ]
-    #v(0.5cm)
-    #text(14pt, weight: "bold", fill: accent)[Six-category scoring rubric]
-    #v(0.3cm)
-    #text(12pt)[
-      #text(fill: safe)[Correct-Determinate] --- right phenotype, right drug \
-      #text(fill: safe)[Correct-Indeterminate] --- correctly says "insufficient" \
-      #text(fill: danger)[Incorrect-Determinate] --- wrong phenotype (false Normal) \
-      #text(fill: warn)[Incorrect-Indeterminate] --- unnecessary uncertainty \
-      #text(fill: rgb("#1e1b4b"))[Omission] --- drug silently missing from report \
-      #text(fill: warn)[Disclosure Failure] --- warning on stderr, not in report
-    ]
-  ],
-  [
-    #text(14pt, weight: "bold", fill: accent)[What we are _not_ testing]
-    #v(0.3cm)
-    #text(12pt)[
-      We do not penalize the tool for limitations inherent to DTC data.
-      No microarray can detect CYP2D6 gene duplications or TA-repeat lengths.
-    ]
-    #v(0.3cm)
-    #text(12pt)[
-      We test *what the tool does when it cannot know the answer.*
-      The clinically safe behavior is: say so. The observed behavior is:
-      say "Normal."
-    ]
-    #v(0.5cm)
-    #text(14pt, weight: "bold", fill: accent)[Ground truth and output]
-    #v(0.3cm)
-    #text(12pt)[
-      - CPIC Guidelines (version-pinned), PharmVar, FDA labeling \
-      - No reference tool comparison --- CPIC is the authority \
-      - Every run produces JSON verdicts with SHA-256 checksums, stderr capture, and CPIC references
-    ]
-  ],
-)
-
-#pagebreak()
-
-// ──────────────────────────────────────────────
-// SLIDE 6 — Implications
-// ──────────────────────────────────────────────
-
-#text(22pt, weight: "bold", fill: accent)[What this means for the field]
-#v(0.5cm)
-
-#grid(
-  columns: (1fr, 1fr),
-  column-gutter: 1.5cm,
-  [
-    #block(fill: bg-light, inset: 12pt, radius: 6pt, width: 100%)[
-      #text(13pt, weight: "bold", fill: accent)[The narrow finding]
-      #v(0.2cm)
-      #text(12pt)[
-        When the tool encounters data it cannot interpret, it defaults to
-        "Normal Metabolizer" without disclosing the limitation in the
-        report. A claimed patch of 32 fixes changed safety outcomes for
-        2 of 18 test cases. The warfarin bug predates the patch.
-      ]
-    ]
-    #v(0.4cm)
-    #block(fill: rgb("#f0f7ff"), inset: 12pt, radius: 6pt, width: 100%)[
-      #text(13pt, weight: "bold", fill: accent)[The broader question]
-      #v(0.2cm)
-      #text(12pt)[
-        How many bioinformatics AI tools produce confident-looking
-        outputs when the correct answer is "I don't know"?
-        This benchmark is open-source and reusable for any PGx tool
-        that ingests DTC data.
-      ]
-    ]
-  ],
-  [
-    #block(fill: rgb("#fef3f3"), inset: 12pt, radius: 6pt, width: 100%)[
-      #text(13pt, weight: "bold", fill: danger)[The design pattern to watch for]
-      #v(0.3cm)
-      #text(12.5pt, weight: "bold")[
-        Missing data #sym.arrow Reference assumption #sym.arrow Normal phenotype #sym.arrow Standard dosing
-      ]
-      #v(0.3cm)
-      #text(12pt)[
-        Every step looks reasonable alone. Together they convert
-        *absence of evidence* into *evidence of safety*.
-      ]
-    ]
-    #v(0.4cm)
-    #block(stroke: 0.5pt + accent, inset: 12pt, radius: 6pt, width: 100%)[
-      #text(12pt)[
-        *Benchmark:* 18 test cases, 6-category rubric, JSON verdicts, chain of custody.
-        Reproducible with Python 3.10+ and the target repo.
-      ]
-    ]
-    #v(0.2cm)
-    #align(right)[
-      #text(10pt, fill: muted)[Benchmark version 1.0.0 --- April 2026]
-    ]
-  ],
-)
+#text(16pt, weight: "bold", fill: accent)[CYP2D6 Ultrarapid Metabolizers]
+#v(0.2cm)
+#text(13pt)[
+  The tool's own guideline table says `ultrarapid_metabolizer: "avoid"`
+  for codeine (line 361). But the phenotype caller has no Ultrarapid entry
+  for CYP2D6 (lines 113--117). The rule exists and can never fire.
+  Prevalence: up to *29%* in Ethiopian and North African populations.
+]
+#v(0.3cm)
+#line(length: 100%, stroke: 0.3pt + rgb("#dee2e6"))
+#v(0.2cm)
+#text(11pt, fill: muted)[
+  *Benchmark:* 18 synthetic tests, 6-category rubric, JSON verdicts with SHA-256 checksums.
+  Reproducible: Python 3.10+, git clone, one command. Open source. #h(1fr) _v1.0.0 --- April 2026_
+]
