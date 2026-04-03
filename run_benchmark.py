@@ -184,22 +184,34 @@ def analyze_report(report_path):
     analysis["report_exists"] = True
     text = report_path.read_text(errors="replace")
 
-    # Extract gene profiles from the table
-    # Pattern: | Gene | Diplotype | Phenotype |
-    gene_pattern = re.compile(
-        r"\|\s*(\w+)\s*\|\s*([^\|]+?)\s*\|\s*([^\|]+?)\s*\|"
-    )
+    # Extract gene profiles by splitting table rows on pipe characters.
+    # Handles both 3-column (Gene|Diplotype|Phenotype) and
+    # 4-column (Gene|Full Name|Diplotype|Phenotype) formats across commits.
     in_gene_table = False
+    gene_table_headers = []
     for line in text.split("\n"):
-        if "Gene" in line and "Diplotype" in line and "Phenotype" in line:
+        if "Gene" in line and "Diplotype" in line and "Phenotype" in line and "|" in line:
+            # Parse header to find column indices
+            gene_table_headers = [h.strip() for h in line.split("|") if h.strip()]
             in_gene_table = True
             continue
         if in_gene_table and line.startswith("|"):
-            m = gene_pattern.match(line)
-            if m and not m.group(1).startswith("-"):
-                gene = m.group(1).strip()
-                diplotype = m.group(2).strip()
-                phenotype = m.group(3).strip()
+            cells = [c.strip() for c in line.split("|") if c.strip()]
+            # Skip separator rows (|---|---|---|)
+            if cells and cells[0].startswith("-"):
+                continue
+            if len(cells) >= 3:
+                # Map by header names if available, otherwise by position
+                if len(gene_table_headers) >= 4 and len(cells) >= 4:
+                    # 4-column: Gene | Full Name | Diplotype | Phenotype
+                    gene = cells[0]
+                    diplotype = cells[2]
+                    phenotype = cells[3]
+                else:
+                    # 3-column: Gene | Diplotype | Phenotype
+                    gene = cells[0]
+                    diplotype = cells[1]
+                    phenotype = cells[2]
                 if gene and gene != "Gene":
                     analysis["gene_profiles"][gene] = {
                         "diplotype": diplotype,
@@ -208,10 +220,34 @@ def analyze_report(report_path):
         elif in_gene_table and not line.startswith("|"):
             in_gene_table = False
 
-    # Check for warfarin in drug recommendations
-    if "warfarin" in text.lower() or "Warfarin" in text:
+    # Extract drug classifications from the Complete Drug Recommendations table
+    in_drug_table = False
+    for line in text.split("\n"):
+        if ("Drug" in line and ("Classification" in line or "Status" in line)
+                and "|" in line):
+            in_drug_table = True
+            continue
+        if in_drug_table and line.startswith("|"):
+            cells = [c.strip() for c in line.split("|") if c.strip()]
+            if cells and cells[0].startswith("-"):
+                continue
+            if len(cells) >= 2:
+                drug_name = cells[0]
+                # Classification is typically the last meaningful column
+                classification = cells[-1].lower() if cells[-1] else ""
+                for cat in ["standard", "caution", "avoid", "indeterminate"]:
+                    if cat in classification:
+                        analysis["drug_classifications"][drug_name] = cat
+                        break
+        elif in_drug_table and not line.startswith("|"):
+            in_drug_table = False
+
+    # Check for warfarin in drug recommendations (from parsed table AND text search)
+    if "Warfarin" in analysis["drug_classifications"]:
         analysis["warfarin_present"] = True
-        # Try to find classification
+        analysis["warfarin_classification"] = analysis["drug_classifications"]["Warfarin"]
+    elif "warfarin" in text.lower():
+        analysis["warfarin_present"] = True
         warf_match = re.search(
             r"Warfarin.*?\b(standard|caution|avoid|indeterminate)\b",
             text, re.IGNORECASE | re.DOTALL
@@ -239,6 +275,17 @@ def analyze_report(report_path):
                  "ultrarapid", "not assessed"]:
         if term.lower() in text.lower():
             analysis["warnings_in_report"].append(f"report_mentions: {term}")
+
+    # Embed text snippets for peer review reproducibility (OpenCode recommendation)
+    # Gene profile table (first 600 chars from ## Gene Profiles section)
+    gp_match = re.search(r"(## Gene Profiles.*?)(?=\n## |\Z)", text, re.DOTALL)
+    analysis["gene_table_snippet"] = gp_match.group(1)[:600] if gp_match else ""
+    # Drug summary (first 400 chars from ## Drug Response Summary)
+    ds_match = re.search(r"(## Drug Response Summary.*?)(?=\n---|\n## Gene)", text, re.DOTALL)
+    analysis["drug_summary_snippet"] = ds_match.group(1)[:400] if ds_match else ""
+    # Actionable alerts section
+    aa_match = re.search(r"(### Actionable Alerts.*?)(?=\n---|\n## )", text, re.DOTALL)
+    analysis["actionable_alerts_snippet"] = aa_match.group(1)[:400] if aa_match else ""
 
     return analysis
 
@@ -645,6 +692,34 @@ def run_benchmark(repo_path, commits, input_files, output_base):
     total_runs = len(commits) * len(input_files)
     run_count = 0
 
+    # Capture starting ref for safe restoration (Codex recommendation)
+    starting_ref_result = subprocess.run(
+        ["git", "-C", str(repo_path), "rev-parse", "--abbrev-ref", "HEAD"],
+        capture_output=True, text=True
+    )
+    starting_ref = starting_ref_result.stdout.strip() if starting_ref_result.returncode == 0 else "main"
+    if starting_ref == "HEAD":
+        # Detached HEAD — capture full SHA
+        starting_ref_result = subprocess.run(
+            ["git", "-C", str(repo_path), "rev-parse", "HEAD"],
+            capture_output=True, text=True
+        )
+        starting_ref = starting_ref_result.stdout.strip()
+
+    try:
+        return _run_benchmark_inner(repo_path, commits, input_files, output_base,
+                                     all_verdicts, total_runs, run_count)
+    finally:
+        # Always restore to starting ref
+        subprocess.run(
+            ["git", "-C", str(repo_path), "checkout", starting_ref, "--quiet"],
+            capture_output=True
+        )
+
+
+def _run_benchmark_inner(repo_path, commits, input_files, output_base,
+                          all_verdicts, total_runs, run_count):
+    """Inner benchmark loop (wrapped for safe git restore)."""
     for commit_sha in commits:
         # Get commit metadata
         commit_meta = get_commit_metadata(repo_path, commit_sha)
@@ -709,12 +784,7 @@ def run_benchmark(repo_path, commits, input_files, output_base):
                     },
                 })
 
-    # Restore HEAD
-    subprocess.run(
-        ["git", "-C", str(repo_path), "checkout", "main", "--quiet"],
-        capture_output=True
-    )
-
+    # Git restore is handled by the caller's finally block
     return all_verdicts
 
 
@@ -775,6 +845,9 @@ def build_summary(verdicts):
         by_commit[sha].append(v)
 
     summaries = {}
+    # Track per-test results across all commits for persistent failure detection
+    test_results_across_commits = defaultdict(list)
+
     for sha, vlist in by_commit.items():
         cats = Counter(v.get("verdict", {}).get("category", "unknown") for v in vlist)
         total = len(vlist)
@@ -788,6 +861,32 @@ def build_summary(verdicts):
             "commit_date": vlist[0].get("commit", {}).get("date", ""),
             "commit_message": vlist[0].get("commit", {}).get("message", ""),
         }
+        for v in vlist:
+            test_name = v.get("input", {}).get("file", "").replace(".txt", "")
+            cat = v.get("verdict", {}).get("category", "unknown")
+            is_pass = cat in ("correct_determinate", "correct_indeterminate")
+            test_results_across_commits[test_name].append(is_pass)
+
+    # Identify persistent failures and improvements (OpenCode recommendation)
+    persistent_failures = []
+    improved_in = {}
+    for test_name, results in test_results_across_commits.items():
+        if not any(results):
+            persistent_failures.append(test_name)
+        else:
+            # Find first commit where it started passing
+            for i, passed in enumerate(results):
+                if passed and (i == 0 or not results[i - 1]):
+                    commit_list = list(by_commit.keys())
+                    if i < len(commit_list):
+                        improved_in.setdefault(commit_list[i][:8], []).append(test_name)
+
+    summaries["_meta"] = {
+        "persistent_failures": sorted(persistent_failures),
+        "improved_in": improved_in,
+        "total_commits": len(by_commit),
+        "total_tests": len(test_results_across_commits),
+    }
 
     return summaries
 
@@ -918,6 +1017,8 @@ def main():
     print("BENCHMARK COMPLETE")
     print(f"{'='*60}")
     for sha_short, s in summary.items():
+        if sha_short == "_meta":
+            continue
         print(f"\n  {sha_short} ({s['commit_date'][:10]}): "
               f"{s['pass']}/{s['total_tests']} pass ({s['pass_rate']}%)")
         for cat, count in sorted(s["categories"].items()):
