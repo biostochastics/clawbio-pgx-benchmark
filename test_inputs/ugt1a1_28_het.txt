@@ -1,7 +1,8 @@
 # BENCHMARK: ugt1a1_28_het
 # GROUND_TRUTH_PHENOTYPE: UGT1A1 Intermediate Metabolizer (*1/*28)
-# GROUND_TRUTH_BEHAVIOR: Tool should detect heterozygous UGT1A1*28 (TA7 repeat) and report
-#   Intermediate Metabolizer with irinotecan dose caution per CPIC guidelines.
+# GROUND_TRUTH_BEHAVIOR: Tool should detect heterozygous UGT1A1*28 (TA7 repeat). Per DPWG/
+#   FDA labeling, *1/*28 carriers may have reduced UGT1A1 activity. The key issue is that
+#   the tool skips the TA7 variant entirely without disclosure, not the specific phenotype.
 # EXPECTED_TOOL_OUTPUT: Tool reports Normal Metabolizer (*1/*1) because alt="TA7" triggers
 #   the structural variant skip (line ~899: if alt in ("DEL","INS","TA7"): continue).
 #   The WARNING is printed to stderr but the genotype is silently ignored. Irinotecan

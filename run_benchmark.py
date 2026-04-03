@@ -74,6 +74,8 @@ GROUND_TRUTH_REFS = {
     "CPIC_FLUOROPYRIMIDINE": "CPIC Guideline for DPYD and Fluoropyrimidines, v3.0 (2018, updated 2023)",
     "CPIC_IRINOTECAN": "CPIC Guideline for UGT1A1 and Irinotecan, v2.0 (2020)",
     "CPIC_WARFARIN": "CPIC Guideline for CYP2C9/VKORC1 and Warfarin, v2.0 (2017)",
+    "CPIC_TACROLIMUS": "CPIC Guideline for CYP3A5 and Tacrolimus, v2.0 (2015, updated 2021)",
+    "CPIC_THIOPURINE": "CPIC Guideline for TPMT/NUDT15 and Thiopurines, v2.0 (2018, updated 2024)",
     "FDA_CODEINE": "FDA Boxed Warning: Codeine in CYP2D6 Ultra-rapid Metabolizers (2017)",
     "PHARMVAR_CYP2D6": "PharmVar CYP2D6 Allele Definitions (accessed 2026-04-03)",
 }
@@ -208,7 +210,7 @@ def analyze_report(report_path):
     # Handles both 3-column (Gene|Diplotype|Phenotype) and
     # 4-column (Gene|Full Name|Diplotype|Phenotype) formats across commits.
     in_gene_table = False
-    gene_table_headers = []
+    gene_header_indices = {}
     for line in text.split("\n"):
         if (
             "Gene" in line
@@ -216,24 +218,45 @@ def analyze_report(report_path):
             and "Phenotype" in line
             and "|" in line
         ):
-            # Parse header to find column indices
-            gene_table_headers = [h.strip() for h in line.split("|") if h.strip()]
+            # Parse header to find column indices by name
+            raw_headers = line.split("|")
+            gene_header_indices = {}
+            for i, h in enumerate(raw_headers):
+                h_stripped = h.strip()
+                if h_stripped:
+                    gene_header_indices[h_stripped] = i
             in_gene_table = True
             continue
         if in_gene_table and line.startswith("|"):
-            cells = [c.strip() for c in line.split("|") if c.strip()]
-            # Skip separator rows (|---|---|---|)
-            if cells and cells[0].startswith("-"):
+            raw_cells = line.split("|")
+            # Skip separator rows (|---|---|---| or |:--:|:--:|)
+            non_empty = [c.strip() for c in raw_cells if c.strip()]
+            if non_empty and re.match(r"^[-:]+$", non_empty[0]):
                 continue
-            if len(cells) >= 3:
-                # Map by header names if available, otherwise by position
-                if len(gene_table_headers) >= 4 and len(cells) >= 4:
-                    # 4-column: Gene | Full Name | Diplotype | Phenotype
-                    gene = cells[0]
-                    diplotype = cells[2]
-                    phenotype = cells[3]
+            if len(raw_cells) >= 4:  # at least || cell | cell ||
+                # Index by header positions if available
+                gene_idx = gene_header_indices.get("Gene")
+                dipl_idx = gene_header_indices.get("Diplotype")
+                phen_idx = gene_header_indices.get("Phenotype")
+                if (
+                    gene_idx is not None
+                    and dipl_idx is not None
+                    and phen_idx is not None
+                ):
+                    gene = (
+                        raw_cells[gene_idx].strip() if gene_idx < len(raw_cells) else ""
+                    )
+                    diplotype = (
+                        raw_cells[dipl_idx].strip() if dipl_idx < len(raw_cells) else ""
+                    )
+                    phenotype = (
+                        raw_cells[phen_idx].strip() if phen_idx < len(raw_cells) else ""
+                    )
                 else:
-                    # 3-column: Gene | Diplotype | Phenotype
+                    # Fallback: positional (strip empty leading/trailing from split)
+                    cells = [c.strip() for c in raw_cells if c.strip()]
+                    if len(cells) < 3:
+                        continue
                     gene = cells[0]
                     diplotype = cells[1]
                     phenotype = cells[2]
@@ -257,7 +280,7 @@ def analyze_report(report_path):
             continue
         if in_drug_table and line.startswith("|"):
             cells = [c.strip() for c in line.split("|") if c.strip()]
-            if cells and cells[0].startswith("-"):
+            if cells and re.match(r"^[-:]+$", cells[0]):
                 continue
             if len(cells) >= 2:
                 drug_name = cells[0]
@@ -393,17 +416,17 @@ def analyze_result_json(result_json_path):
 def _phenotype_matches(observed, expected):
     """Flexible phenotype matching — handles verbose ground truth vs terse tool output.
 
-    Returns True if either string contains the other, or if key terms match.
+    Uses key-term matching with word boundaries to prevent false positives
+    (e.g., "not normal metabolizer" should NOT match "normal metabolizer").
+    Falls back to direct containment only for short strings.
     """
     obs = observed.lower().strip()
     exp = expected.lower().strip()
     if not obs or not exp:
         return False
-    # Direct containment (either direction)
-    if obs in exp or exp in obs:
-        return True
     # Key term matching: extract metabolizer/function/sensitivity type
-    for term in [
+    # Use word-boundary-aware matching to avoid "not normal" matching "normal"
+    _KEY_TERMS = [
         "normal metabolizer",
         "intermediate metabolizer",
         "poor metabolizer",
@@ -411,14 +434,23 @@ def _phenotype_matches(observed, expected):
         "normal function",
         "intermediate function",
         "poor function",
-        "expressor",
         "non-expressor",
+        "expressor",
         "indeterminate",
         "not genotyped",
         "not_tested",
-    ]:
-        if term in obs and term in exp:
+    ]
+    for term in _KEY_TERMS:
+        pattern = r"(?<!\bnot\s)" + re.escape(term)
+        obs_match = re.search(pattern, obs)
+        exp_match = re.search(pattern, exp)
+        if obs_match and exp_match:
             return True
+    # Direct containment — only when one string is substantially shorter
+    if len(obs) < 40 and obs in exp:
+        return True
+    if len(exp) < 40 and exp in obs:
+        return True
     return False
 
 
@@ -614,6 +646,29 @@ def score_verdict(
             "details": details,
         }
 
+    if expected_category == "incorrect_indeterminate":
+        # Tool returns indeterminate/unknown when a correct answer IS determinable
+        if (
+            "indeterminate" in observed_phenotype.lower()
+            or "unknown" in observed_phenotype.lower()
+        ):
+            return {
+                "category": "incorrect_indeterminate",
+                "rationale": f"Unnecessary indeterminate as expected: {observed_phenotype}",
+                "details": details,
+            }
+        if _phenotype_matches(observed_phenotype, expected_phenotype):
+            return {
+                "category": "correct_determinate",
+                "rationale": f"Tool appears to have fixed this. Phenotype: {observed_phenotype}",
+                "details": details,
+            }
+        return {
+            "category": "incorrect_determinate",
+            "rationale": f"Wrong phenotype (neither correct nor indeterminate): {observed_phenotype}",
+            "details": details,
+        }
+
     if expected_category == "incorrect_determinate":
         if _phenotype_matches(observed_phenotype, expected_phenotype):
             return {
@@ -628,7 +683,16 @@ def score_verdict(
         }
 
     if expected_category == "omission":
-        # Non-warfarin omission
+        # Non-warfarin omission — check if drug is now present (tool fixed)
+        if hazard_drug and hazard_drug != "n/a":
+            drug_classifications = ra.get("drug_classifications", {})
+            drug_present = any(hazard_drug in k.lower() for k in drug_classifications)
+            if drug_present:
+                return {
+                    "category": "correct_determinate",
+                    "rationale": f"Tool appears to have fixed omission. {hazard_drug} now in report.",
+                    "details": details,
+                }
         return {
             "category": "omission",
             "rationale": f"Drug omission detected for {hazard_drug}",
@@ -688,7 +752,7 @@ def run_single(repo_path, commit_sha, input_path, output_base, commit_meta=None)
     cmd_with_flag = cmd + ["--no-enrich"]
 
     # Record start time
-    datetime.now(timezone.utc)
+    start_time = datetime.now(timezone.utc)
     wall_start = time.monotonic()
 
     # Execute — try with --no-enrich first, fall back without it for older commits
@@ -748,6 +812,7 @@ def run_single(repo_path, commit_sha, input_path, output_base, commit_meta=None)
     # Build comprehensive verdict JSON
     verdict_doc = {
         "benchmark_version": BENCHMARK_VERSION,
+        "start_time_utc": start_time.isoformat(),
         "timestamp_utc": end_time.isoformat(),
         "wall_clock_seconds": round(wall_elapsed, 3),
         "commit": {

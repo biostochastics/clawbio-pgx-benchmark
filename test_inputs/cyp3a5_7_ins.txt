@@ -1,5 +1,5 @@
 # BENCHMARK: cyp3a5_7_ins
-# GROUND_TRUTH_PHENOTYPE: CYP3A5 Intermediate Expressor or Non-expressor (carries *7 INS)
+# GROUND_TRUTH_PHENOTYPE: CYP3A5 Intermediate Metabolizer (*1/*7)
 # GROUND_TRUTH_BEHAVIOR: rs41303343 represents CYP3A5*7, a single-nucleotide insertion that
 #   causes a no-function allele. Like the CYP2D6*6 DEL and UGT1A1*28 TA7, this is a
 #   structural variant that the tool hardcodes to skip (alt="INS" -> continue).
@@ -38,9 +38,9 @@ rs4149056	12	21331549	TT
 rs3918290	1	97915614	GG
 rs55886062	1	97573863	TT
 rs67376798	1	97981395	TT
-rs1800460	6	18143955	CC
-rs1142345	6	18139228	GG
-rs1800462	6	18143724	CC
+rs1800460	6	18130918	CC
+rs1142345	6	18139228	AA
+rs1800462	6	18130699	CC
 rs8175347	2	234668879	CC
 rs4148323	2	234669144	GG
 rs776746	7	99672916	CC

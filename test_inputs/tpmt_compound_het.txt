@@ -1,11 +1,12 @@
 # BENCHMARK: tpmt_compound_het
-# GROUND_TRUTH_PHENOTYPE: TPMT Poor Metabolizer (*3B/*3C compound heterozygote)
+# GROUND_TRUTH_PHENOTYPE: TPMT Poor Metabolizer (phase-ambiguous: *3B/*3C or *1/*3A)
 # GROUND_TRUTH_BEHAVIOR: A patient heterozygous for both rs1800460 (*3B) and rs1142345
-#   (*3C) is a compound heterozygote who carries two no-function alleles on different
-#   copies of TPMT. Per CPIC, this is functionally equivalent to Poor Metabolizer for
-#   thiopurines (azathioprine, mercaptopurine, thioguanine). The tool's call_diplotype()
-#   cannot produce the *3A compound allele because it assigns *3B and *3C independently.
-#   The phenotype table has entries for *3A but call_diplotype() never generates that string.
+#   (*3C) is EITHER a compound heterozygote (*3B/*3C, trans = Poor Metabolizer) OR
+#   carries *3A in cis (*1/*3A, cis = Intermediate Metabolizer). Without phasing data,
+#   the genotype is ambiguous. Per CPIC, the safe interpretation is Poor Metabolizer
+#   (worst-case). The tool's call_diplotype() assigns *3B and *3C independently but
+#   cannot produce the *3A compound allele. The phenotype table has entries for *3A
+#   but call_diplotype() never generates that string.
 # EXPECTED_TOOL_OUTPUT: Tool detects both *3B (rs1800460 het) and *3C (rs1142345 het)
 #   independently. call_diplotype() produces "*3B/*3C" or "*3C/*3B". The phenotype table
 #   does NOT contain this diplotype -> falls through to "Unknown (unmapped diplotype: *3B/*3C)"
@@ -41,9 +42,9 @@ rs4149056	12	21331549	TT
 rs3918290	1	97915614	GG
 rs55886062	1	97573863	TT
 rs67376798	1	97981395	TT
-rs1800460	6	18143955	CT
+rs1800460	6	18130918	CT
 rs1142345	6	18139228	AC
-rs1800462	6	18143724	CC
+rs1800462	6	18130699	CC
 rs8175347	2	234668879	CC
 rs4148323	2	234669144	GG
 rs776746	7	99672916	CC
