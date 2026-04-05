@@ -1,5 +1,9 @@
 # ClawBio PharmGx Safety Benchmark
 
+> **⚠️ OUTDATED — This repository has been incorporated into [biostochastics/clawbio_bench](https://github.com/biostochastics/clawbio_bench).**
+>
+> This standalone benchmark is no longer maintained. All functionality, results, and ongoing development have been merged into the consolidated `clawbio_bench` repository. Please use that repo for the latest version.
+
 A reproducible benchmark for evaluating pharmacogenomics safety behavior in ClawBio's PharmGx Reporter. Produces machine-readable JSON verdicts scored against CPIC ground truth.
 
 ## What This Tests
